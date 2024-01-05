@@ -1,0 +1,2 @@
+https://github.com/didier-mycontrib/spring6plus
+et projets my-security-.... utilisé par appli appliSpringWeb4 et 5

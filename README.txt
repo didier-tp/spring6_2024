@@ -17,6 +17,6 @@ git pull
 ---------
 Aternative --> code / download zip
 
-Exemples avec SpringData et SpringBoot , SpringSecurity: projet AppliSpringBoot2
-du référentiel https://github.com/didier-mycontrib/spring5plus
+Exemples avec SpringData et SpringBoot , SpringSecurity: projet AppliSpringBoot3
+du référentiel https://github.com/didier-mycontrib/spring6plus
 
