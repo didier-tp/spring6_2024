@@ -65,7 +65,8 @@ public class DaoCompteJdbc /*extends JdbcDaoSupport*/ implements DaoCompte {
 		SqlParameterSource parameters = new MapSqlParameterSource()
 		.addValue("label", compte.getLabel())
 		.addValue("solde", compte.getSolde());
-		namedParameterJdbcTemplate.update(INSERT_SQL, parameters, holder);
+		namedParameterJdbcTemplate.update(INSERT_SQL, parameters, holder);; //pour h2
+		//namedParameterJdbcTemplate.update(INSERT_SQL, parameters, holder,  new String[] { "numero" }); //pour postgres
 		compte.setNumero(holder.getKey().longValue());//store auto_increment pk in instance to return
 		return compte;
 	}
