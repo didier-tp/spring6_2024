@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="org.springframework.web.context.WebApplicationContext" %>
-<%@ page import="tp.appliSpring.core.service.ServiceCompte" %>
-<%@ page import="tp.appliSpring.core.entity.Compte" %>
+<%@ page import="tp.mynativeapp.core.service.ServiceCompte" %>
+<%@ page import="tp.mynativeapp.core.entity.Compte" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <!DOCTYPE html>
 <html>
