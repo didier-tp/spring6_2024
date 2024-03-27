@@ -6,14 +6,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class AppliSpringApplication {
 	
+	
 	public static void initProfiles() {
 		//java .... -Dspring.profiles.active=reInit,dev
 		String profilsActifs  = System.getProperty("spring.profiles.active");
-		if(profilsActifs==null || profilsActifs.equals("")) {
-			//valeur par défaut si pas encore précisé
-			System.setProperty("spring.profiles.active", "dev,reInit");
-			//System.setProperty("spring.profiles.active", "dev2,reInit");
-			//System.setProperty("spring.profiles.active", "prod");
+		if(profilsActifs!=null) {
+			System.out.println("spring.profiles.active="+profilsActifs);
+		}else {
+			String defaultProfils  = "dev,reInit";
+			//String defaultProfils  = "dev2,reInit";
+			//String defaultProfils  = "prod";
+			System.setProperty("spring.profiles.default", defaultProfils);
+			System.out.println("spring.profiles.default="+defaultProfils);
 		}
 	}
 
