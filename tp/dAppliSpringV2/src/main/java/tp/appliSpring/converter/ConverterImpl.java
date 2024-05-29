@@ -1,5 +1,8 @@
 package tp.appliSpring.converter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import tp.appliSpring.core.entity.Compte;
@@ -29,6 +32,14 @@ public class ConverterImpl implements Converter {
 		c.setSolde(compteDto.getSolde());
 		
 		return c;
+	}
+
+	@Override
+	public List<CompteDto> listCompteToListCompteDto(List<Compte> lc) {
+		   return lc.stream()
+		   .map((c)->compteToCompteDto(c))
+		   //.collect(Collectors.toList());
+		   .toList(); //depuis java 17
 	}
 
 }
