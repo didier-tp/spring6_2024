@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import tp.appliSpring.core.service.ServiceCompte;
 import tp.appliSpring.dto.CompteDto;
 import tp.appliSpring.dto.MessageDto;
@@ -92,10 +93,10 @@ public class CompteRestCtrl {
 	//A CODER EN TP
 	
 	@PostMapping("" )
-	ResponseEntity<CompteDto> postCompte(@RequestBody CompteDto compteDto) {
+	ResponseEntity<CompteDto> postCompte(@RequestBody @Valid CompteDto compteDto) {
 		System.out.println("account to insert:" + compteDto);
 		CompteDto compteSauvegarde =  serviceCompte.sauvegarderCompte(compteDto);
-		return new ResponseEntity<CompteDto>(compteDto,HttpStatus.CREATED);
+		return new ResponseEntity<CompteDto>(compteSauvegarde,HttpStatus.CREATED);
 	}
 	
 	//appelé en mode PUT
