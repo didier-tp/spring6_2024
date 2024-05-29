@@ -1,25 +1,16 @@
 package tp.appliSpring.web.rest;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.Valid;
-import tp.appliSpring.converter.GenericMapper;
-import tp.appliSpring.core.entity.Compte;
+import tp.appliSpring.core.exception.NotFoundException;
 import tp.appliSpring.core.service.ServiceCompte;
+import tp.appliSpring.dto.ApiError;
 import tp.appliSpring.dto.CompteDto;
 
 @RestController //@Component de type controller d'api rest
@@ -43,7 +34,7 @@ public class CompteRestCtrl {
 	}
     */
 	
-	
+	/*
 	//V2 avec DTO et V4 (avec automatisme ExceptionHandler)
 	//declencher en mode GET avec
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
@@ -54,24 +45,25 @@ public class CompteRestCtrl {
 		
 			//NB: l'objet retourné sera automatiquement converti au format json
 		}
-
+    */
 	
-	/*
+	
 	//V3 avec ResponseEntity<?> mais sans ExceptionHandler
 	//declencher en mode GET avec
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getCompteById(@PathVariable("id") long numeroCompte) {
 				try {
-					Compte compteEntity = serviceCompte.rechercherCompte( numeroCompte);
-					return new ResponseEntity<CompteDto>(GenericMapper.MAPPER.map(compteEntity, CompteDto.class) , HttpStatus.OK);
+					CompteDto compteDto = serviceCompte.rechercherCompte( numeroCompte);
+					return new ResponseEntity<CompteDto>(compteDto , HttpStatus.OK);
 				} catch (NotFoundException e) {
 					//e.printStackTrace();
 					System.err.println(e.getMessage());
-					return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+					return new ResponseEntity<>(new ApiError(HttpStatus.NOT_FOUND , "compte inexistant"),
+							                    HttpStatus.NOT_FOUND);
 				}
 	}
-	*/
+
 	
 	//En GET
 	//http://localhost:8181/appliSpring/rest/api-bank/compte
