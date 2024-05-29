@@ -17,6 +17,7 @@ import tp.appliSpring.core.dao.DaoOperation;
 import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.core.entity.Operation;
 import tp.appliSpring.core.exception.BankException;
+import tp.appliSpring.dto.CompteDto;
 
 //@ExtendWith(SpringExtension.class) //si junit5/jupiter
 @SpringBootTest(classes= {AppliSpringApplication.class})//reprendre la configuration de la classe principale
@@ -31,32 +32,12 @@ public class TestServiceCompte {
 	//@Autowired
 	private DaoOperation daoOperation; //à tester
 	
-	//@Test
-	public void testRechercherCompte() {
-		Compte cptA = new Compte(null,"compteA",100.0);
-		Compte cptA_sauvegarde = serviceCompte.sauvegarderCompte(cptA);
-		
-        Operation op1 = new Operation(null,"achat 1" , -5.0 , new Date());
-        //op1.setCompte(cptA_sauvegarde); daoOperation.save(op1);
-		Operation op2 = new Operation(null,"achat 2" , -6.0 , new Date());
-		//op2.setCompte(cptA_sauvegarde);daoOperation.save(op2);
-		
-		Compte cptA_relu = serviceCompte.rechercherCompte(cptA_sauvegarde.getNumero());
-		logger.debug("cptA_relu="+cptA_relu);
-		/*
-		for(Operation op : cptA_relu.getOperations()) {
-			logger.debug("\t op="+op);
-		}
-		*/
-		//Assert.assertTrue(.) en JUnit4
-		Assertions.assertTrue(cptA_relu.getLabel().equals("compteA"));//en JUnit5"
-        //...
-	}
+	
 	
 	@Test
 	public void testVirement() {
-		Compte compteASauvegarde = this.serviceCompte.sauvegarderCompte(new Compte(null,"compteA",300.0));
-		Compte compteBSauvegarde = this.serviceCompte.sauvegarderCompte(new Compte(null,"compteB",100.0));
+		CompteDto compteASauvegarde = this.serviceCompte.sauvegarderCompte(new CompteDto(null,"compteA",300.0));
+		CompteDto compteBSauvegarde = this.serviceCompte.sauvegarderCompte(new CompteDto(null,"compteB",100.0));
 		long numCptA = compteASauvegarde.getNumero();
 		long numCptB = compteBSauvegarde.getNumero();		
 		//remonte en memoire les anciens soldes des compte A et B avant virement (+affichage console ou logger)
@@ -67,8 +48,8 @@ public class TestServiceCompte {
 		this.serviceCompte.transferer(50.0, numCptA, numCptB);
 		//remonte en memoire les nouveaux soldes des compte A et B apres virement (+affichage console ou logger)
 	
-		Compte compteAReluApresVirement = this.serviceCompte.rechercherCompte(numCptA);
-		Compte compteBReluApresVirement = this.serviceCompte.rechercherCompte(numCptB);
+		CompteDto compteAReluApresVirement = this.serviceCompte.rechercherCompte(numCptA);
+		CompteDto compteBReluApresVirement = this.serviceCompte.rechercherCompte(numCptB);
 		double soldeA_apres = compteAReluApresVirement.getSolde();
 		double soldeB_apres = compteBReluApresVirement.getSolde();
 		logger.debug("apres bon virement, soldeA_apres="+soldeA_apres + " et soldeB_apres=" + soldeB_apres);
@@ -81,8 +62,8 @@ public class TestServiceCompte {
 	public void testMauvaisVirement() {
 		//NB: ce test echoue sans @Transactional au dessus de transferer()
 		//    et réussi avec @Transactional
-		Compte compteASauvegarde = this.serviceCompte.sauvegarderCompte(new Compte(null,"compteA",300.0));
-		Compte compteBSauvegarde = this.serviceCompte.sauvegarderCompte(new Compte(null,"compteB",100.0));
+		CompteDto compteASauvegarde = this.serviceCompte.sauvegarderCompte(new CompteDto(null,"compteA",300.0));
+		CompteDto compteBSauvegarde = this.serviceCompte.sauvegarderCompte(new CompteDto(null,"compteB",100.0));
 		long numCptA = compteASauvegarde.getNumero();
 		long numCptB = compteBSauvegarde.getNumero();		
 		//remonte en memoire les anciens soldes des compte A et B avant virement (+affichage console ou logger)
@@ -96,8 +77,8 @@ public class TestServiceCompte {
 			logger.error("echec normal du virement " + e.getMessage());
 		}
 		//remonte en memoire les nouveaux soldes des compte A et B apres virement (+affichage console ou logger)
-		Compte compteAReluApresVirement = this.serviceCompte.rechercherCompte(numCptA);
-		Compte compteBReluApresVirement = this.serviceCompte.rechercherCompte(numCptB);
+		CompteDto compteAReluApresVirement = this.serviceCompte.rechercherCompte(numCptA);
+		CompteDto compteBReluApresVirement = this.serviceCompte.rechercherCompte(numCptB);
 		double soldeA_apres = compteAReluApresVirement.getSolde();
 		double soldeB_apres = compteBReluApresVirement.getSolde();
 		logger.debug("apres mauvais virement, soldeA_apres="+soldeA_apres + " et soldeB_apres=" + soldeB_apres);
