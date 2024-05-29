@@ -3,13 +3,12 @@ package tp.appliSpring.core.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tp.appliSpring.aspect.MesurerPerf;
 import tp.appliSpring.core.dao.DaoCompte;
 import tp.appliSpring.core.entity.Compte;
-import tp.appliSpring.core.entity.Operation;
 import tp.appliSpring.core.exception.BankException;
 import tp.appliSpring.core.exception.NotFoundException;
 
@@ -21,6 +20,7 @@ public class ServiceCompteImpl implements ServiceCompte {
 	private DaoCompte daoCompte;
 
 	@Transactional()
+	@MesurerPerf
 	//@Transactional(propagation = Propagation.REQUIRED)par défaut
 	public void transferer(double montant, long numCptDeb, long numCptCred)throws BankException {
 		try {
