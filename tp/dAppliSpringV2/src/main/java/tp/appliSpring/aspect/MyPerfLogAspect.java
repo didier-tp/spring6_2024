@@ -37,8 +37,11 @@ public class MyPerfLogAspect {
 	@Pointcut("execution(* tp.appliSpring.core.service.*.*(..))")
 	public void surPackageService() {}
 	
+	@Pointcut("@annotation(tp.appliSpring.aspect.MesurerPerf)")
+	public void annotMesurerPerf() {}
+	
 	//@Around("execution(* tp.appliSpring.core.service.*.*(..))")
-	@Around("surPackageDao() || surPackageService()")
+	@Around("(surPackageDao() || surPackageService()) && annotMesurerPerf()")
 	public Object doPerfLog(ProceedingJoinPoint pjp) throws Throwable {
 		System.out.println("<< trace == debut == " + pjp.getSignature().toLongString() + " <<");
 		long td = System.nanoTime();

@@ -38,6 +38,7 @@ public class ServiceCompteImpl implements ServiceCompte {
 
 	@Override
 	@Transactional
+	@MesurerPerf
 	public Compte rechercherCompte(long numCpt)throws NotFoundException {
 		try {
 			//Compte cpt  =daoCompte.findById(numCpt);
