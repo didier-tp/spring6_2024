@@ -3,6 +3,7 @@ package tp.appliSpring.aspect;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -11,13 +12,9 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class MyPerfLogAspect {
-/*
-	@Pointcut("execution(* tp.appliSpring.exemple.*.*(..))")
-	public void surPackageExemple() {}
+
 	
-	@Pointcut("execution(* tp.appliSpring.service.*.*(..))")
-	public void surPackageService() {}
-	
+	/*
 	//@within pour annotation @Aff (avec @Target(ElementType.TYPE) placée sur l'ensemble d'une classe 
 	@Pointcut("@within(tp.appliSpring.annotation.Aff)")
 	public void annotAffPointcut(){ 
@@ -34,7 +31,14 @@ public class MyPerfLogAspect {
 	//@Around("annotLogExecutionTimePointcut()")
 	//@Around("surPackageExemple() || surPackageService()")
 	
-	@Around("execution(* tp.appliSpring.core.service.*.*(..))")
+	@Pointcut("execution(* tp.appliSpring.core.dao.*.*(..))")
+	public void surPackageDao() {}
+	
+	@Pointcut("execution(* tp.appliSpring.core.service.*.*(..))")
+	public void surPackageService() {}
+	
+	//@Around("execution(* tp.appliSpring.core.service.*.*(..))")
+	@Around("surPackageDao() || surPackageService()")
 	public Object doPerfLog(ProceedingJoinPoint pjp) throws Throwable {
 		System.out.println("<< trace == debut == " + pjp.getSignature().toLongString() + " <<");
 		long td = System.nanoTime();
