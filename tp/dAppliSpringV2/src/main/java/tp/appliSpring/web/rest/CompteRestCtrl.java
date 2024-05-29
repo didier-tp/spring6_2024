@@ -29,7 +29,7 @@ public class CompteRestCtrl {
 	@Autowired
 	private ServiceCompte serviceCompte;
 	
-	/*
+	
 	//V1 sans DTO
 	//declencher en mode GET avec
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
@@ -41,9 +41,9 @@ public class CompteRestCtrl {
 		return compteEntity;
 		//NB: l'objet retourné sera automatiquement converti au format json
 	}
-	*/
+
 	
-	
+	/*
 	//V2 avec DTO et V4 (avec automatisme ExceptionHandler)
 	//declencher en mode GET avec
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
@@ -54,7 +54,7 @@ public class CompteRestCtrl {
 			return GenericMapper.MAPPER.map(compteEntity, CompteDto.class);
 			//NB: l'objet retourné sera automatiquement converti au format json
 		}
-    
+    */
 	
 	/*
 	//V3 avec ResponseEntity<?> mais sans ExceptionHandler
