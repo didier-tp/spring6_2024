@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tp.appliSpring.aspect.MesurerPerf;
+import tp.appliSpring.converter.Converter;
 import tp.appliSpring.core.dao.DaoCompte;
 import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.core.exception.BankException;
 import tp.appliSpring.core.exception.NotFoundException;
+import tp.appliSpring.dto.CompteDto;
 
 @Service //@Component de type Service
 //@Transactional
@@ -18,6 +20,9 @@ public class ServiceCompteImpl implements ServiceCompte {
 	
 	@Autowired
 	private DaoCompte daoCompte;
+	
+	@Autowired
+	private Converter converter;
 
 	@Transactional()
 	@MesurerPerf
@@ -39,7 +44,7 @@ public class ServiceCompteImpl implements ServiceCompte {
 	@Override
 	@Transactional
 	@MesurerPerf
-	public Compte rechercherCompte(long numCpt)throws NotFoundException {
+	public CompteDto rechercherCompte(long numCpt)throws NotFoundException {
 		try {
 			//Compte cpt  =daoCompte.findById(numCpt);
 			//for(Operation op : cpt.getOperations()); //bidouille affreuse pour eviter lazy
@@ -47,22 +52,25 @@ public class ServiceCompteImpl implements ServiceCompte {
 			
 			Compte cpt = daoCompte.findWithOperations(numCpt);
 			if(cpt==null) throw new NotFoundException("account not found with numCpt="+numCpt);
-			return cpt;
+			return converter.compteToCompteDto(cpt);
 		} catch (Exception e) {
 			throw new NotFoundException("account not found with numCpt="+numCpt,e);
 		}
 	}
 
 	@Override
-	public Compte sauvegarderCompte(Compte cpt) {
-		return daoCompte.save(cpt);
+	public CompteDto sauvegarderCompte(CompteDto cpt) {
+		//en entré un dto avec id encore inconnu (à null)
+		Compte c=  daoCompte.save(converter.compteDtoToCompte(cpt)); //avec pk auto_incr
+		return converter.compteToCompteDto(c);
 	}
 	
 	@Override
-	public Compte updateCompte(Compte cpt)throws NotFoundException {
+	public CompteDto updateCompte(CompteDto cpt)throws NotFoundException {
 		if(!daoCompte.existsById(cpt.getNumero()))
 			throw new NotFoundException("account not found with numero="+cpt.getNumero());
-		return daoCompte.save(cpt);
+		Compte c=  daoCompte.save(converter.compteDtoToCompte(cpt)); 
+		return converter.compteToCompteDto(c);
 	}
 	
 	@Override
@@ -75,13 +83,13 @@ public class ServiceCompteImpl implements ServiceCompte {
 	
 	
 	@Override
-	public List<Compte> rechercherTousLesComptes() {
-		return daoCompte.findAll();
+	public List<CompteDto> rechercherTousLesComptes() {
+		return converter.listCompteToListCompteDto(daoCompte.findAll());
 	}
 
 	@Override
-	public List<Compte> rechercherComptesAvecSoldeMini(double soldeMini) {
-		return daoCompte.findBySoldeGreaterThanEqual(soldeMini);
+	public List<CompteDto> rechercherComptesAvecSoldeMini(double soldeMini) {
+		return converter.listCompteToListCompteDto(daoCompte.findBySoldeGreaterThanEqual(soldeMini));
 	}
 
 }
