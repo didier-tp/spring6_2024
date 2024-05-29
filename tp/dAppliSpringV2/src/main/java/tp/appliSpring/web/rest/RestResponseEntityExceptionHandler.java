@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import tp.appliSpring.core.exception.NotFoundException;
 import tp.appliSpring.dto.ApiError;
 
-//@ControllerAdvice
+@ControllerAdvice
 public class RestResponseEntityExceptionHandler 
    extends ResponseEntityExceptionHandler {
 	
