@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.method.MethodValidationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -26,8 +27,20 @@ public class RestResponseEntityExceptionHandler
 	@Override
 	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
 			HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-		String error = "Malformed JSON request";
+		String error = "Malformed JSON request" + ex.getMessage();
 		return buildResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, error));
+	}
+	
+	
+
+
+
+	@Override
+	protected ResponseEntity<Object> handleMethodValidationException(MethodValidationException ex, HttpHeaders headers,
+			HttpStatus status, WebRequest request) {
+		String error = "invalidRequest" + ex.getMessage();
+		return buildResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, error));
+		//return super.handleMethodValidationException(ex, headers, status, request);
 	}
 
 

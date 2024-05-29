@@ -93,7 +93,7 @@ public class CompteRestCtrl {
 	//A CODER EN TP
 	
 	@PostMapping("" )
-	ResponseEntity<CompteDto> postCompte(@RequestBody  CompteDto compteDto) {
+	ResponseEntity<CompteDto> postCompte(@RequestBody @Valid CompteDto compteDto) {
 		System.out.println("account to insert:" + compteDto);
 		CompteDto compteSauvegarde =  serviceCompte.sauvegarderCompte(compteDto);
 		return new ResponseEntity<CompteDto>(compteSauvegarde,HttpStatus.CREATED);
