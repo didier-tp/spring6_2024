@@ -93,7 +93,7 @@ public class CompteRestCtrl {
 	//A CODER EN TP
 	
 	@PostMapping("" )
-	ResponseEntity<CompteDto> postCompte(@RequestBody @Valid CompteDto compteDto) {
+	ResponseEntity<CompteDto> postCompte(@RequestBody  CompteDto compteDto) {
 		System.out.println("account to insert:" + compteDto);
 		CompteDto compteSauvegarde =  serviceCompte.sauvegarderCompte(compteDto);
 		return new ResponseEntity<CompteDto>(compteSauvegarde,HttpStatus.CREATED);
@@ -105,8 +105,11 @@ public class CompteRestCtrl {
 	//avec dans la partie "body" de la requête
 	// { "numero" : 1 , "label" : "libelleModifie" , "solde" : 120.0  }
 	//A CODER EN TP
-	@PutMapping("" )
-	CompteDto putCompte(@RequestBody CompteDto compteDto) {
+	@PutMapping({"/{id}"  , ""})
+	CompteDto putCompte(@PathVariable(value="id" , required = false) Long numeroCompte ,
+			             @RequestBody CompteDto compteDto) {
+		if(numeroCompte!=null)
+			compteDto.setNumero(numeroCompte);
 		System.out.println("account to update:" + compteDto);
 		return serviceCompte.updateCompte(compteDto);
 	}
