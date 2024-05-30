@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
@@ -27,8 +28,9 @@ public class SecurityConfig {
 	protected SecurityFilterChain restFilterChain(HttpSecurity http,JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
 		return http.securityMatcher("/rest/**")
 		    .authorizeHttpRequests(
-				// exemple très permissif ici à grandement adapter !!!!
-				auth -> auth.requestMatchers("/**").permitAll()
+				auth -> auth.requestMatchers("/rest/api-login/public/login").permitAll()
+				            .requestMatchers(HttpMethod.GET,"/rest/api-bank/compte/**").permitAll()
+				            .requestMatchers("/rest/**").authenticated()
 				)
 		    .cors( Customizer.withDefaults())
 		    
