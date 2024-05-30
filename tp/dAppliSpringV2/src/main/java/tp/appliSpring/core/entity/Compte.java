@@ -13,12 +13,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Entity
 @Table(name="COMPTE")
 @NamedQuery(name = "Compte.findWithOperations" , 
            query="SELECT cpt FROM Compte cpt LEFT JOIN FETCH cpt.operations WHERE cpt.numero = ?1")
+@Getter @Setter 
 public class Compte {
 
     @Id
@@ -56,43 +59,4 @@ public class Compte {
 	}
 	
 
-
-    //+get/set , constructeur , toString()
-
-
-	public Long getNumero() {
-		return numero;
-	}
-
-	public void setNumero(Long numero) {
-		this.numero = numero;
-	}
-
-	public String getLabel() {
-		return label;
-	}
-
-	public void setLabel(String label) {
-		this.label = label;
-	}
-
-	public Double getSolde() {
-		return solde;
-	}
-
-	public void setSolde(Double solde) {
-		this.solde = solde;
-	}
-
-
-	public List<Operation> getOperations() {
-		return operations;
-	}
-
-
-	public void setOperations(List<Operation> operations) {
-		this.operations = operations;
-	}
-	
-	
 }

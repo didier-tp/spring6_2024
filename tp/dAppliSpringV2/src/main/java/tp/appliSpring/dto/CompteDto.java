@@ -4,8 +4,13 @@ import org.hibernate.validator.constraints.Length;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Schema(description = "CompteDto (infos essentielles sur compte bancaire)")
+@Getter @Setter @ToString @NoArgsConstructor
 public class CompteDto {
 	
 	@Schema(description = "numero du compte")
@@ -20,38 +25,14 @@ public class CompteDto {
 	private Double solde;
 
 	
-	@Override
-	public String toString() {
-		return "CompteDto [numero=" + numero + ", label=" + label + ", solde=" + solde + "]";
-	}
 	
-	public CompteDto() {
-		super();
-	}
 	public CompteDto(Long numero, String label, Double solde) {
 		super();
 		this.numero = numero;
 		this.label = label;
 		this.solde = solde;
 	}
-	public Long getNumero() {
-		return numero;
-	}
-	public void setNumero(Long numero) {
-		this.numero = numero;
-	}
-	public String getLabel() {
-		return label;
-	}
-	public void setLabel(String label) {
-		this.label = label;
-	}
-	public Double getSolde() {
-		return solde;
-	}
-	public void setSolde(Double solde) {
-		this.solde = solde;
-	}
+	
 
 	
 

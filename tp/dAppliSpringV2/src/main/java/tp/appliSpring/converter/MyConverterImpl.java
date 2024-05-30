@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.dto.CompteDto;
 
-@Component
-public class ConverterImpl implements Converter {
+//@Component
+public class MyConverterImpl implements Converter {
 
 	@Override
 	public CompteDto compteToCompteDto(Compte c) {

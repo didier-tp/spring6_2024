@@ -34,17 +34,6 @@ public class RestResponseEntityExceptionHandler
 	
 
 
-
-	@Override
-	protected ResponseEntity<Object> handleMethodValidationException(MethodValidationException ex, HttpHeaders headers,
-			HttpStatus status, WebRequest request) {
-		String error = "invalidRequest" + ex.getMessage();
-		return buildResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, error));
-		//return super.handleMethodValidationException(ex, headers, status, request);
-	}
-
-
-
 	@ExceptionHandler(NotFoundException.class)
 	protected ResponseEntity<Object> handleEntityNotFound(NotFoundException ex) {
 		return buildResponseEntity(new ApiError(HttpStatus.NOT_FOUND, ex.getMessage()));
