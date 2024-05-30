@@ -22,7 +22,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@Component
+//@Component
 @Profile("withSecurity")
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	

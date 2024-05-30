@@ -1,8 +1,10 @@
 package tp.appliSpring;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,15 +16,26 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
 	@Bean
-	protected SecurityFilterChain myFilterChain(HttpSecurity http,PasswordEncoder passwordEncoder) throws Exception {
-		http.authorizeHttpRequests(
+	@Order(1)
+	protected SecurityFilterChain restFilterChain(HttpSecurity http,PasswordEncoder passwordEncoder) throws Exception {
+		return http.securityMatcher("/rest/**")
+		    .authorizeHttpRequests(
 				// exemple très permissif ici à grandement adapter !!!!
-				auth -> auth.requestMatchers("/**").permitAll());
-		
-		return http.build();
+				auth -> auth.requestMatchers("/**").permitAll())
+		    .build();
 	}
 	
-	@Bean 
+	@Bean
+	@Order(3)
+	protected SecurityFilterChain otherFilterChain(HttpSecurity http,PasswordEncoder passwordEncoder) throws Exception {
+		return http.securityMatcher("/**")
+		     .authorizeHttpRequests(
+				// pour image , html , css , js
+				auth -> auth.requestMatchers("/**").permitAll())
+		     .build();
+	}
+	
+	@Bean @Qualifier("rest")
 	AuthenticationManager authManager(HttpSecurity http,PasswordEncoder passwordEncoder)  throws Exception{
 		AuthenticationManagerBuilder authenticationManagerBuilder =
 				authenticationManagerBuilderFromHttpSecurity(http);
