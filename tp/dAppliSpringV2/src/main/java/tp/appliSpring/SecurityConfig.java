@@ -1,15 +1,22 @@
 package tp.appliSpring;
 
+import org.mycontrib.mysecurity.jwt.util.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @ComponentScan(basePackages = {"org.mycontrib.mysecurity"})
@@ -17,12 +24,29 @@ public class SecurityConfig {
 
 	@Bean
 	@Order(1)
-	protected SecurityFilterChain restFilterChain(HttpSecurity http,PasswordEncoder passwordEncoder) throws Exception {
+	protected SecurityFilterChain restFilterChain(HttpSecurity http,JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
 		return http.securityMatcher("/rest/**")
 		    .authorizeHttpRequests(
 				// exemple très permissif ici à grandement adapter !!!!
-				auth -> auth.requestMatchers("/**").permitAll())
-		    .build();
+				auth -> auth.requestMatchers("/**").permitAll()
+				)
+		    .cors( Customizer.withDefaults())
+		    
+		  //enable CORS (avec @CrossOrigin sur class @RestController)
+		  .csrf( csrf -> csrf.disable() )
+		  // If the user is not authenticated, returns 401
+		  .exceptionHandling(eh ->  eh.authenticationEntryPoint(getRestAuthenticationEntryPoint() ))
+			
+		  // This is a stateless application, disable sessions
+		  .sessionManagement(sM -> sM.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+		
+		  // Custom filter for authenticating users using tokens
+		  .addFilterBefore(jwtAuthenticationFilter,  UsernamePasswordAuthenticationFilter.class)
+		  .build();
+	}
+	
+	private AuthenticationEntryPoint getRestAuthenticationEntryPoint() {
+		return new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED);
 	}
 	
 	@Bean
