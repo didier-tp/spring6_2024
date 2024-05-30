@@ -32,7 +32,7 @@ public class LoginRestCtrl {
 	
 	
 	@Autowired(required = true)
-	@Qualifier("rest")  //NB: it may be an alias of global/unique AuthenticationManager (without @Qualifier)
+	/*@Qualifier("rest")*/  //NB: it may be an alias of global/unique AuthenticationManager (without @Qualifier)
     private AuthenticationManager authenticationManager;
 	
 	@Autowired
