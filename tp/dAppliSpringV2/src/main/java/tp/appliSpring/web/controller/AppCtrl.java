@@ -2,6 +2,7 @@ package tp.appliSpring.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -9,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/site/app")
 public class AppCtrl {
 	
+	
+	//équivalent à model.addAttribute("username","unknown");
+	@ModelAttribute("username")
+	public String defaultUsernameInModel() {
+		return "unknown";
+	}
 	
 	@RequestMapping("/calcul-tva")
 	public String calculTva(Model model ,
@@ -26,6 +33,19 @@ public class AppCtrl {
 		model.addAttribute("tva", tva);
 		model.addAttribute("ttc", ttc);
 		return "tva"; // aiguiller sur la vue "tva" (.html)
+	}
+	
+	@RequestMapping("/to-login")
+	public String verifLogin() {
+		return "login"; // aiguiller sur la vue "login" (.html)
+	}
+	
+	@RequestMapping("/verif-login")
+	public String verifLogin(Model model ,
+			@RequestParam(name="username",required=false) String username) {
+		//V1 (sans verif password)
+		model.addAttribute("username", username);
+		return "welcome"; // aiguiller sur la vue "welcome" (.html)
 	}
 	
 	@RequestMapping("/hello-world-th")

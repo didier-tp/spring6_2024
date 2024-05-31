@@ -4,8 +4,9 @@
 	layout:decorate="~{_layout}" layout:fragment="content">
 	<h1>Welcome Thymeleaf (public part)</h1>
 	<p>
-		message=<b><span th:utext="${message}"></span></b> <br/>
+		message=<b><span th:utext="${message}"></span> <br/> <span th:utext="${username}"></span> </b> <br/>
 		<a href="./calcul-tva">calcul-tva</a> <br/>
+		<a href="./to-login">login</a> <br/>
 	</p>
 	<hr />
 	... 
