@@ -4,6 +4,7 @@ package tp.appliSpring.core.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -34,7 +35,7 @@ public class Compte {
     
     private Double solde;
     
-    @OneToMany(mappedBy = "compte" , fetch = FetchType.LAZY )
+    @OneToMany(mappedBy = "compte" , fetch = FetchType.LAZY , cascade = {CascadeType.REMOVE} )
     //@JsonIgnore
     private List<Operation> operations = new ArrayList<>(); //+get/set
     

@@ -119,7 +119,7 @@ public class CompteRestCtrl {
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
 	//A CODER EN TP
 	@DeleteMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity deleteCompteById(@PathVariable("id") long numeroCompte) {
 		
 			serviceCompte.deleteCompte( numeroCompte);
