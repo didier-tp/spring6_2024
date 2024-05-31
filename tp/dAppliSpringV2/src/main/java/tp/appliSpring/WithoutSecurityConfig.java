@@ -1,0 +1,23 @@
+package tp.appliSpring;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+@Profile("!withSecurity")
+public class WithoutSecurityConfig {
+
+	@Bean
+	protected SecurityFilterChain withoutSecurityFilterChain(HttpSecurity http) throws Exception {
+		return http.securityMatcher("/**")
+		     .authorizeHttpRequests(
+				// pour image , html , css , js , et tout le reste
+				auth -> auth.requestMatchers("/**").permitAll())
+		     .build();
+	}
+	
+}

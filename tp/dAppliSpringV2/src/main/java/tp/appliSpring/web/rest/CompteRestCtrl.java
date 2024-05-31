@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -93,6 +94,7 @@ public class CompteRestCtrl {
 	//A CODER EN TP
 	
 	@PostMapping("" )
+	//@PreAuthorize("hasRole('ADMIN')")
 	ResponseEntity<CompteDto> postCompte(@RequestBody @Valid CompteDto compteDto) {
 		System.out.println("account to insert:" + compteDto);
 		CompteDto compteSauvegarde =  serviceCompte.sauvegarderCompte(compteDto);
@@ -117,6 +119,7 @@ public class CompteRestCtrl {
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
 	//A CODER EN TP
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity deleteCompteById(@PathVariable("id") long numeroCompte) {
 		
 			serviceCompte.deleteCompte( numeroCompte);
