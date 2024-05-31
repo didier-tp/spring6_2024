@@ -5,9 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/site/app")
+@SessionAttributes( value={"username"} )
 public class AppCtrl {
 	
 	
@@ -15,6 +17,11 @@ public class AppCtrl {
 	@ModelAttribute("username")
 	public String defaultUsernameInModel() {
 		return "unknown";
+	}
+	
+	@ModelAttribute("message")
+	public String defaultMessageInModel() {
+		return "i am happy";
 	}
 	
 	@RequestMapping("/calcul-tva")
@@ -36,7 +43,7 @@ public class AppCtrl {
 	}
 	
 	@RequestMapping("/to-login")
-	public String verifLogin() {
+	public String toLogin() {
 		return "login"; // aiguiller sur la vue "login" (.html)
 	}
 	
