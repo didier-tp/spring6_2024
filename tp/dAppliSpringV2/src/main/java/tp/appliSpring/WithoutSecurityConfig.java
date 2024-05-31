@@ -43,7 +43,7 @@ public class WithoutSecurityConfig {
 	}
 
 	
-	@Bean @Qualifier("rest")
+	@Bean
 	AuthenticationManager authManager(HttpSecurity http,PasswordEncoder passwordEncoder)  throws Exception{
 		AuthenticationManagerBuilder authenticationManagerBuilder =
 				authenticationManagerBuilderFromHttpSecurity(http);
