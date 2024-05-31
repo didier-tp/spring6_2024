@@ -2,17 +2,16 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{_layout}" layout:fragment="content">
-	<h1>.....</h1>
+	<h1>calcul de tva</h1>
 	   <form method="GET" action="./calcul-tva">
-	     ht: <input name="ht" /> <br/>
-	     ...   <input name="taux" />
-	     
+	     ht: <input name="ht" th:value="${ht}" /> <br/>
+	     taux tva (en % ):  <input name="taux" th:value="${taux}" /> <br/>
 	        <button type="submit">calculer tva</button>
 	   </form>
 	   
 	<p>
-		message=<b><span th:utext="${message}"></span></b>
+		tva=<b><span th:utext="${tva}"></span></b>
+		ttc=<b><span th:utext="${ttc}"></span></b>
 	</p>
 	<hr />
-	... 
 </div>

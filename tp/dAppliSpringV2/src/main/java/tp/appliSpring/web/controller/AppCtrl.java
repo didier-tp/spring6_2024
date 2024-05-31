@@ -13,12 +13,18 @@ public class AppCtrl {
 	@RequestMapping("/calcul-tva")
 	public String calculTva(Model model ,
 			@RequestParam(name="ht",required=false) Double ht , 
-			... taux) {
+			@RequestParam(name="taux",required=false) Double taux) {
 		
 		//calculer tva et ttc
+		if(ht==null) ht=0.0;
+		if(taux==null) taux =0.0;
+		Double tva = ht * taux/100 ;
+		Double ttc = ht + tva ;
 		
-		model.addAttribute("tva", ....);
-		model.addAttribute("ttc", ....);
+		model.addAttribute("ht", ht);
+		model.addAttribute("taux", taux);
+		model.addAttribute("tva", tva);
+		model.addAttribute("ttc", ttc);
 		return "tva"; // aiguiller sur la vue "tva" (.html)
 	}
 	
