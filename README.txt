@@ -17,6 +17,6 @@ git pull
 ---------
 Aternative --> code / download zip
 
-Exemples avec SpringData et SpringBoot , SpringSecurity: projet AppliSpringBoot3
+Exemples avec SpringData et SpringBoot , SpringSecurity: projet AppliSpringBoot3 (avec thymeleaf)
 du référentiel https://github.com/didier-mycontrib/spring6plus
 
