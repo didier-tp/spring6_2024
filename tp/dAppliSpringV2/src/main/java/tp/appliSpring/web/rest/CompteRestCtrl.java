@@ -46,10 +46,15 @@ public class CompteRestCtrl {
 	//V2 avec DTO et V4 (avec automatisme ExceptionHandler)
 	//declencher en mode GET avec
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
+	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2?withOperations=true
 	@GetMapping("/{id}")
-	public CompteDto getCompteById(@PathVariable("id") long numeroCompte) {
+	public CompteDto getCompteById(@PathVariable("id") long numeroCompte,
+			                       @RequestParam(name="withOperations",required=false) Boolean withOperations) {
 		
-			return serviceCompte.rechercherCompte( numeroCompte);
+		   if (withOperations!=null && withOperations==true)
+			   return serviceCompte.rechercherCompteAvecOperations( numeroCompte);
+		    else
+			    return serviceCompte.rechercherCompte( numeroCompte);
 		
 			//NB: l'objet retourné sera automatiquement converti au format json
 		}

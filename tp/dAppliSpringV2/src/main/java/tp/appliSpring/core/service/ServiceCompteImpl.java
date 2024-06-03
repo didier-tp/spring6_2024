@@ -18,6 +18,7 @@ import tp.appliSpring.core.entity.Operation;
 import tp.appliSpring.core.exception.BankException;
 import tp.appliSpring.core.exception.NotFoundException;
 import tp.appliSpring.dto.CompteDto;
+import tp.appliSpring.dto.CompteDtoEx;
 
 @Service //@Component de type Service
 //@Transactional
@@ -110,6 +111,17 @@ public class ServiceCompteImpl implements ServiceCompte {
 	@Override
 	public List<CompteDto> rechercherComptesAvecSoldeMini(double soldeMini) {
 		return converter.listCompteToListCompteDto(daoCompte.findBySoldeGreaterThanEqual(soldeMini));
+	}
+
+	@Override
+	public CompteDtoEx rechercherCompteAvecOperations(long numCpt) throws NotFoundException {
+		try {
+			Compte cpt = daoCompte.findWithOperations(numCpt);
+			if(cpt==null) throw new NotFoundException("account not found with numCpt="+numCpt);
+			return converter.compteToCompteDtoEx(cpt);
+		} catch (Exception e) {
+			throw new NotFoundException("account not found with numCpt="+numCpt,e);
+		}
 	}
 
 }
