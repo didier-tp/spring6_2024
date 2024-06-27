@@ -5,5 +5,5 @@ import tp.appliSpringBoot.entity.Compte;
 
 public interface CompteRepository extends JpaRepository<Compte, Long> {
     //principales méthodes héritées:
-    //.save() , .findById() , .deleteById() , ....
+    //.save() , .findById() , .deleteById() , .... ***
 }
