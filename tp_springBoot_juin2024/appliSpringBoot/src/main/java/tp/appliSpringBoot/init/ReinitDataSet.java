@@ -2,12 +2,13 @@ package tp.appliSpringBoot.init;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import tp.appliSpringBoot.entity.Compte;
 import tp.appliSpringBoot.repository.CompteRepository;
 
 @Component
-//@Profile("reinit")
+@Profile("reinit")
 public class ReinitDataSet {
 
     @Autowired
