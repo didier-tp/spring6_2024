@@ -1,6 +1,8 @@
 package tp.appliSpringBoot.repository;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
@@ -15,6 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ActiveProfiles({ "h2"})
 public class TestCompteRepository {
 
+    Logger logger = LoggerFactory.getLogger(TestCompteRepository.class);
+
     @Autowired
     private CompteRepository compteRepository; //à tester
 
@@ -22,10 +26,10 @@ public class TestCompteRepository {
     public void testSauvegardeEtRelecture() {
         Compte cA = new Compte(null, "compteA", 8050.0);
         cA = compteRepository.save(cA);  //avec auto_incr automatique
-        System.out.println("cA=" + cA);
+        logger.debug("cA=" + cA);
 
         Compte cArelu = compteRepository.findById(cA.getNumero()).get();
-        System.out.println("cArelu=" + cArelu);
+        logger.debug("cArelu=" + cArelu);
         assertEquals("compteA", cArelu.getLabel());
         assertEquals(8050.0, cArelu.getSolde(), 0.00000);
 
@@ -42,7 +46,7 @@ public class TestCompteRepository {
         compteRepository.save(new Compte(null, "compteZ2", 7950.0));
 
         List<Compte> comptes = compteRepository.findBySoldeGreaterThanEqual(7000.0);
-        System.out.println("comptes=" + comptes);
+        logger.debug("comptes de soldeMini>=7000 =" + comptes);
         assertEquals(3, comptes.size());
     }
 
@@ -56,7 +60,7 @@ public class TestCompteRepository {
         compteRepository.save(new Compte(null, "CompteY", 5.0));
 
         List<Compte> comptes = compteRepository.findByLabelLikeThis("cc%");
-        System.out.println("comptes=" + comptes);
+        logger.debug("comptes like cc% =" + comptes);
         assertEquals(2, comptes.size());
     }
 }
