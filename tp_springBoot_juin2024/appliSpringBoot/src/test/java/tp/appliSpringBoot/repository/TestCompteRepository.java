@@ -21,8 +21,9 @@ public class TestCompteRepository {
 
         Compte cArelu = compteRepository.findById(cA.getNumero()).get();
         System.out.println("cArelu=" +cArelu);
-        assertEquals("compteA",cArelu.getLabel());
+        assertEquals("compteA",cArelu.getLabel() );
         assertEquals(50.0 , cArelu.getSolde(), 0.00000);
+
     }
 
 
