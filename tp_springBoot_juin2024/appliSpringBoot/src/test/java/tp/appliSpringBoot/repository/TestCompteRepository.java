@@ -3,11 +3,13 @@ package tp.appliSpringBoot.repository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import tp.appliSpringBoot.entity.Compte;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest()
+@ActiveProfiles({ "h2"})
 public class TestCompteRepository {
 
     @Autowired

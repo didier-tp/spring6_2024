@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AppliSpringBootApplication {
 
 	public static void main(String[] args) {
-        String mesProfils ="reinit";
+        String mesProfils ="mysql,reinit";
 		//String mesProfils ="";
 		//System.setProperty("spring.profiles.active",mesProfils);
 		System.setProperty("spring.profiles.default",mesProfils);
