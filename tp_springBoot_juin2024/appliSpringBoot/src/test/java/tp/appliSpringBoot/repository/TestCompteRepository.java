@@ -37,12 +37,26 @@ public class TestCompteRepository {
     public void testFindBySoldeMini() {
 
         compteRepository.save(new Compte(null, "compteX", 7950.0));
-        compteRepository.save(new Compte(null, "compteX", 8950.0));
-        compteRepository.save(new Compte(null, "compteX", 6950.0));
-        compteRepository.save(new Compte(null, "compteX", 7950.0));
+        compteRepository.save(new Compte(null, "compteY", 8950.0));
+        compteRepository.save(new Compte(null, "compteZ", 6950.0));
+        compteRepository.save(new Compte(null, "compteZ2", 7950.0));
 
         List<Compte> comptes = compteRepository.findBySoldeGreaterThanEqual(7000.0);
         System.out.println("comptes=" + comptes);
         assertEquals(3, comptes.size());
+    }
+
+    @Test
+    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
+    public void testFindLabelLikeThis() {
+
+        compteRepository.save(new Compte(null, "cc1", 2.0));
+        compteRepository.save(new Compte(null, "cc2", 3.0));
+        compteRepository.save(new Compte(null, "CompteX", 4.0));
+        compteRepository.save(new Compte(null, "CompteY", 5.0));
+
+        List<Compte> comptes = compteRepository.findByLabelLikeThis("cc%");
+        System.out.println("comptes=" + comptes);
+        assertEquals(2, comptes.size());
     }
 }
