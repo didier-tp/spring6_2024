@@ -85,6 +85,12 @@
 			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
 		</dependency>
 		
+		<dependency>
+			<groupId>org.mycontrib</groupId>
+  			<artifactId>my-simple-starter-with-autoconfigure</artifactId>
+ 		    <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

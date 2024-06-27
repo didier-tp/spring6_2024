@@ -2346,3 +2346,309 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/d2fde/m
 2024-06-27T21:08:16.405+02:00  INFO 19908 --- [appliSpringBoot] [main] t.appliSpringBoot.util.TestMyHttp2Util   : Started TestMyHttp2Util in 5.698 seconds (process running for 7.355)
 2024-06-27T21:08:17.427+02:00 DEBUG 19908 --- [appliSpringBoot] [main] t.appliSpringBoot.util.TestMyHttp2Util   : communes=[Commune[nom=Versailles, code=78646, codeDepartement=78, codeRegion=11, codesPostaux=[78000], population=83587]]
 2024-06-27T21:08:17.664+02:00 DEBUG 19908 --- [appliSpringBoot] [main] t.appliSpringBoot.util.TestMyHttp2Util   : zippopotamResponse=Response[postCode=75001, country=France, countryAbbreviation=FR, places=[Place[placeName=Paris 01 Louvre, longitude=2.3417, state=Île-de-France, stateAbbreviation=A8, latitude=48.8592]]]
+2024-06-27T22:06:05.395+02:00  INFO 19964 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19964 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:06:05.398+02:00 DEBUG 19964 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:06:05.399+02:00  INFO 19964 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:06:08.785+02:00  WARN 19964 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:06:09.825+02:00 ERROR 19964 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'prefixeurExemple': Unsatisfied dependency expressed through field 'prefixeur': Error creating bean with name 'prefixeurConfig': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1421) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'prefixeurConfig': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1421) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:409) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 25 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'prefixeur.prefixe' in value "${prefixeur.prefixe}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210) ~[spring-core-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:964) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 45 common frames omitted
+
+2024-06-27T22:07:54.051+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:07:54.055+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:07:54.056+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:07:57.430+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:08:00.270+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.739 seconds (process running for 7.364)
+2024-06-27T22:08:13.264+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:08:13.264+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:08:13.264+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:08:13.921+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:08:14.217+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.99 seconds (process running for 21.311)
+2024-06-27T22:09:46.497+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:09:46.498+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:09:46.498+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:09:47.024+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:09:47.277+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.81 seconds (process running for 114.372)
+2024-06-27T22:09:53.087+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:09:53.087+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:09:53.087+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:09:53.644+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:09:53.895+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.841 seconds (process running for 120.989)
+2024-06-27T22:10:15.134+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:10:15.134+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:10:15.134+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:10:15.648+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:10:15.873+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.767 seconds (process running for 142.968)
+2024-06-27T22:10:30.948+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:10:30.948+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:10:30.949+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:10:31.424+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:10:31.633+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.714 seconds (process running for 158.727)
+2024-06-27T22:10:55.990+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:10:55.991+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:10:55.991+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:10:56.447+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:10:56.659+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.694 seconds (process running for 183.753)
+2024-06-27T22:11:06.575+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:11:06.575+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:11:06.576+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:11:06.997+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:11:07.183+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.633 seconds (process running for 194.277)
+2024-06-27T22:11:48.041+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:11:48.042+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:11:48.042+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:11:48.387+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:11:48.569+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.552 seconds (process running for 235.664)
+2024-06-27T22:12:55.097+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:12:55.098+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:12:55.098+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:12:55.447+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:12:55.631+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.556 seconds (process running for 302.725)
+2024-06-27T22:13:41.669+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:13:41.669+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:13:41.669+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:13:41.942+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-27T22:13:41.942+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-06-27T22:13:41.966+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-06-27T22:13:41.990+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-27T22:13:41.994+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-27T22:13:42.002+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Starting...
+2024-06-27T22:13:42.011+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-11 - Added connection conn100: url=jdbc:h2:~/mybankdb user=SA
+2024-06-27T22:13:42.012+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Start completed.
+2024-06-27T22:13:42.013+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:13:42.042+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-27T22:13:42.153+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-06-27T22:13:42.186+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.539 seconds (process running for 349.28)
+2024-06-27T22:15:07.207+02:00  INFO 19156 --- [appliSpringBoot] [Thread-44] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown initiated...
+2024-06-27T22:15:07.218+02:00  INFO 19156 --- [appliSpringBoot] [Thread-44] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown completed.
+2024-06-27T22:15:07.289+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:15:07.290+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:15:07.290+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:15:07.555+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-27T22:15:07.555+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-06-27T22:15:07.581+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-06-27T22:15:07.604+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-27T22:15:07.607+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-27T22:15:07.615+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Starting...
+2024-06-27T22:15:07.624+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-12 - Added connection conn110: url=jdbc:h2:~/mybankdb user=SA
+2024-06-27T22:15:07.624+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Start completed.
+2024-06-27T22:15:07.624+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:15:07.651+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-27T22:15:07.761+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-06-27T22:15:07.794+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.53 seconds (process running for 434.889)
+2024-06-27T22:17:07.967+02:00  INFO 19156 --- [appliSpringBoot] [Thread-48] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown initiated...
+2024-06-27T22:17:07.978+02:00  INFO 19156 --- [appliSpringBoot] [Thread-48] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown completed.
+2024-06-27T22:17:08.050+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:17:08.050+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:17:08.050+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:17:08.336+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-27T22:17:08.336+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-06-27T22:17:08.359+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-06-27T22:17:08.381+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-27T22:17:08.384+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-27T22:17:08.392+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Starting...
+2024-06-27T22:17:08.403+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-13 - Added connection conn120: url=jdbc:h2:~/mybankdb user=SA
+2024-06-27T22:17:08.403+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Start completed.
+2024-06-27T22:17:08.404+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:17:08.432+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-27T22:17:08.542+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-06-27T22:17:08.577+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.554 seconds (process running for 555.671)
+2024-06-27T22:18:19.190+02:00  INFO 19156 --- [appliSpringBoot] [Thread-52] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown initiated...
+2024-06-27T22:18:19.200+02:00  INFO 19156 --- [appliSpringBoot] [Thread-52] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown completed.
+2024-06-27T22:18:19.275+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:18:19.275+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:18:19.275+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:18:19.537+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-27T22:18:19.537+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-06-27T22:18:19.561+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-06-27T22:18:19.584+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-27T22:18:19.587+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-27T22:18:19.596+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Starting...
+2024-06-27T22:18:19.604+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-14 - Added connection conn130: url=jdbc:h2:~/mybankdb user=SA
+2024-06-27T22:18:19.605+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Start completed.
+2024-06-27T22:18:19.605+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:18:19.631+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-27T22:18:19.685+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-06-27T22:18:19.762+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.515 seconds (process running for 626.857)
+2024-06-27T22:18:39.884+02:00  INFO 19156 --- [appliSpringBoot] [Thread-56] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown initiated...
+2024-06-27T22:18:39.909+02:00  INFO 19156 --- [appliSpringBoot] [Thread-56] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown completed.
+2024-06-27T22:18:39.992+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:18:39.992+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:18:39.993+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:18:40.310+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-27T22:18:40.310+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-06-27T22:18:40.336+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-06-27T22:18:40.364+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-27T22:18:40.368+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-27T22:18:40.377+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Starting...
+2024-06-27T22:18:40.386+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-15 - Added connection conn140: url=jdbc:h2:~/mybankdb user=SA
+2024-06-27T22:18:40.386+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Start completed.
+2024-06-27T22:18:40.387+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:18:40.418+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-27T22:18:40.483+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-06-27T22:18:40.552+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.59 seconds (process running for 647.646)
+2024-06-27T22:19:19.261+02:00  INFO 19156 --- [appliSpringBoot] [Thread-60] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown initiated...
+2024-06-27T22:19:19.284+02:00  INFO 19156 --- [appliSpringBoot] [Thread-60] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown completed.
+2024-06-27T22:19:19.361+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:19:19.361+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:19:19.362+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:19:19.647+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-27T22:19:19.647+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-06-27T22:19:19.671+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-06-27T22:19:19.701+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-27T22:19:19.704+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-27T22:19:19.713+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Starting...
+2024-06-27T22:19:19.722+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-16 - Added connection conn150: url=jdbc:h2:~/mybankdb user=SA
+2024-06-27T22:19:19.723+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Start completed.
+2024-06-27T22:19:19.724+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:19:19.757+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-27T22:19:19.846+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-06-27T22:19:19.961+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.629 seconds (process running for 687.055)
+2024-06-27T22:19:27.706+02:00  INFO 19156 --- [appliSpringBoot] [Thread-64] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Shutdown initiated...
+2024-06-27T22:19:27.731+02:00  INFO 19156 --- [appliSpringBoot] [Thread-64] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Shutdown completed.
+2024-06-27T22:19:27.806+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:19:27.806+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:19:27.806+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:19:28.042+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-27T22:19:28.043+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-06-27T22:19:28.066+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-06-27T22:19:28.087+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-27T22:19:28.090+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-27T22:19:28.097+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Starting...
+2024-06-27T22:19:28.106+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Added connection conn160: url=jdbc:h2:~/mybankdb user=SA
+2024-06-27T22:19:28.107+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Start completed.
+2024-06-27T22:19:28.108+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:19:28.132+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-27T22:19:28.189+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-06-27T22:19:28.256+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.475 seconds (process running for 695.35)
+2024-06-27T22:20:31.603+02:00  INFO 19156 --- [appliSpringBoot] [Thread-68] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Shutdown initiated...
+2024-06-27T22:20:31.611+02:00  INFO 19156 --- [appliSpringBoot] [Thread-68] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Shutdown completed.
+2024-06-27T22:20:31.684+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:20:31.684+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:20:31.685+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:20:31.919+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-27T22:20:31.919+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-06-27T22:20:31.944+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-06-27T22:20:31.964+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-27T22:20:31.967+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-27T22:20:31.975+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Starting...
+2024-06-27T22:20:31.983+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-18 - Added connection conn170: url=jdbc:h2:~/mybankdb user=SA
+2024-06-27T22:20:31.983+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Start completed.
+2024-06-27T22:20:31.984+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:20:32.008+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-27T22:20:32.060+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-06-27T22:20:32.120+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.461 seconds (process running for 759.215)
+2024-06-27T22:21:07.684+02:00  INFO 19156 --- [appliSpringBoot] [Thread-72] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown initiated...
+2024-06-27T22:21:07.710+02:00  INFO 19156 --- [appliSpringBoot] [Thread-72] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown completed.
+2024-06-27T22:21:07.785+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:21:07.786+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:21:07.786+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:21:08.039+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-27T22:21:08.040+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-06-27T22:21:08.066+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-06-27T22:21:08.087+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-27T22:21:08.090+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-27T22:21:08.099+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Starting...
+2024-06-27T22:21:08.107+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-19 - Added connection conn180: url=jdbc:h2:~/mybankdb user=SA
+2024-06-27T22:21:08.108+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Start completed.
+2024-06-27T22:21:08.108+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:21:08.136+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-27T22:21:08.234+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-06-27T22:21:08.264+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.502 seconds (process running for 795.358)
+2024-06-27T22:21:24.283+02:00  INFO 19156 --- [appliSpringBoot] [Thread-76] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown initiated...
+2024-06-27T22:21:24.310+02:00  INFO 19156 --- [appliSpringBoot] [Thread-76] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown completed.
+2024-06-27T22:21:24.386+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:21:24.386+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:21:24.387+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:21:24.644+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-27T22:21:24.645+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-06-27T22:21:24.673+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-06-27T22:21:24.693+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-27T22:21:24.697+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-27T22:21:24.707+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Starting...
+2024-06-27T22:21:24.716+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-20 - Added connection conn190: url=jdbc:h2:~/mybankdb user=SA
+2024-06-27T22:21:24.716+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Start completed.
+2024-06-27T22:21:24.717+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:21:24.747+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-27T22:21:24.854+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-06-27T22:21:24.894+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.531 seconds (process running for 811.988)
+2024-06-27T22:21:38.902+02:00  INFO 19156 --- [appliSpringBoot] [Thread-80] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Shutdown initiated...
+2024-06-27T22:21:38.927+02:00  INFO 19156 --- [appliSpringBoot] [Thread-80] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Shutdown completed.
+2024-06-27T22:21:39.005+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 19156 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-06-27T22:21:39.005+02:00 DEBUG 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-06-27T22:21:39.005+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-06-27T22:21:39.250+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-27T22:21:39.251+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-06-27T22:21:39.277+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-06-27T22:21:39.294+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-27T22:21:39.297+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-27T22:21:39.305+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Starting...
+2024-06-27T22:21:39.314+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-21 - Added connection conn200: url=jdbc:h2:~/mybankdb user=SA
+2024-06-27T22:21:39.315+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Start completed.
+2024-06-27T22:21:39.315+02:00  WARN 19156 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-27T22:21:39.342+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-27T22:21:39.452+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-06-27T22:21:39.487+02:00  INFO 19156 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 0.507 seconds (process running for 826.581)
