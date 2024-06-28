@@ -1,5 +1,6 @@
 package tp.appliSpringBoot.rest;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +17,22 @@ public class CompteRestCtrl {
     @Autowired
     private CompteRepository compteRepository;
 
+    //version avec exceptionHandler qui gère automatiquement les exceptions
     @GetMapping("/{numero}" )
     public Compte getCompteByNum(@PathVariable("numero") Long numero) {
         return compteRepository.findById(numero).get();  //V1
     }
 
+    // { "numero" : null , "label" : "nouveau_compte" , "solde" : 50.0 }
+    @PostMapping("")
+    public Compte  postCompte(@RequestBody  Compte compte) {
+        System.out.println("compte="+compte);
+        return compteRepository.save(compte); //on peut faire beaucoup mieux
+        //en retour , le compte avec le numero auto incrémenté
+    }
+
     /*
+    //version explicite sans exceptionHandler
     @GetMapping("/{numero}" )
     public ResponseEntity<Compte> getCompteByNum(@PathVariable("numero") Long numero) {
         if(compteRepository.findById(numero).isEmpty())
