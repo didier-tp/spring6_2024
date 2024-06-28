@@ -15,12 +15,13 @@ public class CompteRestCtrl {
 
     @Autowired
     private CompteRepository compteRepository;
-/*
+
     @GetMapping("/{numero}" )
     public Compte getCompteByNum(@PathVariable("numero") Long numero) {
         return compteRepository.findById(numero).get();  //V1
     }
-*/
+
+    /*
     @GetMapping("/{numero}" )
     public ResponseEntity<Compte> getCompteByNum(@PathVariable("numero") Long numero) {
         if(compteRepository.findById(numero).isEmpty())
@@ -29,6 +30,7 @@ public class CompteRestCtrl {
         else
             return ResponseEntity.ok(compteRepository.findById(numero).get());
     }
+    */
 
     //api-bank/compte?soldeMini=200 ou api-bank/compte
     @GetMapping("" )
