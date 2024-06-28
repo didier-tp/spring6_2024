@@ -14,9 +14,12 @@ public class ReinitDataSet {
     @Autowired
     private CompteRepository compteRepository; //à tester
 
+    public ReinitDataSet() {
+
+    }
+
     @PostConstruct
     public void initDataSet(){
-
             compteRepository.save(new Compte(null, "compteA", 50.0));  //avec auto_incr automatique
             compteRepository.save(new Compte(null, "compteB", 150.0));
     }
