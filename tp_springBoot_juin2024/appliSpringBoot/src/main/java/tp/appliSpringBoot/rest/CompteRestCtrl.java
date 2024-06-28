@@ -3,12 +3,11 @@ package tp.appliSpringBoot.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tp.appliSpringBoot.entity.Compte;
 import tp.appliSpringBoot.repository.CompteRepository;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value="/rest/api-bank/compte" , headers="Accept=application/json")
@@ -31,10 +30,13 @@ public class CompteRestCtrl {
             return ResponseEntity.ok(compteRepository.findById(numero).get());
     }
 
-    /*
+    //api-bank/compte?soldeMini=200 ou api-bank/compte
     @GetMapping("" )
-    public List<Compte> getComptesByCriteria(....) {
-        return compteRepository.findById(numero).get();  //V1
-    }*/
+    public List<Compte> getComptesByCriteria(@RequestParam(name="soldeMini", required = false) Double soldeMini) {
+       if(soldeMini == null)
+           return compteRepository.findAll();
+       else
+           return compteRepository.findBySoldeGreaterThanEqual(soldeMini);
+    }
 
 }
