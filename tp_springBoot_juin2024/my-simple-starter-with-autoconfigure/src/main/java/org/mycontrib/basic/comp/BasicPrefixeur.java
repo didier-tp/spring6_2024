@@ -9,7 +9,7 @@ public class BasicPrefixeur implements Prefixeur {
 	}
 	
 	public BasicPrefixeur() {
-		this("_");
+		this("");
 	}
 
 	@Override

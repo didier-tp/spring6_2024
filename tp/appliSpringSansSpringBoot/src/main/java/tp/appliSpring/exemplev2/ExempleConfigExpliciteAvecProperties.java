@@ -8,7 +8,8 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @PropertySource("classpath:exemples.properties")
 public class ExempleConfigExpliciteAvecProperties  {
-	
+
+
 
 	@Value("${exemple.calculateur}")
 	private String calculateurClass; 
@@ -39,6 +40,7 @@ public class ExempleConfigExpliciteAvecProperties  {
 			return coordinateur;
 		     
 	}
+	
 	
 	
 }
