@@ -20,3 +20,6 @@ Aternative --> code / download zip
 Exemples avec SpringData et SpringBoot , SpringSecurity: projet AppliSpringBoot3 (avec thymeleaf)
 du référentiel https://github.com/didier-mycontrib/spring6plus
 
+Exemples avec Reactor et WebFlux:
+dans référentiel https://github.com/didier-mycontrib/java_new_21plus
+
