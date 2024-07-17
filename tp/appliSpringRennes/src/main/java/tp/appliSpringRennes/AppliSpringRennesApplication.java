@@ -16,7 +16,7 @@ public class AppliSpringRennesApplication extends SpringBootServletInitializer {
 	}
 
 	public static void main(String[] args) {
-
+		System.setProperty("spring.profiles.default","dev");
 		SpringApplication.run(AppliSpringRennesApplication.class, args);
 		System.out.println("http://localhost:8080/appliSpringRennes");
 	}
