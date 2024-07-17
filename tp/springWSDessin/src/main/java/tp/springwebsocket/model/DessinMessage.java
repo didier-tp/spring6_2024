@@ -9,7 +9,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class DessinMessage {
 	
-	    public enum MessageType { NEWLINE, CLEAR }
+	    public enum MessageType { NEWLINE, CLEAR , REFRESH }
 	    
 	    private String type; //MessageType as String
 	    private Line line=null;

@@ -27,6 +27,8 @@ public class WebSocketController {
 			this.allLines.add(message.getLine());
 		}else if(message.getType().equals("CLEAR")){
 			this.allLines.clear();
+		}else if(message.getType().equals("REFRESH")){
+			//no modif , just resend allLines;
 		}
 		return this.allLines;
 	}
