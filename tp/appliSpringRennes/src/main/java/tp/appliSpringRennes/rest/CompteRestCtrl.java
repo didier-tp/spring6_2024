@@ -1,6 +1,8 @@
 package tp.appliSpringRennes.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tp.appliSpringRennes.converter.MyConverter;
 import tp.appliSpringRennes.dto.CompteDto;
@@ -24,10 +26,24 @@ public class CompteRestCtrl {
 
     //RECHERCHE UNIQUE selon RESOURCE-ID:
     //URL de déclenchement: .../rest/api-bank/comptes/1
+    /*
     @GetMapping("/{numero}" )
     public CompteDto getCompteByNum(@PathVariable("numero") Long numero) {
         Compte compte = serviceCompte.searchById(numero);
         return myConverter.compteToCompteDto(compte);
+    }
+    */
+
+    @GetMapping("/{numero}" )
+    public ResponseEntity<CompteDto> getCompteByNum(
+            @PathVariable("numero") Long numero) {
+        try {
+            Compte compte = serviceCompte.searchById(numero);
+            return new ResponseEntity<>(myConverter.compteToCompteDto(compte),
+                    HttpStatus.OK);
+        }catch (Exception ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     //RECHERCHE MULTIPLE :
