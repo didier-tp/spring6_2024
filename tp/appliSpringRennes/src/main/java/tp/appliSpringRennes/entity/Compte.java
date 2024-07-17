@@ -1,5 +1,6 @@
 package tp.appliSpringRennes.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ public class Compte {
     private Double solde;
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "compte")
+    @JsonIgnore
     private List<Operation> operations;
 
     public Compte(Long numero, String label, Double solde) {
