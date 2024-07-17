@@ -5,8 +5,11 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tp.appliSpringRennes.annotation.LogExecutionTime;
 import tp.appliSpringRennes.dao.RepositoryCompte;
+import tp.appliSpringRennes.dto.CompteDto;
 import tp.appliSpringRennes.entity.Compte;
 import tp.appliSpringRennes.exception.BankException;
+
+import java.util.List;
 
 @Service //@Component de type business service
 //@Transactional possible (et conseillé) sur l'ensemble de la classe du service
@@ -36,6 +39,16 @@ public class ServiceCompteImpl implements ServiceCompte{
         } catch (Exception e) {
             throw new BankException("echec transfert" ,e);
         }
+    }
+
+    @Override
+    public List<Compte> getAllComptes() {
+        return repositoryCompte.findAll();
+    }
+
+    @Override
+    public List<Compte> getComptesBySoldeMini(Double soldeMini) {
+        return repositoryCompte.findBySoldeGreaterThanEqual(soldeMini);
     }
 
     @Override

@@ -1,14 +1,13 @@
 package tp.appliSpringRennes.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tp.appliSpringRennes.converter.MyConverter;
 import tp.appliSpringRennes.dto.CompteDto;
 import tp.appliSpringRennes.entity.Compte;
 import tp.appliSpringRennes.service.ServiceCompte;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value="/rest/api-bank/comptes" , headers="Accept=application/json")
@@ -29,6 +28,20 @@ public class CompteRestCtrl {
     public CompteDto getCompteByNum(@PathVariable("numero") Long numero) {
         Compte compte = serviceCompte.searchById(numero);
         return myConverter.compteToCompteDto(compte);
+    }
+
+    //RECHERCHE MULTIPLE :
+    //URL de déclenchement: comptes
+    //ou comptes?soldeMini=0
+    @GetMapping("" )
+    public List<CompteDto> getComptesByCriteria(
+            @RequestParam(value="soldeMini",required=false) Double soldeMini) {
+        if(soldeMini==null)
+            return myConverter.compteListToCompteDtoList(
+                    serviceCompte.getAllComptes());
+        else
+            return myConverter.compteListToCompteDtoList(
+                    serviceCompte.getComptesBySoldeMini(soldeMini));
     }
 
 }
