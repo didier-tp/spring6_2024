@@ -18,7 +18,8 @@ import tp.appliSpringRennes.entity.Compte;
 
 
 @SpringBootTest()
-@ActiveProfiles({  "dev" })
+//@ActiveProfiles({  "dev" })
+@ActiveProfiles({  "prod" })
 public class TestServiceCompte {
 	
 	private static Logger logger = LoggerFactory.getLogger(TestServiceCompte.class);
