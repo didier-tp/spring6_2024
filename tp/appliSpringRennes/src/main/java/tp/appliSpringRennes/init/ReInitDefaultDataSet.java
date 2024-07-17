@@ -8,7 +8,7 @@ import tp.appliSpringRennes.entity.Compte;
 import tp.appliSpringRennes.service.ServiceCompte;
 
 @Component
-@Profile("dev") // ou @!profile("reInit")
+@Profile("dev") // ou @Profile("reInit")
 public class ReInitDefaultDataSet {
 
     @Autowired
