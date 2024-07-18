@@ -86,4 +86,30 @@ public class CompteRestCtrl {
         }
     }
 
+    //à appeler en mode PUT avec { "numero" : 1 , "label" : "ccc" , "solde" : 60 }
+    //URL de déclenchement: .../rest/api-bank/comptes/1 ou autre
+    //@PutMapping({"" , "/{id}"})
+    @PutMapping("/{id}")
+    public ResponseEntity<CompteDto> putCompteDto(
+                 @PathVariable(value = "id") Long id,
+                            @RequestBody CompteDto compteDto){
+            serviceCompte.verifExisting(id); //avec MyNotFoundExption
+            //automatiquement converti en ResponseEntity/NOT_FOUND via exceptionHandler
+            Compte compte = myConverter.compteDtoToCompte(compteDto);
+            compte = serviceCompte.saveOrUpdate(compte);
+            ResponseEntity<CompteDto>  response ;
+            //reponse = ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            response =ResponseEntity.ok(compteDto);
+            return response;
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCompteDto(
+            @PathVariable(value = "id") Long id){
+        serviceCompte.verifExisting(id); //avec MyNotFoundExption
+        //automatiquement converti en ResponseEntity/NOT_FOUND via exceptionHandler
+        serviceCompte.deleteByNum(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }

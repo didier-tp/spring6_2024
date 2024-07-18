@@ -10,6 +10,8 @@ public interface ServiceCompte {
     Compte searchById(long id) throws MyNotFoundException;
     Compte saveOrUpdate(Compte c);
 
+    void verifExisting(long id)throws MyNotFoundException;
+
     void deleteByNum(long numero);
 
     void transferer(double montant,long numCptDeb, long numCptCred) throws BankException;

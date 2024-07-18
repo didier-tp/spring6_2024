@@ -54,7 +54,7 @@ public class ServiceCompteImpl implements ServiceCompte{
 
     @Override
     @LogExecutionTime
-    public Compte searchById(long id) throws MyNotFoundException{
+    public Compte searchById(long id) {
         try {
             return repositoryCompte.findById(id).get();
         } catch (Exception e) {
@@ -66,6 +66,12 @@ public class ServiceCompteImpl implements ServiceCompte{
     @Override
     public Compte saveOrUpdate(Compte c) {
         return repositoryCompte.save(c);
+    }
+
+    @Override
+    public void verifExisting(long id) throws MyNotFoundException {
+        if(!repositoryCompte.existsById(id))
+            throw new MyNotFoundException("compte not exist with id="+id);
     }
 
     @Override
