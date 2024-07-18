@@ -26,14 +26,15 @@ public class CompteRestCtrl {
 
     //RECHERCHE UNIQUE selon RESOURCE-ID:
     //URL de déclenchement: .../rest/api-bank/comptes/1
-    /*
+    //avec gestion automatique des exceptions via le "ExceptionHandler"
     @GetMapping("/{numero}" )
     public CompteDto getCompteByNum(@PathVariable("numero") Long numero) {
         Compte compte = serviceCompte.searchById(numero);
         return myConverter.compteToCompteDto(compte);
     }
-    */
 
+
+    /*
     @GetMapping("/{numero}" )
     public ResponseEntity<CompteDto> getCompteByNum(
             @PathVariable("numero") Long numero) {
@@ -45,6 +46,8 @@ public class CompteRestCtrl {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    */
+
 
     //RECHERCHE MULTIPLE :
     //URL de déclenchement: comptes
