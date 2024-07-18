@@ -5,13 +5,12 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CompteDto {
 
-    @NonNull
     private Long numero;
-    @NonNull
+
     private String label;
-    @NonNull
+
     private Double solde;
 }
