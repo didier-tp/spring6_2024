@@ -16,6 +16,12 @@ public class MyConverter {
         return dto;
     }
 
+    public Compte compteDtoToCompte(CompteDto dto){
+        Compte c = new Compte();
+        BeanUtils.copyProperties(dto,c);
+        return c;
+    }
+
     public List<CompteDto> compteListToCompteDtoList(List<Compte> listeComptes){
         return listeComptes.stream()
                 .map( c -> this.compteToCompteDto(c))

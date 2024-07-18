@@ -63,4 +63,27 @@ public class CompteRestCtrl {
                     serviceCompte.getComptesBySoldeMini(soldeMini));
     }
 
+    //à appeler en mode POST avec { "label" : "ccc" , "solde" : 60 }
+    //en retour  { "numero" : 5 , "label" : "ccc" , "solde" : 60 }
+    @PostMapping
+    public ResponseEntity<CompteDto> postCompteDto(@RequestBody CompteDto compteDto){
+        try {
+            Compte compte = myConverter.compteDtoToCompte(compteDto);
+            compte = serviceCompte.saveOrUpdate(compte);
+            //variantes : retourner 201/CREATED avec Location: "/comptes/id"
+            //ou bien retourner 201/CREATED avec compte comporte id
+            // (ou bien un mixte des 2)
+            compteDto.setNumero(compte.getNumero());
+            ResponseEntity<CompteDto>  response ;
+            response = new ResponseEntity<>(compteDto,HttpStatus.CREATED);
+            /*response = ResponseEntity.status(HttpStatus.CREATED)
+                      .header("Location","/comptes/"
+                              +compte.getNumero()).build();*/
+            return response;
+        } catch (Exception e) {
+            //throw new RuntimeException(e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
