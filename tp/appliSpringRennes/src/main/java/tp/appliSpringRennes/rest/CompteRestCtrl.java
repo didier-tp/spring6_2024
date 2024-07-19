@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value="/rest/api-bank/comptes" , headers="Accept=application/json")
+//@CrossOrigin(methods = { RequestMethod.GET , RequestMethod.POST} , value="*")
 public class CompteRestCtrl {
 
     @Autowired

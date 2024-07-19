@@ -20,7 +20,7 @@ public class WebSocketController {
 	private List<Line> allLines = new ArrayList<>();
 
 	@MessageMapping("/dessin") //input message received from /app/dessin
-	@SendTo("/topic/allLines") //output message pubish to /topic/allLines
+	@SendTo({"/topic/allLines" } ) //output message pubish to /topic/allLines
 	public List<Line> refreshAllLines(DessinMessage message) throws Exception {
 		System.out.println("dessinMessage="+message);
 		if(message.getType().equals("NEWLINE")){
