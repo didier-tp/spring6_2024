@@ -3,6 +3,7 @@ package tp.appliSpringRennes.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import tp.appliSpringRennes.converter.MyConverter;
 import tp.appliSpringRennes.dto.CompteDto;
@@ -66,6 +67,7 @@ public class CompteRestCtrl {
     //à appeler en mode POST avec { "label" : "ccc" , "solde" : 60 }
     //en retour  { "numero" : 5 , "label" : "ccc" , "solde" : 60 }
     @PostMapping
+    //@PreAuthorize("hasAuthority('SCOPE_resource.write')")
     public ResponseEntity<CompteDto> postCompteDto(@RequestBody CompteDto compteDto){
         try {
             Compte compte = myConverter.compteDtoToCompte(compteDto);
@@ -90,6 +92,7 @@ public class CompteRestCtrl {
     //URL de déclenchement: .../rest/api-bank/comptes/1 ou autre
     //@PutMapping({"" , "/{id}"})
     @PutMapping("/{id}")
+    //@PreAuthorize("hasAuthority('SCOPE_resource.write')")
     public ResponseEntity<CompteDto> putCompteDto(
                  @PathVariable(value = "id") Long id,
                             @RequestBody CompteDto compteDto){
@@ -104,6 +107,7 @@ public class CompteRestCtrl {
     }
 
     @DeleteMapping("/{id}")
+    //@PreAuthorize("hasAuthority('SCOPE_resource.delete')")
     public ResponseEntity<?> deleteCompteDto(
             @PathVariable(value = "id") Long id){
         serviceCompte.verifExisting(id); //avec MyNotFoundExption

@@ -23,3 +23,6 @@ du référentiel https://github.com/didier-mycontrib/spring6plus
 Exemples avec Reactor et WebFlux:
 dans référentiel https://github.com/didier-mycontrib/java_new_21plus
 
+============
+Exemples "springMvc" avec jsp et thymeleaf : https://github.com/didier-tp/tp_spring_mvc
+
