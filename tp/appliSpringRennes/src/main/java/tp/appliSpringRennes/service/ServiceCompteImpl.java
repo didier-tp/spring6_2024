@@ -8,6 +8,7 @@ import tp.appliSpringRennes.dao.RepositoryCompte;
 import tp.appliSpringRennes.dto.CompteDto;
 import tp.appliSpringRennes.entity.Compte;
 import tp.appliSpringRennes.exception.BankException;
+import tp.appliSpringRennes.exception.MyNotFoundException;
 
 import java.util.List;
 
@@ -54,13 +55,23 @@ public class ServiceCompteImpl implements ServiceCompte{
     @Override
     @LogExecutionTime
     public Compte searchById(long id) {
-        return repositoryCompte.findById(id).get();
+        try {
+            return repositoryCompte.findById(id).get();
+        } catch (Exception e) {
+            throw new MyNotFoundException("Compte not found for id="+id,e);
+        }
         //return repositoryCompte.findById(id).orElse(null);
     }
 
     @Override
     public Compte saveOrUpdate(Compte c) {
         return repositoryCompte.save(c);
+    }
+
+    @Override
+    public void verifExisting(long id) throws MyNotFoundException {
+        if(!repositoryCompte.existsById(id))
+            throw new MyNotFoundException("compte not exist with id="+id);
     }
 
     @Override
