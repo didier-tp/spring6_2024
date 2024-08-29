@@ -1,17 +1,17 @@
-2024-07-03T16:00:16.087+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 2404 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
-2024-07-03T16:00:16.099+02:00 DEBUG 2404 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
-2024-07-03T16:00:16.101+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 3 default profiles: "h2", "reinit", "withSecurity"
-2024-07-03T16:00:18.538+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-07-03T16:00:18.539+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
-2024-07-03T16:00:18.629+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
-2024-07-03T16:00:18.870+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-07-03T16:00:18.955+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-07-03T16:00:19.023+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-07-03T16:00:19.516+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-07-03T16:00:19.834+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:~/mybankdb user=SA
-2024-07-03T16:00:19.836+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-07-03T16:00:19.865+02:00  WARN 2404 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-07-03T16:00:20.698+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-07-03T16:00:22.629+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
-2024-07-03T16:00:22.964+02:00  INFO 2404 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 7.431 seconds (process running for 8.056)
-2024-07-03T16:00:37.009+02:00  INFO 2404 --- [appliSpringBoot] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-17T22:02:31.186+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17.0.9 with PID 18848 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootV2)
+2024-07-17T22:02:31.197+02:00 DEBUG 18848 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-07-17T22:02:31.199+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 3 default profiles: "h2", "reinit", "withSecurity"
+2024-07-17T22:02:33.854+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-17T22:02:33.854+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-07-17T22:02:33.949+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring embedded WebApplicationContext
+2024-07-17T22:02:34.214+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-17T22:02:34.347+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-17T22:02:34.418+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-17T22:02:35.036+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-17T22:02:35.349+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:~/mybankdb user=SA
+2024-07-17T22:02:35.351+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-17T22:02:35.386+02:00  WARN 18848 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-17T22:02:36.304+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-17T22:02:38.368+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] m.c.a.MyPrefixeurGlobalAutoConfiguration : org.mycontrib.comp.autoconfigure.MyPrefixeurGlobalAutoConfiguration loaded (my-simple-starter-with-autoconfigure)
+2024-07-17T22:02:38.721+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 8.087 seconds (process running for 8.837)
+2024-07-17T22:03:02.707+02:00  INFO 18848 --- [appliSpringBoot] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/appliSpringBoot]         : Initializing Spring DispatcherServlet 'dispatcherServlet'
