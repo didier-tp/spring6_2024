@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: didier
+      changes:
+        - insert:
+            tableName: compte
+            columns:
+              - column:
+                  name: label
+                  value: "comptebbbb"
+              - column:
+                  name: solde
+                  value: 150

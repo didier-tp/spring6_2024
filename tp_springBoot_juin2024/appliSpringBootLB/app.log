@@ -1,0 +1,1289 @@
+2024-09-30T20:55:31.685+02:00  INFO 22916 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 22916 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T20:55:31.689+02:00 DEBUG 22916 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T20:55:31.690+02:00  INFO 22916 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "mysql", "reinit"
+2024-09-30T20:55:35.430+02:00 ERROR 22916 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:14) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 15 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 22 common frames omitted
+Caused by: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:251) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 24 common frames omitted
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:246) ~[liquibase-core-4.27.0.jar:na]
+	... 30 common frames omitted
+
+2024-09-30T20:57:18.320+02:00  INFO 18544 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 18544 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T20:57:18.323+02:00 DEBUG 18544 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T20:57:18.325+02:00  INFO 18544 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-09-30T20:57:21.390+02:00 ERROR 18544 --- [appliSpringBoot] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Liquibase failed to start because no changelog could be found at 'classpath:db/changelog/db.changelog-master.yaml'.
+
+Action:
+
+Make sure a Liquibase changelog is present at the configured path.
+
+2024-09-30T21:13:56.121+02:00  INFO 23368 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 23368 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T21:13:56.124+02:00 DEBUG 23368 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T21:13:56.125+02:00  INFO 23368 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-09-30T21:14:00.324+02:00  WARN 23368 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T21:14:02.894+02:00  INFO 23368 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 7.35 seconds (process running for 7.981)
+2024-09-30T21:19:06.928+02:00  INFO 304 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 304 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T21:19:06.932+02:00 DEBUG 304 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T21:19:06.933+02:00  INFO 304 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-09-30T21:19:10.157+02:00 ERROR 304 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/changelog-1.yaml::1::didier was: 9:76a601921bcdc22582b90466ccf09a99 but is now: 9:f97dafc5843f1ef0e2fe632864f480b3
+
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:14) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/changelog-1.yaml::1::didier was: 9:76a601921bcdc22582b90466ccf09a99 but is now: 9:f97dafc5843f1ef0e2fe632864f480b3
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 15 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/changelog-1.yaml::1::didier was: 9:76a601921bcdc22582b90466ccf09a99 but is now: 9:f97dafc5843f1ef0e2fe632864f480b3
+
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 22 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/changelog-1.yaml::1::didier was: 9:76a601921bcdc22582b90466ccf09a99 but is now: 9:f97dafc5843f1ef0e2fe632864f480b3
+
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 24 common frames omitted
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/changelog-1.yaml::1::didier was: 9:76a601921bcdc22582b90466ccf09a99 but is now: 9:f97dafc5843f1ef0e2fe632864f480b3
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:358) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:92) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 40 common frames omitted
+
+2024-09-30T21:22:43.319+02:00  INFO 24356 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 24356 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T21:22:43.322+02:00 DEBUG 24356 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T21:22:43.323+02:00  INFO 24356 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-09-30T21:22:46.754+02:00 ERROR 24356 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Un chemin de fichier implicitement relatif au répertoire de travail actuel n'est pas autorisé dans l'URL de la base de données "jdbc:h2:mem/mybankdb". Utilisez un chemin absolu, ~ /nom, ./nom ou le paramètre baseDir à la place.
+A file path that is implicitly relative to the current working directory is not allowed in the database URL "jdbc:h2:mem/mybankdb". Use an absolute path, ~/name, ./name, or the baseDir setting instead. [90011-224]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:14) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Un chemin de fichier implicitement relatif au répertoire de travail actuel n'est pas autorisé dans l'URL de la base de données "jdbc:h2:mem/mybankdb". Utilisez un chemin absolu, ~ /nom, ./nom ou le paramètre baseDir à la place.
+A file path that is implicitly relative to the current working directory is not allowed in the database URL "jdbc:h2:mem/mybankdb". Use an absolute path, ~/name, ./name, or the baseDir setting instead. [90011-224]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 15 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Un chemin de fichier implicitement relatif au répertoire de travail actuel n'est pas autorisé dans l'URL de la base de données "jdbc:h2:mem/mybankdb". Utilisez un chemin absolu, ~ /nom, ./nom ou le paramètre baseDir à la place.
+A file path that is implicitly relative to the current working directory is not allowed in the database URL "jdbc:h2:mem/mybankdb". Use an absolute path, ~/name, ./name, or the baseDir setting instead. [90011-224]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 22 common frames omitted
+Caused by: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Un chemin de fichier implicitement relatif au répertoire de travail actuel n'est pas autorisé dans l'URL de la base de données "jdbc:h2:mem/mybankdb". Utilisez un chemin absolu, ~ /nom, ./nom ou le paramètre baseDir à la place.
+A file path that is implicitly relative to the current working directory is not allowed in the database URL "jdbc:h2:mem/mybankdb". Use an absolute path, ~/name, ./name, or the baseDir setting instead. [90011-224]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:251) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 24 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Un chemin de fichier implicitement relatif au répertoire de travail actuel n'est pas autorisé dans l'URL de la base de données "jdbc:h2:mem/mybankdb". Utilisez un chemin absolu, ~ /nom, ./nom ou le paramètre baseDir à la place.
+A file path that is implicitly relative to the current working directory is not allowed in the database URL "jdbc:h2:mem/mybankdb". Use an absolute path, ~/name, ./name, or the baseDir setting instead. [90011-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.ConnectionInfo.getName(ConnectionInfo.java:465) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.Engine.openSession(Engine.java:49) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.Engine.openSession(Engine.java:222) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.Engine.createSession(Engine.java:201) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.Driver.connect(Driver.java:59) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:246) ~[liquibase-core-4.27.0.jar:na]
+	... 30 common frames omitted
+
+2024-09-30T21:24:24.461+02:00  INFO 17448 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 17448 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T21:24:24.464+02:00 DEBUG 17448 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T21:24:24.465+02:00  INFO 17448 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-09-30T21:24:28.255+02:00  WARN 17448 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T21:24:30.560+02:00  INFO 17448 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.635 seconds (process running for 7.242)
+2024-09-30T21:35:47.864+02:00  INFO 21372 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 21372 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T21:35:47.868+02:00 DEBUG 21372 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T21:35:47.869+02:00  INFO 21372 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-09-30T21:35:51.090+02:00 ERROR 21372 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : The file [db/changelog/changelog-1.yaml, db/changelog/changelog-2.yaml] was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:14) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : The file [db/changelog/changelog-1.yaml, db/changelog/changelog-2.yaml] was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 15 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : The file [db/changelog/changelog-1.yaml, db/changelog/changelog-2.yaml] was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 22 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : The file [db/changelog/changelog-1.yaml, db/changelog/changelog-2.yaml] was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 24 common frames omitted
+Caused by: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : The file [db/changelog/changelog-1.yaml, db/changelog/changelog-2.yaml] was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.parser.core.yaml.YamlChangeLogParser.parse(YamlChangeLogParser.java:96) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.lambda$getDatabaseChangeLog$0(DatabaseChangelogCommandStep.java:129) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:175) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.getDatabaseChangeLog(DatabaseChangelogCommandStep.java:128) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:87) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 40 common frames omitted
+Caused by: liquibase.exception.SetupException: The file [db/changelog/changelog-1.yaml, db/changelog/changelog-2.yaml] was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.changelog.DatabaseChangeLog.handleChildNode(DatabaseChangeLog.java:465) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.DatabaseChangeLog.load(DatabaseChangeLog.java:390) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.parser.core.yaml.YamlChangeLogParser.parse(YamlChangeLogParser.java:90) ~[liquibase-core-4.27.0.jar:na]
+	... 46 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: The file [db/changelog/changelog-1.yaml, db/changelog/changelog-2.yaml] was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.changelog.DatabaseChangeLog.include(DatabaseChangeLog.java:987) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.DatabaseChangeLog.handleChildNode(DatabaseChangeLog.java:455) ~[liquibase-core-4.27.0.jar:na]
+	... 48 common frames omitted
+Caused by: liquibase.exception.ChangeLogParseException: The file [db/changelog/changelog-1.yaml, db/changelog/changelog-2.yaml] was not found in the configured search path:
+    - Spring classpath
+More locations can be added with the 'searchPath' parameter.
+	at liquibase.changelog.DatabaseChangeLog.include(DatabaseChangeLog.java:949) ~[liquibase-core-4.27.0.jar:na]
+	... 49 common frames omitted
+
+2024-09-30T21:36:54.939+02:00  INFO 2240 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 2240 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T21:36:54.942+02:00 DEBUG 2240 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T21:36:54.943+02:00  INFO 2240 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-09-30T21:36:57.957+02:00 ERROR 2240 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : No 'file' attribute on 'include'
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:14) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : No 'file' attribute on 'include'
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 15 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : No 'file' attribute on 'include'
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 22 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : No 'file' attribute on 'include'
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 24 common frames omitted
+Caused by: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : No 'file' attribute on 'include'
+	at liquibase.parser.core.yaml.YamlChangeLogParser.parse(YamlChangeLogParser.java:96) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.lambda$getDatabaseChangeLog$0(DatabaseChangelogCommandStep.java:129) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:175) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.getDatabaseChangeLog(DatabaseChangelogCommandStep.java:128) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:87) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 40 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: No 'file' attribute on 'include'
+	at liquibase.changelog.DatabaseChangeLog.handleChildNode(DatabaseChangeLog.java:444) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.DatabaseChangeLog.load(DatabaseChangeLog.java:390) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.parser.core.yaml.YamlChangeLogParser.parse(YamlChangeLogParser.java:90) ~[liquibase-core-4.27.0.jar:na]
+	... 46 common frames omitted
+
+2024-09-30T21:37:29.105+02:00  INFO 16516 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 16516 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T21:37:29.107+02:00 DEBUG 16516 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T21:37:29.108+02:00  INFO 16516 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-09-30T21:37:32.152+02:00 ERROR 16516 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : Multiple nodes match null/file
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:14) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : Multiple nodes match null/file
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 15 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : Multiple nodes match null/file
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 22 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : Multiple nodes match null/file
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 24 common frames omitted
+Caused by: liquibase.exception.ChangeLogParseException: Error parsing classpath:db/changelog/db.changelog-master.yaml : Multiple nodes match null/file
+	at liquibase.parser.core.yaml.YamlChangeLogParser.parse(YamlChangeLogParser.java:96) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.lambda$getDatabaseChangeLog$0(DatabaseChangelogCommandStep.java:129) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:175) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.getDatabaseChangeLog(DatabaseChangelogCommandStep.java:128) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:87) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 40 common frames omitted
+Caused by: liquibase.parser.core.ParsedNodeException: Multiple nodes match null/file
+	at liquibase.parser.core.ParsedNode.getChild(ParsedNode.java:172) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.parser.core.ParsedNode.getChildValue(ParsedNode.java:284) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.parser.core.ParsedNode.getChildValue(ParsedNode.java:221) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.DatabaseChangeLog.handleChildNode(DatabaseChangeLog.java:442) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.DatabaseChangeLog.load(DatabaseChangeLog.java:390) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.parser.core.yaml.YamlChangeLogParser.parse(YamlChangeLogParser.java:90) ~[liquibase-core-4.27.0.jar:na]
+	... 46 common frames omitted
+
+2024-09-30T21:41:03.222+02:00  INFO 14552 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 14552 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T21:41:03.224+02:00 DEBUG 14552 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T21:41:03.226+02:00  INFO 14552 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 2 default profiles: "h2", "reinit"
+2024-09-30T21:41:06.724+02:00  WARN 14552 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T21:41:09.006+02:00  INFO 14552 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.307 seconds (process running for 7.035)
+2024-09-30T21:43:17.280+02:00  INFO 10684 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 10684 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T21:43:17.282+02:00 DEBUG 10684 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T21:43:17.284+02:00  INFO 10684 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "h2"
+2024-09-30T21:43:21.202+02:00  WARN 10684 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T21:43:23.396+02:00  INFO 10684 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.634 seconds (process running for 7.224)
+2024-09-30T21:44:52.513+02:00  INFO 6036 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 6036 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T21:44:52.516+02:00 DEBUG 6036 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T21:44:52.517+02:00  INFO 6036 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "h2"
+2024-09-30T21:44:56.368+02:00  WARN 6036 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T21:44:58.591+02:00  INFO 6036 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.599 seconds (process running for 7.241)
+2024-09-30T21:49:16.889+02:00  INFO 16448 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 16448 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T21:49:16.891+02:00 DEBUG 16448 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T21:49:16.893+02:00  INFO 16448 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "h2"
+2024-09-30T21:49:20.611+02:00  WARN 16448 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T21:49:22.816+02:00  INFO 16448 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.456 seconds (process running for 7.062)
+2024-09-30T22:21:15.390+02:00  INFO 18828 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 18828 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:21:15.393+02:00 DEBUG 18828 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:21:15.395+02:00  INFO 18828 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "h2"
+2024-09-30T22:21:18.696+02:00 ERROR 18828 --- [appliSpringBoot] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changelog-3.yaml::4::didier encountered an exception.
+
+liquibase.exception.DatabaseException: Erreur lors de la conversion de données "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"
+Data conversion error converting "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."COMPTE_COPY_3_0"("NUMERO", "LIBELLE", "SOLDE") OVERRIDING SYSTEM VALUE SELECT "NUMERO", "LIBELLE", "SOLDE" FROM "PUBLIC"."COMPTE" [22018-224] [Failed SQL: (22018) ALTER TABLE PUBLIC.compte ALTER COLUMN libelle FLOAT]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.h2.jdbc.JdbcSQLDataException: Erreur lors de la conversion de données "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"
+Data conversion error converting "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."COMPTE_COPY_3_0"("NUMERO", "LIBELLE", "SOLDE") OVERRIDING SYSTEM VALUE SELECT "NUMERO", "LIBELLE", "SOLDE" FROM "PUBLIC"."COMPTE" [22018-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:212) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Column.getDataConversionError(Column.java:413) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:372) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Table.convertInsertRow(Table.java:936) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.Insert.addRow(Insert.java:229) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.Insert.insertRows(Insert.java:203) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.Insert.update(Insert.java:135) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Command.executeUpdate(Command.java:256) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.execute(AlterTableAlterColumn.java:649) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.cloneTableStructure(AlterTableAlterColumn.java:561) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.copyData(AlterTableAlterColumn.java:343) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:229) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Command.executeUpdate(Command.java:256) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 68 common frames omitted
+Caused by: org.h2.message.DbException: Erreur lors de la conversion de données "compteaaaa"
+Data conversion error converting "compteaaaa" [22018-224]
+	at org.h2.message.DbException.get(DbException.java:212) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.value.ValueStringBase.getDouble(ValueStringBase.java:169) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.value.Value.convertToDouble(Value.java:1760) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.value.Value.convertTo(Value.java:1164) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.value.Value.convertForAssignTo(Value.java:1113) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:369) ~[h2-2.2.224.jar:2.2.224]
+	... 86 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLDataException: Erreur lors de la conversion de données "compteaaaa"
+Data conversion error converting "compteaaaa" [22018-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	... 92 common frames omitted
+Caused by: java.lang.NumberFormatException: For input string: "compteaaaa"
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054) ~[na:na]
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110) ~[na:na]
+	at java.base/java.lang.Double.parseDouble(Double.java:651) ~[na:na]
+	at org.h2.value.ValueStringBase.getDouble(ValueStringBase.java:167) ~[h2-2.2.224.jar:2.2.224]
+	... 90 common frames omitted
+
+2024-09-30T22:21:18.977+02:00 ERROR 18828 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Erreur lors de la conversion de données "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"
+Data conversion error converting "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."COMPTE_COPY_3_0"("NUMERO", "LIBELLE", "SOLDE") OVERRIDING SYSTEM VALUE SELECT "NUMERO", "LIBELLE", "SOLDE" FROM "PUBLIC"."COMPTE" [22018-224] [Failed SQL: (22018) ALTER TABLE PUBLIC.compte ALTER COLUMN libelle FLOAT]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Erreur lors de la conversion de données "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"
+Data conversion error converting "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."COMPTE_COPY_3_0"("NUMERO", "LIBELLE", "SOLDE") OVERRIDING SYSTEM VALUE SELECT "NUMERO", "LIBELLE", "SOLDE" FROM "PUBLIC"."COMPTE" [22018-224] [Failed SQL: (22018) ALTER TABLE PUBLIC.compte ALTER COLUMN libelle FLOAT]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 15 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Erreur lors de la conversion de données "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"
+Data conversion error converting "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."COMPTE_COPY_3_0"("NUMERO", "LIBELLE", "SOLDE") OVERRIDING SYSTEM VALUE SELECT "NUMERO", "LIBELLE", "SOLDE" FROM "PUBLIC"."COMPTE" [22018-224] [Failed SQL: (22018) ALTER TABLE PUBLIC.compte ALTER COLUMN libelle FLOAT]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 22 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Erreur lors de la conversion de données "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"
+Data conversion error converting "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."COMPTE_COPY_3_0"("NUMERO", "LIBELLE", "SOLDE") OVERRIDING SYSTEM VALUE SELECT "NUMERO", "LIBELLE", "SOLDE" FROM "PUBLIC"."COMPTE" [22018-224] [Failed SQL: (22018) ALTER TABLE PUBLIC.compte ALTER COLUMN libelle FLOAT]
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 24 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Erreur lors de la conversion de données "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"
+Data conversion error converting "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."COMPTE_COPY_3_0"("NUMERO", "LIBELLE", "SOLDE") OVERRIDING SYSTEM VALUE SELECT "NUMERO", "LIBELLE", "SOLDE" FROM "PUBLIC"."COMPTE" [22018-224] [Failed SQL: (22018) ALTER TABLE PUBLIC.compte ALTER COLUMN libelle FLOAT]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:151) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 40 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Erreur lors de la conversion de données "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"
+Data conversion error converting "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."COMPTE_COPY_3_0"("NUMERO", "LIBELLE", "SOLDE") OVERRIDING SYSTEM VALUE SELECT "NUMERO", "LIBELLE", "SOLDE" FROM "PUBLIC"."COMPTE" [22018-224] [Failed SQL: (22018) ALTER TABLE PUBLIC.compte ALTER COLUMN libelle FLOAT]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:808) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	... 48 common frames omitted
+Caused by: liquibase.exception.DatabaseException: Erreur lors de la conversion de données "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"
+Data conversion error converting "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."COMPTE_COPY_3_0"("NUMERO", "LIBELLE", "SOLDE") OVERRIDING SYSTEM VALUE SELECT "NUMERO", "LIBELLE", "SOLDE" FROM "PUBLIC"."COMPTE" [22018-224] [Failed SQL: (22018) ALTER TABLE PUBLIC.compte ALTER COLUMN libelle FLOAT]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLDataException: Erreur lors de la conversion de données "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"
+Data conversion error converting "'compteaaaa' (COMPTE_COPY_3_0: ""LIBELLE"" FLOAT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."COMPTE_COPY_3_0"("NUMERO", "LIBELLE", "SOLDE") OVERRIDING SYSTEM VALUE SELECT "NUMERO", "LIBELLE", "SOLDE" FROM "PUBLIC"."COMPTE" [22018-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:212) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Column.getDataConversionError(Column.java:413) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:372) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Table.convertInsertRow(Table.java:936) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.Insert.addRow(Insert.java:229) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.Insert.insertRows(Insert.java:203) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.Insert.update(Insert.java:135) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.dml.DataChangeStatement.update(DataChangeStatement.java:74) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Command.executeUpdate(Command.java:256) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.execute(AlterTableAlterColumn.java:649) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.cloneTableStructure(AlterTableAlterColumn.java:561) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.copyData(AlterTableAlterColumn.java:343) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.ddl.AlterTableAlterColumn.update(AlterTableAlterColumn.java:229) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Command.executeUpdate(Command.java:256) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 68 common frames omitted
+Caused by: org.h2.message.DbException: Erreur lors de la conversion de données "compteaaaa"
+Data conversion error converting "compteaaaa" [22018-224]
+	at org.h2.message.DbException.get(DbException.java:212) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.value.ValueStringBase.getDouble(ValueStringBase.java:169) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.value.Value.convertToDouble(Value.java:1760) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.value.Value.convertTo(Value.java:1164) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.value.Value.convertForAssignTo(Value.java:1113) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:369) ~[h2-2.2.224.jar:2.2.224]
+	... 86 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLDataException: Erreur lors de la conversion de données "compteaaaa"
+Data conversion error converting "compteaaaa" [22018-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:518) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	... 92 common frames omitted
+Caused by: java.lang.NumberFormatException: For input string: "compteaaaa"
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054) ~[na:na]
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110) ~[na:na]
+	at java.base/java.lang.Double.parseDouble(Double.java:651) ~[na:na]
+	at org.h2.value.ValueStringBase.getDouble(ValueStringBase.java:167) ~[h2-2.2.224.jar:2.2.224]
+	... 90 common frames omitted
+
+2024-09-30T22:22:50.948+02:00  INFO 13972 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 13972 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:22:50.950+02:00 DEBUG 13972 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:22:50.952+02:00  INFO 13972 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "h2"
+2024-09-30T22:22:54.314+02:00 ERROR 13972 --- [appliSpringBoot] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changelog-3.yaml::4::didier encountered an exception.
+
+liquibase.exception.DatabaseException: Colonne "LABEL" non trouvée
+Column "LABEL" not found; SQL statement:
+ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle [42122-224] [Failed SQL: (42122) ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Colonne "LABEL" non trouvée
+Column "LABEL" not found; SQL statement:
+ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Table.getColumn(Table.java:775) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.columnIfTableExists(Parser.java:8585) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parseAlterTableAlter(Parser.java:8171) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parseAlterTable(Parser.java:8157) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parseAlter(Parser.java:7211) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parsePrepared(Parser.java:650) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parse(Parser.java:592) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parse(Parser.java:564) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.prepareCommand(Parser.java:483) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 68 common frames omitted
+
+2024-09-30T22:22:54.390+02:00 ERROR 13972 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Colonne "LABEL" non trouvée
+Column "LABEL" not found; SQL statement:
+ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle [42122-224] [Failed SQL: (42122) ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:15) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Colonne "LABEL" non trouvée
+Column "LABEL" not found; SQL statement:
+ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle [42122-224] [Failed SQL: (42122) ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 15 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Colonne "LABEL" non trouvée
+Column "LABEL" not found; SQL statement:
+ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle [42122-224] [Failed SQL: (42122) ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 22 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Colonne "LABEL" non trouvée
+Column "LABEL" not found; SQL statement:
+ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle [42122-224] [Failed SQL: (42122) ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle]
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 24 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Colonne "LABEL" non trouvée
+Column "LABEL" not found; SQL statement:
+ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle [42122-224] [Failed SQL: (42122) ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:151) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:112) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:110) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 40 common frames omitted
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/changelog-3.yaml::4::didier:
+     Reason: liquibase.exception.DatabaseException: Colonne "LABEL" non trouvée
+Column "LABEL" not found; SQL statement:
+ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle [42122-224] [Failed SQL: (42122) ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:808) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:119) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:68) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$0(ChangeLogIterator.java:133) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:122) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:260) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89) ~[liquibase-core-4.27.0.jar:na]
+	... 48 common frames omitted
+Caused by: liquibase.exception.DatabaseException: Colonne "LABEL" non trouvée
+Column "LABEL" not found; SQL statement:
+ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle [42122-224] [Failed SQL: (42122) ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:473) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:80) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:182) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1176) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:764) ~[liquibase-core-4.27.0.jar:na]
+	... 63 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Colonne "LABEL" non trouvée
+Column "LABEL" not found; SQL statement:
+ALTER TABLE PUBLIC.compte ALTER COLUMN label RENAME TO libelle [42122-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:223) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.message.DbException.get(DbException.java:199) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.table.Table.getColumn(Table.java:775) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.columnIfTableExists(Parser.java:8585) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parseAlterTableAlter(Parser.java:8171) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parseAlterTable(Parser.java:8157) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parseAlter(Parser.java:7211) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parsePrepared(Parser.java:650) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parse(Parser.java:592) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.parse(Parser.java:564) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.command.Parser.prepareCommand(Parser.java:483) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245) ~[h2-2.2.224.jar:2.2.224]
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231) ~[h2-2.2.224.jar:2.2.224]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:467) ~[liquibase-core-4.27.0.jar:na]
+	... 68 common frames omitted
+
+2024-09-30T22:23:28.280+02:00  INFO 20496 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 20496 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:23:28.282+02:00 DEBUG 20496 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:23:28.284+02:00  INFO 20496 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "h2"
+2024-09-30T22:23:32.306+02:00  WARN 20496 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T22:23:34.472+02:00  INFO 20496 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.714 seconds (process running for 7.319)
+2024-09-30T22:31:55.859+02:00  INFO 2800 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 2800 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:31:55.862+02:00 DEBUG 2800 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:31:55.864+02:00  INFO 2800 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "h2"
+2024-09-30T22:31:59.832+02:00  WARN 2800 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T22:32:02.143+02:00  INFO 2800 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.852 seconds (process running for 7.504)
+2024-09-30T22:34:29.624+02:00  INFO 2672 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 2672 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:34:29.627+02:00 DEBUG 2672 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:34:29.628+02:00  INFO 2672 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "mysql"
+2024-09-30T22:34:33.152+02:00 ERROR 2672 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:16) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 15 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 22 common frames omitted
+Caused by: liquibase.exception.DatabaseException: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:251) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 24 common frames omitted
+Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-5.1.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:246) ~[liquibase-core-4.27.0.jar:na]
+	... 30 common frames omitted
+
+2024-09-30T22:35:34.131+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 18848 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:35:34.134+02:00 DEBUG 18848 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:35:34.135+02:00  INFO 18848 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "mysql"
+2024-09-30T22:35:37.380+02:00  WARN 18848 --- [appliSpringBoot] [restartedMain] liquibase.executor                       : Name 'PK_DATABASECHANGELOGLOCK' ignored for PRIMARY key.
+2024-09-30T22:35:37.440+02:00  WARN 18848 --- [appliSpringBoot] [restartedMain] liquibase.changelog                      : Due to mariadb SQL limitations, modifyDataType will lose primary key/autoincrement/not null/comment settings explicitly redefined in the change. Use <sql> or <modifySql> to re-specify all configuration if this is the case
+2024-09-30T22:35:37.499+02:00 ERROR 18848 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changes have validation failures
+          columnDataType is required for renameColumn on mariadb, db/changelog/changelog-3.yaml::4::didier
+
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:16) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changes have validation failures
+          columnDataType is required for renameColumn on mariadb, db/changelog/changelog-3.yaml::4::didier
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 15 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changes have validation failures
+          columnDataType is required for renameColumn on mariadb, db/changelog/changelog-3.yaml::4::didier
+
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 22 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changes have validation failures
+          columnDataType is required for renameColumn on mariadb, db/changelog/changelog-3.yaml::4::didier
+
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 24 common frames omitted
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changes have validation failures
+          columnDataType is required for renameColumn on mariadb, db/changelog/changelog-3.yaml::4::didier
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:358) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:92) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 40 common frames omitted
+
+2024-09-30T22:37:14.491+02:00  INFO 2868 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 2868 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:37:14.494+02:00 DEBUG 2868 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:37:14.495+02:00  INFO 2868 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "mysql"
+2024-09-30T22:37:17.748+02:00  WARN 2868 --- [appliSpringBoot] [restartedMain] liquibase.changelog                      : Due to mariadb SQL limitations, modifyDataType will lose primary key/autoincrement/not null/comment settings explicitly redefined in the change. Use <sql> or <modifySql> to re-specify all configuration if this is the case
+2024-09-30T22:37:17.759+02:00  WARN 2868 --- [appliSpringBoot] [restartedMain] liquibase.changelog                      : Due to mariadb SQL limitations, modifyDataType will lose primary key/autoincrement/not null/comment settings explicitly redefined in the change. Use <sql> or <modifySql> to re-specify all configuration if this is the case
+2024-09-30T22:37:17.860+02:00  WARN 2868 --- [appliSpringBoot] [restartedMain] liquibase.executor                       : Name 'PK_COMPTE' ignored for PRIMARY key.
+2024-09-30T22:37:18.543+02:00  WARN 2868 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T22:37:18.546+02:00  WARN 2868 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-09-30T22:37:20.648+02:00  INFO 2868 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.69 seconds (process running for 7.279)
+2024-09-30T22:47:12.520+02:00  INFO 18032 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 18032 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:47:12.523+02:00 DEBUG 18032 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:47:12.524+02:00  INFO 18032 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "mysql"
+2024-09-30T22:47:16.386+02:00  WARN 18032 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T22:47:16.388+02:00  WARN 18032 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-09-30T22:47:18.356+02:00  INFO 18032 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.368 seconds (process running for 6.956)
+2024-09-30T22:48:54.844+02:00  INFO 12732 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 12732 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:48:54.848+02:00 DEBUG 12732 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:48:54.849+02:00  INFO 12732 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "mysql"
+2024-09-30T22:48:58.948+02:00  WARN 12732 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T22:48:58.951+02:00  WARN 12732 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-09-30T22:49:01.237+02:00  INFO 12732 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.917 seconds (process running for 7.558)
+2024-09-30T22:50:51.585+02:00  INFO 15708 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 15708 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:50:51.588+02:00 DEBUG 15708 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:50:51.590+02:00  INFO 15708 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "mysql"
+2024-09-30T22:50:55.727+02:00  WARN 15708 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T22:50:55.730+02:00  WARN 15708 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-09-30T22:50:57.868+02:00  INFO 15708 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.829 seconds (process running for 7.447)
+2024-09-30T22:56:21.698+02:00  INFO 12020 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 12020 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:56:21.701+02:00 DEBUG 12020 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:56:21.702+02:00  INFO 12020 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "mysql"
+2024-09-30T22:56:25.636+02:00  WARN 12020 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T22:56:25.639+02:00  WARN 12020 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-09-30T22:56:27.672+02:00  INFO 12020 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.497 seconds (process running for 7.087)
+2024-09-30T22:57:33.925+02:00  INFO 10668 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 10668 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:57:33.928+02:00 DEBUG 10668 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:57:33.929+02:00  INFO 10668 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "h2"
+2024-09-30T22:57:37.278+02:00 ERROR 10668 --- [appliSpringBoot] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/changelog-3.yaml::4::didier was: 9:c807a87ecf9fab45ef57fca8539a4596 but is now: 9:fe4c865dfdba2a7c21c39543fc8b7a3d
+
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) ~[spring-context-6.1.10.jar:6.1.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.1.jar:3.3.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.1.jar:3.3.1]
+	at tp.appliSpringBoot.AppliSpringBootApplication.main(AppliSpringBootApplication.java:16) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.1.jar:3.3.1]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/changelog-3.yaml::4::didier was: 9:c807a87ecf9fab45ef57fca8539a4596 but is now: 9:fe4c865dfdba2a7c21c39543fc8b7a3d
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 15 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/changelog-3.yaml::4::didier was: 9:c807a87ecf9fab45ef57fca8539a4596 but is now: 9:fe4c865dfdba2a7c21c39543fc8b7a3d
+
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835) ~[spring-beans-6.1.10.jar:6.1.10]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784) ~[spring-beans-6.1.10.jar:6.1.10]
+	... 22 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/changelog-3.yaml::4::didier was: 9:c807a87ecf9fab45ef57fca8539a4596 but is now: 9:fe4c865dfdba2a7c21c39543fc8b7a3d
+
+	at liquibase.command.CommandScope.execute(CommandScope.java:257) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1436) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:234) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:212) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:297) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:249) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 24 common frames omitted
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/changelog-3.yaml::4::didier was: 9:c807a87ecf9fab45ef57fca8539a4596 but is now: 9:fe4c865dfdba2a7c21c39543fc8b7a3d
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:358) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:92) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.command.CommandScope.execute(CommandScope.java:219) ~[liquibase-core-4.27.0.jar:na]
+	... 40 common frames omitted
+
+2024-09-30T22:58:41.359+02:00  INFO 1316 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Starting AppliSpringBootApplication using Java 17 with PID 1316 (C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB\target\classes started by d2fde in C:\tp\local-git-didier-tp-repositories\spring6_2024\tp_springBoot_juin2024\appliSpringBootLB)
+2024-09-30T22:58:41.362+02:00 DEBUG 1316 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Running with Spring Boot v3.3.1, Spring v6.1.10
+2024-09-30T22:58:41.363+02:00  INFO 1316 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : No active profile set, falling back to 1 default profile: "mysql"
+2024-09-30T22:58:45.296+02:00  WARN 1316 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-09-30T22:58:45.298+02:00  WARN 1316 --- [appliSpringBoot] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-09-30T22:58:47.253+02:00  INFO 1316 --- [appliSpringBoot] [restartedMain] t.a.AppliSpringBootApplication           : Started AppliSpringBootApplication in 6.412 seconds (process running for 7.004)

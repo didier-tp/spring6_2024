@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: didier
+      changes:
+        - renameColumn:
+            tableName: compte
+            oldColumnName: label
+            newColumnName: libelle
+            columnDataType: varchar(128)
+        - modifyDataType:
+            tableName: compte
+            columnName: libelle
+            newDataType: varchar(128)

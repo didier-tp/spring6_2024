@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: didier
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: compte
+      changes:
+        - createTable:
+            tableName: compte
+            columns:
+              - column:
+                  name: numero
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: label
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: solde
+                  type: DOUBLE
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: didier
+      changes:
+        - insert:
+            tableName: compte
+            columns:
+              - column:
+                  name: label
+                  value: "compteaaaa"
+              - column:
+                  name: solde
+                  value: 100
