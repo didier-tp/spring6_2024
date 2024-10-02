@@ -28,11 +28,13 @@ public class MyPerfLogAspect {
 	@Pointcut("@annotation(tp.appliSpring.annotation.LogExecutionTime)")
 	public void annotLogExecutionTimePointcut(){ 
 	}
-	
+
+	//@Around("surPackageExemple()")
+	@Around("surPackageExemple() && annotLogExecutionTimePointcut()")
 	//@Around("annotAffPointcut()")
 	//@Around("surPackageExemple() && annotAffPointcut()")
 	//@Around("annotLogExecutionTimePointcut()")
-	@Around("(surPackageExemple() || surPackageService()) && annotLogExecutionTimePointcut()")
+	//@Around("(surPackageExemple() || surPackageService()) && annotLogExecutionTimePointcut()")
 	public Object doPerfLog(ProceedingJoinPoint pjp) throws Throwable {
 		System.out.println("<< trace == debut == " + pjp.getSignature().toLongString() + " <<");
 		long td = System.nanoTime();
