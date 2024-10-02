@@ -48,6 +48,19 @@ public class TestDaoCompte {
         logger.debug("compte avec solde>=500 : " + comptes.toString());
     }
 
+    @Test
+    public void testFindByLabelLike(){
+        this.daoCompte.save(new Compte(null,"c1",100.0));
+        this.daoCompte.save(new Compte(null,"account2",300.0));
+        this.daoCompte.save(new Compte(null,"c3",500.0));
+        this.daoCompte.save(new Compte(null,"account4",700.0));
+
+        //List<Compte> comptes =daoCompte.findByLabelLike("account%");
+        List<Compte> comptes =daoCompte.findByLabelComme("account%");
+        assertTrue(comptes.size()>=2);
+        logger.debug("comptes avec label like account% : " + comptes.toString());
+    }
+
 
     @Test
     public void testFindWithOperations(){

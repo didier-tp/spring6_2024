@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import org.springframework.data.jpa.repository.Query;
 import tp.appliSpring.core.entity.Compte;
 
 /*
@@ -28,4 +29,11 @@ public interface DaoCompte extends JpaRepository<Compte,Long>{
 	//car on a respecter la convention de nom de methode
 	//findBy+Solde+GreaterThanEqual avec Compte.solde qui existe
 	List<Compte> findBySoldeGreaterThanEqual(double soldeMini);
+
+	//via convention de nom sur methode:
+	List<Compte> findByLabelLike(String pattern);
+
+	//via query personnalisée:
+	@Query("SELECT c FROM Compte c WHERE c.label like ?1")
+	List<Compte> findByLabelComme(String pattern);
 }
