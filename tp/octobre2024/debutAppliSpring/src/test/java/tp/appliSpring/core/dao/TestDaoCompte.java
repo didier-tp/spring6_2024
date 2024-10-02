@@ -17,7 +17,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
 import tp.appliSpring.core.entity.Compte;
+import tp.appliSpring.core.entity.Operation;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -29,7 +31,10 @@ public class TestDaoCompte {
     private static Logger logger = LoggerFactory.getLogger(TestDaoCompte.class);
 
     @Autowired
-    private DaoCompte daoCompte;
+    private DaoCompte daoCompte; //à tester
+
+    @Autowired
+    private DaoOperation daoOperation; //pour aider à tester
 
     @Test
     public void testFindBySoldeMini(){
@@ -41,6 +46,27 @@ public class TestDaoCompte {
         List<Compte> comptes =daoCompte.findBySoldeGreaterThanEqual(500.0);
         assertTrue(comptes.size()>=2);
         logger.debug("compte avec solde>=500 : " + comptes.toString());
+    }
+
+
+    @Test
+    public void testFindWithOperations(){
+        Compte cB1 = this.daoCompte.save(new Compte(null,"compteB1",100.0));
+        Operation op1cB1 = new Operation(null,"achat bonbon" , -4.50 , new Date());
+        op1cB1.setCompte(cB1);  this.daoOperation.save(op1cB1);
+        Operation op2cB1 = new Operation(null,"achat gateau" , -8.50 , new Date());
+        op2cB1.setCompte(cB1);  this.daoOperation.save(op2cB1);
+
+        Compte cB2 = this.daoCompte.save(new Compte(null,"compteB2",300.0));
+        Operation op1cB2 = new Operation(null,"achat boisson" , -6.50 , new Date());
+        op1cB2.setCompte(cB2);  this.daoOperation.save(op1cB2);
+
+        Compte compteReluAvecOperations =daoCompte.findWithOperations(cB1.getNumero());
+        assertTrue(compteReluAvecOperations.getOperations().size()==2);
+        logger.debug("compteReluAvecOperations = " + compteReluAvecOperations);
+        for(Operation op : compteReluAvecOperations.getOperations()){
+            logger.debug("\t " + op.toString());
+        }
     }
 
     @Test
