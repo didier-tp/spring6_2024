@@ -18,6 +18,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import tp.appliSpring.core.entity.Compte;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest(classes = {AppliSpringApplication.class})
 @ActiveProfiles({"dev"})
 public class TestDaoCompte {
@@ -26,6 +30,18 @@ public class TestDaoCompte {
 
     @Autowired
     private DaoCompte daoCompte;
+
+    @Test
+    public void testFindBySoldeMini(){
+        this.daoCompte.save(new Compte(null,"compteA1",100.0));
+        this.daoCompte.save(new Compte(null,"compteA2",300.0));
+        this.daoCompte.save(new Compte(null,"compteA3",500.0));
+        this.daoCompte.save(new Compte(null,"compteA4",700.0));
+
+        List<Compte> comptes =daoCompte.findBySoldeGreaterThanEqual(500.0);
+        assertTrue(comptes.size()>=2);
+        logger.debug("compte avec solde>=500 : " + comptes.toString());
+    }
 
     @Test
     public void testAjoutEtRelectureEtSuppression() {
