@@ -17,11 +17,14 @@ import jakarta.persistence.Table;
 
 
 //@NamedQuery(name = "Compte.findWithOperations" , query="...")
+@Entity
 public class Compte {
 
-   
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numero;
-    
+
+     @Column(name="label" ,length = 32)
     private String label;
     
     private Double solde;
