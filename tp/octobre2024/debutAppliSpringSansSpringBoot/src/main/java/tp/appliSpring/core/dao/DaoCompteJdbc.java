@@ -76,7 +76,7 @@ public class DaoCompteJdbc /*extends JdbcDaoSupport*/ implements DaoCompte {
 				.addValue("numero", compte.getNumero())
 				.addValue("label", compte.getLabel())
 				.addValue("solde", compte.getSolde());
-		namedParameterJdbcTemplate.update(UPDATE_SQL, parameters);
+		namedParameterJdbcTemplate.update(UPDATE_SQL, parameters); //pour h2
 		return compte;
 	}
 
