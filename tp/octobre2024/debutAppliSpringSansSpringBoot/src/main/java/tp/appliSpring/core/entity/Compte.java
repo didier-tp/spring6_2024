@@ -4,16 +4,7 @@ package tp.appliSpring.core.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-
+import jakarta.persistence.*;
 
 
 //@NamedQuery(name = "Compte.findWithOperations" , query="...")
@@ -26,7 +17,8 @@ public class Compte {
 
      @Column(name="label" ,length = 32)
     private String label;
-    
+
+	 //@Column(name="solde")
     private Double solde;
     
   
