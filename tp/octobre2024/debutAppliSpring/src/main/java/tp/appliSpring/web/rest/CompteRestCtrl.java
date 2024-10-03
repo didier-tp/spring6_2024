@@ -109,15 +109,36 @@ public class CompteRestCtrl {
 	//avec dans la partie "body" de la requête
 	// { "numero" : null , "label" : "comptequiVaBien" , "solde" : 50.0 }
 	//A CODER EN TP
+	@PostMapping()
+	public ResponseEntity<CompteDto> postCompte(CompteDto compteDto){
+          Compte compteEntity= GenericMapper.MAPPER.map(compteDto , Compte.class);
+		  Compte compteSauvegarde = serviceCompte.sauvegarderCompte(compteEntity);
+		  CompteDto compteSauvegardeDto = GenericMapper.MAPPER.map(compteSauvegarde , CompteDto.class);
+		  return new ResponseEntity<>(compteSauvegardeDto , HttpStatus.CREATED);
+	}
 	
 	//appelé en mode PUT
 	//avec  url = http://localhost:8181/appliSpring/rest/api-bank/comptes/1
 	//avec dans la partie "body" de la requête
 	// { "numero" : 1 , "label" : "libelleModifie" , "solde" : 120.0  }
 	//A CODER EN TP
+	@PutMapping("/{numero}")
+	public ResponseEntity<CompteDto> putCompte(@PathVariable("numero") long numCpt , CompteDto compteDto){
+		Compte compteEntity= GenericMapper.MAPPER.map(compteDto , Compte.class);
+		Compte compteSauvegarde = serviceCompte.updateCompte(compteEntity);
+		CompteDto compteSauvegardeDto = GenericMapper.MAPPER.map(compteSauvegarde , CompteDto.class);
+		return new ResponseEntity<>(compteSauvegardeDto , HttpStatus.OK);
+		//return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
 	
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
 	//A CODER EN TP
+	@DeleteMapping("/{numero}")
+	public ResponseEntity<?> deleteCompte(@PathVariable("numero") long numCpt){
+		serviceCompte.deleteCompte(numCpt);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		//en cas de compte inexistant, le exception Handler retourne automatiquement not_found
+	}
 	
 	
 	
