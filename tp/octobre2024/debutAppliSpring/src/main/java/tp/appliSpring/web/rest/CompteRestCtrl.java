@@ -23,7 +23,7 @@ import tp.appliSpring.core.service.ServiceCompte;
 import tp.appliSpring.dto.CompteDto;
 
 @RestController //@Component de type controller d'api rest
-@RequestMapping(value="/rest/api-bank/compte" , headers="Accept=application/json")
+@RequestMapping(value="/rest/api-bank/comptes" , headers="Accept=application/json")
 public class CompteRestCtrl {
 	
 	@Autowired
@@ -46,7 +46,7 @@ public class CompteRestCtrl {
 	
 	//V2 avec DTO et V4 (avec automatisme ExceptionHandler)
 	//declencher en mode GET avec
-	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
+	//http://localhost:8181/appliSpring/rest/api-bank/comptes/1 ou 2
 	@GetMapping("/{id}")
 	public CompteDto getCompteById(@PathVariable("id") long numeroCompte) {
 		
@@ -74,10 +74,20 @@ public class CompteRestCtrl {
 	*/
 	
 	//En GET
-	//http://localhost:8181/appliSpring/rest/api-bank/compte
-	//http://localhost:8181/appliSpring/rest/api-bank/compte?soldeMini=50
-	//http://localhost:8181/appliSpring/rest/api-bank/compte?soldeMini=50&critere2=val2&critere3=val3
-	//A CODER EN TP
+	//RECHERCHE MULTIPLE :
+	//URL de déclenchement:http://localhost:8181/appliSpring/rest/api-bank/comptes
+	//	ou http://localhost:8181/appliSpring/rest/api-bank/comptes?soldeMini=50
+	@GetMapping("" )
+	public List<CompteDto> getComptesByCriteria(
+			@RequestParam(value="soldeMini",required=false) Double soldeMini) {
+		List<Compte> listeCompteEntity = null;
+		if(soldeMini==null)
+			listeCompteEntity = serviceCompte.rechercherTousLesComptes();
+		else
+			listeCompteEntity = serviceCompte.rechercherComptesAvecSoldeMini(soldeMini);
+		return GenericMapper.MAPPER.map(listeCompteEntity, CompteDto.class);
+	}
+
 	
 	//appelé en mode POST
 	//avec url = http://localhost:8181/appliSpring/rest/api-bank/compte
