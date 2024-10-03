@@ -1,6 +1,7 @@
 package tp.appliSpring.core.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -35,6 +36,10 @@ public class ServiceCompteImpl implements ServiceCompte {
 		} catch (Exception e) {
 			throw new BankException("echec virement",e);
 		}
+	}
+
+	public Optional<Compte> rechercherCompteOptional(long numCpt){
+		return daoCompte.findById(numCpt);
 	}
 
 	@Override

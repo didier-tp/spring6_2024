@@ -1,6 +1,7 @@
 package tp.appliSpring.core.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.core.exception.BankException;
@@ -10,6 +11,7 @@ import tp.appliSpring.core.exception.NotFoundException;
 public interface ServiceCompte {
 	public void transferer(double montant,long numCptDeb,long numCptCred)throws BankException;
 	public Compte rechercherCompte(long numCpt)throws NotFoundException;
+	public Optional<Compte> rechercherCompteOptional(long numCpt);
 	public List<Compte> rechercherTousLesComptes(); //retourne liste vide si rien trouver
 	public List<Compte> rechercherComptesAvecSoldeMini(double soldeMini); //retourne liste vide si rien trouver
 	public Compte sauvegarderCompte(Compte cpt);
