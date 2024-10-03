@@ -46,7 +46,7 @@ public class CompteRestCtrl {
 	}
    */
 	
-
+   /*
 	//V2 avec DTO et V4 (avec automatisme ExceptionHandler)
 	//declencher en mode GET avec
 	//http://localhost:8181/appliSpring/rest/api-bank/comptes/1 ou 2
@@ -57,7 +57,7 @@ public class CompteRestCtrl {
 			return GenericMapper.MAPPER.map(compteEntity, CompteDto.class);
 			//NB: l'objet retourné sera automatiquement converti au format json
 		}
-
+     */
 	
     /*
 	//V3 avec ResponseEntity<?> mais sans ExceptionHandler
@@ -79,14 +79,16 @@ public class CompteRestCtrl {
 				}
 	}
      */
-/*
+
 	//Version 3bis avec optional
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getCompteById(@PathVariable("id") long numeroCompte) {
 		Optional<Compte> compteOptional = serviceCompte.rechercherCompteOptional(numeroCompte);
-		//return ResponseEntity.of(compteOptional.
+		return compteOptional.map(ResponseEntity::ok)
+				.orElseGet(() -> ResponseEntity.notFound().build());
+		//new ApiError(HttpStatus.NOT_FOUND,"compte pas trouvé")
 	}
-	*/
+
 	//En GET
 	//RECHERCHE MULTIPLE :
 	//URL de déclenchement:http://localhost:8181/appliSpring/rest/api-bank/comptes
