@@ -75,8 +75,9 @@ public class TestDaoCompte {
         op1cB2.setCompte(cB2);  this.daoOperation.save(op1cB2);
 
         Compte compteReluAvecOperations =daoCompte.findWithOperations(cB1.getNumero());
-        assertTrue(compteReluAvecOperations.getOperations().size()==2);
+        //Compte compteReluAvecOperations =daoCompte.findById(cB1.getNumero()).get();
         logger.debug("compteReluAvecOperations = " + compteReluAvecOperations);
+        assertTrue(compteReluAvecOperations.getOperations().size()==2);
         for(Operation op : compteReluAvecOperations.getOperations()){
             logger.debug("\t " + op.toString());
         }

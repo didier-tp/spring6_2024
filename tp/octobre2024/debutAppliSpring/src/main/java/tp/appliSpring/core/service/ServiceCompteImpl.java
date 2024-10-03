@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import tp.appliSpring.core.dao.DaoCompte;
@@ -40,7 +41,7 @@ public class ServiceCompteImpl implements ServiceCompte {
 	@Transactional
 	public Compte rechercherCompte(long numCpt)throws NotFoundException {
 		try {
-			//Compte cpt  =daoCompte.findById(numCpt);
+			//Compte cpt  =daoCompte.findById(numCpt).get();
 			//for(Operation op : cpt.getOperations()); //bidouille affreuse pour eviter lazy
 			//cpt.getOperations().size();
 			
