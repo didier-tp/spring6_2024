@@ -114,7 +114,7 @@ public class CompteRestCtrl {
 	// { "numero" : null , "label" : "comptequiVaBien" , "solde" : 50.0 }
 	//A CODER EN TP
 	@PostMapping()
-	public ResponseEntity<CompteDto> postCompte(CompteDto compteDto){
+	public ResponseEntity<CompteDto> postCompte(@RequestBody CompteDto compteDto){
           Compte compteEntity= GenericMapper.MAPPER.map(compteDto , Compte.class);
 		  Compte compteSauvegarde = serviceCompte.sauvegarderCompte(compteEntity);
 		  CompteDto compteSauvegardeDto = GenericMapper.MAPPER.map(compteSauvegarde , CompteDto.class);
