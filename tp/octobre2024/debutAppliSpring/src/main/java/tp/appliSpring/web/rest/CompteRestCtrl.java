@@ -84,9 +84,11 @@ public class CompteRestCtrl {
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getCompteById(@PathVariable("id") long numeroCompte) {
 		Optional<Compte> compteOptional = serviceCompte.rechercherCompteOptional(numeroCompte);
-		return compteOptional.map(ResponseEntity::ok)
-				.orElseGet(() -> ResponseEntity.notFound().build());
-		//new ApiError(HttpStatus.NOT_FOUND,"compte pas trouvé")
+		/*
+		return compteOptional.map( ResponseEntity::ok)
+				.orElse(ResponseEntity.notFound().build());
+		*/
+		return ResponseEntity.of(compteOptional); //ecriture équivalente plus compacte (sans message)
 	}
 
 	//En GET
@@ -125,9 +127,11 @@ public class CompteRestCtrl {
 	// { "numero" : 1 , "label" : "libelleModifie" , "solde" : 120.0  }
 	//A CODER EN TP
 	@PutMapping("/{numero}")
-	public ResponseEntity<CompteDto> putCompte(@PathVariable("numero") long numCpt , CompteDto compteDto){
+	public ResponseEntity<CompteDto> putCompte(@PathVariable("numero") long numCpt ,@RequestBody CompteDto compteDto){
+		compteDto.setNumero(numCpt);
 		Compte compteEntity= GenericMapper.MAPPER.map(compteDto , Compte.class);
 		Compte compteSauvegarde = serviceCompte.updateCompte(compteEntity);
+		//en cas de compte inexistant, le exception Handler retourne automatiquement not_found
 		CompteDto compteSauvegardeDto = GenericMapper.MAPPER.map(compteSauvegarde , CompteDto.class);
 		return new ResponseEntity<>(compteSauvegardeDto , HttpStatus.OK);
 		//return new ResponseEntity<>(HttpStatus.NO_CONTENT);
