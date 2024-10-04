@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -114,7 +115,9 @@ public class CompteRestCtrl {
 	//avec dans la partie "body" de la requête
 	// { "numero" : null , "label" : "comptequiVaBien" , "solde" : 50.0 }
 	//A CODER EN TP
+
 	@PostMapping()
+	@PreAuthorize("hasAuthority('SCOPE_resource.write')")
 	public ResponseEntity<CompteDto> postCompte(@Valid @RequestBody CompteDto compteDto){
           Compte compteEntity= GenericMapper.MAPPER.map(compteDto , Compte.class);
 		  Compte compteSauvegarde = serviceCompte.sauvegarderCompte(compteEntity);
@@ -128,6 +131,7 @@ public class CompteRestCtrl {
 	// { "numero" : 1 , "label" : "libelleModifie" , "solde" : 120.0  }
 	//A CODER EN TP
 	@PutMapping("/{numero}")
+	@PreAuthorize("hasAuthority('SCOPE_resource.write')")
 	public ResponseEntity<CompteDto> putCompte(@PathVariable("numero") long numCpt ,@RequestBody CompteDto compteDto){
 		compteDto.setNumero(numCpt);
 		Compte compteEntity= GenericMapper.MAPPER.map(compteDto , Compte.class);
@@ -141,6 +145,7 @@ public class CompteRestCtrl {
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
 	//A CODER EN TP
 	@DeleteMapping("/{numero}")
+	@PreAuthorize("hasAuthority('SCOPE_resource.delete')")
 	public ResponseEntity<?> deleteCompte(@PathVariable("numero") long numCpt){
 		serviceCompte.deleteCompte(numCpt);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
