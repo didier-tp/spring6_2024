@@ -47,7 +47,7 @@ function updateSelected(){
 	let objectJs = objectFromInput();
 	if(!canDoAction("update" , objectJs))return;
 	let objectJson = JSON.stringify(objectJs) ;  
-	let wsUrl = getWsBaseUrl();   
+	let wsUrl = getWsBaseUrl() + "/" + document.getElementById("inputId").value;
 	makeAjaxPutRequest(wsUrl,objectJson,function (responseJson){
 		console.log("responseJson="+responseJson);
 		//document.getElementById("spanMsg").innerHTML="successfully updated";

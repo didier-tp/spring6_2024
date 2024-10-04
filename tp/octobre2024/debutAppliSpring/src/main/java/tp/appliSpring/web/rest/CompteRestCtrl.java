@@ -102,8 +102,9 @@ public class CompteRestCtrl {
 		List<Compte> listeCompteEntity = null;
 		if(soldeMini==null)
 			listeCompteEntity = serviceCompte.rechercherTousLesComptes();
-		else
+		else {
 			listeCompteEntity = serviceCompte.rechercherComptesAvecSoldeMini(soldeMini);
+		}
 		return GenericMapper.MAPPER.map(listeCompteEntity, CompteDto.class);
 	}
 
