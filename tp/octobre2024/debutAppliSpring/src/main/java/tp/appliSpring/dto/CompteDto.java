@@ -1,5 +1,6 @@
 package tp.appliSpring.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.hibernate.validator.constraints.Length;
 
 import jakarta.validation.constraints.Min;
@@ -12,6 +13,7 @@ public class CompteDto {
 	private String label;
     
     @Min(-999)
+	@Schema(description = "solde du compte", defaultValue = "0")
 	private Double solde;
 
 	
