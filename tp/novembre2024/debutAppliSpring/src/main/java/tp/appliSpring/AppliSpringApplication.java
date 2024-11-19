@@ -2,8 +2,10 @@ package tp.appliSpring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
+//@EntityScan("tp.appliSpring.core.entity") //not required here because tp.appliSpring.core.entity is a subpart of tp.appliSpring (default ComponentScan)
 public class AppliSpringApplication {
 	
 	public static void initProfiles() {

@@ -49,6 +49,7 @@ public class TestCompteDao {
         Operation op2CptB = new Operation(null,"achat 2b" , -13.0 , new Date());
         op2CptB.setCompte(compteB);this.daoOperation.save(op2CptB);
 
+        //Compte compteBReluAvecOp = daoCompte.findById(compteB.getNumero()).orElse(null);
         Compte compteBReluAvecOp = daoCompte.findWithOperations(compteB.getNumero());
         assertTrue(compteBReluAvecOp.getLabel().equals("compteB"));
         assertTrue(compteBReluAvecOp.getOperations().size()==2);
