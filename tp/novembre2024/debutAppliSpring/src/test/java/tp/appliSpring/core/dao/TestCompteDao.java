@@ -15,6 +15,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import tp.appliSpring.AppliSpringApplication;
 import tp.appliSpring.core.entity.Compte;
+import tp.appliSpring.core.entity.Operation;
+
+import java.util.Date;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SpringBootTest(classes= {AppliSpringApplication.class})//reprendre la configuration de la classe principale
@@ -25,6 +30,32 @@ public class TestCompteDao {
 
     @Autowired
     private DaoCompte daoCompte; //à tester
+
+    @Autowired
+    private DaoOperation daoOperation; //pour aider à tester
+
+    @Test
+    public void testWithOperations(){
+
+        Compte compteA = this.daoCompte.save(new Compte(null,"compteA",100.0));
+        Operation op1CptA = new Operation(null,"achat 1a" , -15.0 , new Date());
+        op1CptA.setCompte(compteA);this.daoOperation.save(op1CptA);
+        Operation op2CptA = new Operation(null,"achat 2a" , -16.0 , new Date());
+        op2CptA.setCompte(compteA);this.daoOperation.save(op2CptA);
+
+        Compte compteB = this.daoCompte.save(new Compte(null,"compteB",100.0));
+        Operation op1CptB = new Operation(null,"achat 1b" , -12.0 , new Date());
+        op1CptB.setCompte(compteB);this.daoOperation.save(op1CptB);
+        Operation op2CptB = new Operation(null,"achat 2b" , -13.0 , new Date());
+        op2CptB.setCompte(compteB);this.daoOperation.save(op2CptB);
+
+        Compte compteBReluAvecOp = daoCompte.findWithOperations(compteB.getNumero());
+        assertTrue(compteBReluAvecOp.getLabel().equals("compteB"));
+        assertTrue(compteBReluAvecOp.getOperations().size()==2);
+        logger.debug("compteBReluAvecOp="+compteBReluAvecOp);
+        logger.debug("operations de compteBReluAvecOp="+compteBReluAvecOp.getOperations());
+
+    }
 
 
     @Test
