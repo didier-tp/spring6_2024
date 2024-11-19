@@ -24,7 +24,8 @@ public class DaoCompteSimu implements DaoCompte{
 
 	@Override
 	public Compte save(Compte compte) {
-		compte.setNumero(++compteur);  //simule auto_incrémentation
+		if(compte.getNumero()==null)
+		   compte.setNumero(++compteur);  //simule auto_incrémentation
 		mapComptes.put(compte.getNumero(),compte); //ajoute dans la table d'association
 		              //une association entre numero de commpte et le compte complet
 		return compte;

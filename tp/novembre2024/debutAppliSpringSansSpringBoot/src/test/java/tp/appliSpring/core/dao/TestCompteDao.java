@@ -24,9 +24,9 @@ public class TestCompteDao {
     private static Logger logger = LoggerFactory.getLogger(TestCompteDao.class);
 	
 	@Autowired
-	@Qualifier("simu")
+	//@Qualifier("simu")
 	//@Qualifier("jdbc")
-	//@Qualifier("jpa")
+	@Qualifier("jpa")
 	private DaoCompte daoCompte; //à tester
 	
 
@@ -51,6 +51,7 @@ public class TestCompteDao {
 		Assertions.assertEquals("compte_a",compteRelu.getLabel());
 		Assertions.assertEquals(150.0,compteRelu.getSolde());
 		logger.debug("compteRelu apres miseAjour=" + compteRelu);
+
 		/*
 		//+supprimer :
 		this.daoCompte.deleteById(compteSauvegarde.getNumero());

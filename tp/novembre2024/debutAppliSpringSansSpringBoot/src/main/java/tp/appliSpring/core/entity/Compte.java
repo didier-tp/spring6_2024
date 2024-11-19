@@ -16,10 +16,12 @@ import jakarta.persistence.Table;
 
 
 
+@Entity
 //@NamedQuery(name = "Compte.findWithOperations" , query="...")
 public class Compte {
 
-   
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numero;
     
     private String label;
