@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 
 @Profile("perf")
+@Aspect
+@Component
 public class MyPerfLogAspect {
 
 	@Pointcut("execution(* tp.appliSpring.exemple.*.*(..))")
@@ -30,7 +32,8 @@ public class MyPerfLogAspect {
 	//@Around("annotAffPointcut()")
 	//@Around("surPackageExemple() && annotAffPointcut()")
 	//@Around("annotLogExecutionTimePointcut()")
-	@Around("surPackageExemple() || surPackageService()")
+	//@Around("surPackageExemple() || surPackageService()")
+	@Around("surPackageExemple() && annotLogExecutionTimePointcut()")
 	public Object doPerfLog(ProceedingJoinPoint pjp) throws Throwable {
 		System.out.println("<< trace == debut == " + pjp.getSignature().toLongString() + " <<");
 		long td = System.nanoTime();
