@@ -20,7 +20,7 @@ import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableTransactionManagement() // "transactionManager" (not "txManager") is expected !!!
-@ComponentScan(basePackages = { "tp.appliSpring.core.dao" ,  "tp.appliSpring.core.service" ,  "tp.appliSpring.core.init"})
+//@ComponentScan(basePackages = { "tp.appliSpring.core.dao" ,  "tp.appliSpring.core.service" ,  "tp.appliSpring.core.init"})
 public class DomainAndPersistenceConfig {
 	
 	@Value("${typebase}")
@@ -51,7 +51,7 @@ public class DomainAndPersistenceConfig {
 		factory.setPackagesToScan("tp.appliSpring.core.entity");
 		factory.setDataSource(dataSource);
 		Properties jpaProperties = new Properties(); // java.util
-		jpaProperties.setProperty("javax.persistence.schema-generation.database.action", actionJpa); //JPA>=2.1
+		jpaProperties.setProperty("jakarta.persistence.schema-generation.database.action", actionJpa); //JPA>=2.1
 		factory.setJpaProperties(jpaProperties);
 		factory.afterPropertiesSet();
 		return factory.getObject();
