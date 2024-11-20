@@ -12,7 +12,8 @@ import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.core.exception.BankException;
 
 @SpringBootTest(classes= {AppliSpringApplication.class})//reprendre la configuration de la classe principale
-@ActiveProfiles({  "dev" })
+//@ActiveProfiles({  "dev" })
+@ActiveProfiles({  "dev2" })
 public class TestServiceCompte {
     private static Logger logger = LoggerFactory.getLogger(TestServiceCompte.class);
 

@@ -23,13 +23,13 @@ import tp.appliSpring.core.service.ServiceCompte;
 import tp.appliSpring.dto.CompteDto;
 
 @RestController //@Component de type controller d'api rest
-@RequestMapping(value="/rest/api-bank/compte" , headers="Accept=application/json")
+@RequestMapping(value="/rest/api-bank/comptes" , headers="Accept=application/json")
 public class CompteRestCtrl {
 	
 	@Autowired
 	private ServiceCompte serviceCompte;
 	
-	/*
+    /*
 	//V1 sans DTO
 	//declencher en mode GET avec
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
@@ -41,9 +41,9 @@ public class CompteRestCtrl {
 		return compteEntity;
 		//NB: l'objet retourné sera automatiquement converti au format json
 	}
-	*/
+    */
 	
-	
+
 	//V2 avec DTO et V4 (avec automatisme ExceptionHandler)
 	//declencher en mode GET avec
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
@@ -54,7 +54,7 @@ public class CompteRestCtrl {
 			return GenericMapper.MAPPER.map(compteEntity, CompteDto.class);
 			//NB: l'objet retourné sera automatiquement converti au format json
 		}
-    
+
 	
 	/*
 	//V3 avec ResponseEntity<?> mais sans ExceptionHandler
@@ -74,10 +74,20 @@ public class CompteRestCtrl {
 	*/
 	
 	//En GET
-	//http://localhost:8181/appliSpring/rest/api-bank/compte
-	//http://localhost:8181/appliSpring/rest/api-bank/compte?soldeMini=50
-	//http://localhost:8181/appliSpring/rest/api-bank/compte?soldeMini=50&critere2=val2&critere3=val3
+	//http://localhost:8181/appliSpring/rest/api-bank/comptes
+	//http://localhost:8181/appliSpring/rest/api-bank/comptes?soldeMini=50
+	//http://localhost:8181/appliSpring/rest/api-bank/comptes?soldeMini=50&critere2=val2&critere3=val3
 	//A CODER EN TP
+	@GetMapping()
+	public List<CompteDto> getCompteDtoByCriteria(
+			@RequestParam(value="soldeMini",required=false) Double soldeMini) {
+		List<Compte> listeComptes = null;
+		if(soldeMini==null)
+			listeComptes = serviceCompte.rechercherTousLesComptes();
+		else
+			listeComptes = serviceCompte.rechercherComptesAvecSoldeMini(soldeMini);
+		return GenericMapper.MAPPER.map(listeComptes, CompteDto.class);
+	}
 	
 	//appelé en mode POST
 	//avec url = http://localhost:8181/appliSpring/rest/api-bank/compte
