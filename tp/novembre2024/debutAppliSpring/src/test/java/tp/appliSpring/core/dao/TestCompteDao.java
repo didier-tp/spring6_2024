@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -18,6 +19,7 @@ import tp.appliSpring.core.entity.Compte;
 import tp.appliSpring.core.entity.Operation;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -37,13 +39,13 @@ public class TestCompteDao {
     @Test
     public void testWithOperations(){
 
-        Compte compteA = this.daoCompte.save(new Compte(null,"compteA",100.0));
+        Compte compteA = this.daoCompte.save(new Compte(null,"compteA",200.0));
         Operation op1CptA = new Operation(null,"achat 1a" , -15.0 , new Date());
         op1CptA.setCompte(compteA);this.daoOperation.save(op1CptA);
         Operation op2CptA = new Operation(null,"achat 2a" , -16.0 , new Date());
         op2CptA.setCompte(compteA);this.daoOperation.save(op2CptA);
 
-        Compte compteB = this.daoCompte.save(new Compte(null,"compteB",100.0));
+        Compte compteB = this.daoCompte.save(new Compte(null,"compteB",200.0));
         Operation op1CptB = new Operation(null,"achat 1b" , -12.0 , new Date());
         op1CptB.setCompte(compteB);this.daoOperation.save(op1CptB);
         Operation op2CptB = new Operation(null,"achat 2b" , -13.0 , new Date());
@@ -56,6 +58,19 @@ public class TestCompteDao {
         logger.debug("compteBReluAvecOp="+compteBReluAvecOp);
         logger.debug("operations de compteBReluAvecOp="+compteBReluAvecOp.getOperations());
 
+    }
+
+    @Test
+    //@DirtiesContext(methodMode = DirtiesContext.MethodMode.BEFORE_METHOD)
+    public void testWFindBySoldeGreaterThanEqual(){
+        Compte compteA1 = this.daoCompte.save(new Compte(null,"compteA1",100.0));
+        Compte compteA2 = this.daoCompte.save(new Compte(null,"compteA2",200.0));
+        Compte compteA3 = this.daoCompte.save(new Compte(null,"compteA3",300.0));
+        Compte compteA4 = this.daoCompte.save(new Compte(null,"compteA4",400.0));
+        List<Compte> liste = daoCompte.findBySoldeGreaterThanEqual(150.0);
+        logger.debug("liste="+liste);
+        //assertTrue(liste.size()==3);
+        assertTrue(liste.size()>=3);
     }
 
 
