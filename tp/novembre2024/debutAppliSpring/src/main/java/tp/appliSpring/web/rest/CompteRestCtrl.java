@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import tp.appliSpring.converter.GenericMapper;
 import tp.appliSpring.core.entity.Compte;
+import tp.appliSpring.core.exception.NotFoundException;
 import tp.appliSpring.core.service.ServiceCompte;
 import tp.appliSpring.dto.CompteDto;
 
@@ -55,8 +56,9 @@ public class CompteRestCtrl {
 			//NB: l'objet retourné sera automatiquement converti au format json
 		}
 
+
 	
-	/*
+     /*
 	//V3 avec ResponseEntity<?> mais sans ExceptionHandler
 	//declencher en mode GET avec
 	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
@@ -71,7 +73,7 @@ public class CompteRestCtrl {
 					return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 				}
 	}
-	*/
+   */
 	
 	//En GET
 	//http://localhost:8181/appliSpring/rest/api-bank/comptes
@@ -90,19 +92,28 @@ public class CompteRestCtrl {
 	}
 	
 	//appelé en mode POST
-	//avec url = http://localhost:8181/appliSpring/rest/api-bank/compte
+	//avec url = http://localhost:8181/appliSpring/rest/api-bank/comptes
 	//avec dans la partie "body" de la requête
 	// { "numero" : null , "label" : "comptequiVaBien" , "solde" : 50.0 }
 	//A CODER EN TP
+	@PostMapping()
+	public CompteDto postCompteDto(@RequestBody CompteDto compteDto){
+		Compte compteEntity = GenericMapper.MAPPER.map(compteDto,Compte.class);
+		Compte compteSauvegarde = serviceCompte.sauvegarderCompte(compteEntity);
+		//on peut par exemple retourner en retour le compte sauvegardé
+		// avec la clef primaire auto-incrémentée:
+		return GenericMapper.MAPPER.map(compteSauvegarde,CompteDto.class);
+	}
+
 	
 	//appelé en mode PUT
-	//avec url = http://localhost:8181/appliSpring/rest/api-bank/compte
-	//ou bien avec url = http://localhost:8181/appliSpring/rest/api-bank/compte/1
+	//avec url = http://localhost:8181/appliSpring/rest/api-bank/comptes
+	//ou bien avec url = http://localhost:8181/appliSpring/rest/api-bank/comptes/1
 	//avec dans la partie "body" de la requête
 	// { "numero" : 1 , "label" : "libelleModifie" , "solde" : 120.0  }
 	//A CODER EN TP
 	
-	//http://localhost:8181/appliSpring/rest/api-bank/compte/1 ou 2 
+	//http://localhost:8181/appliSpring/rest/api-bank/comptes/1 ou 2
 	//A CODER EN TP
 	
 	
