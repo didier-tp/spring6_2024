@@ -97,7 +97,7 @@ public class CompteRestCtrl {
 	// { "numero" : null , "label" : "comptequiVaBien" , "solde" : 50.0 }
 	//A CODER EN TP
 	@PostMapping()
-	public CompteDto postCompteDto(@RequestBody CompteDto compteDto){
+	public CompteDto postCompteDto(@Valid @RequestBody CompteDto compteDto){
 		Compte compteEntity = GenericMapper.MAPPER.map(compteDto,Compte.class);
 		Compte compteSauvegarde = serviceCompte.sauvegarderCompte(compteEntity);
 		//on peut par exemple retourner en retour le compte sauvegardé
@@ -112,9 +112,24 @@ public class CompteRestCtrl {
 	//avec dans la partie "body" de la requête
 	// { "numero" : 1 , "label" : "libelleModifie" , "solde" : 120.0  }
 	//A CODER EN TP
+	@PutMapping({ "" , "/{id}" })
+	public CompteDto putCompteDto(@Valid @RequestBody CompteDto compteDto,
+								  @PathVariable(value = "id",required = false) Long numeroCompte){
+		if(numeroCompte!=null) compteDto.setNumero(numeroCompte);
+		Compte compteEntity = GenericMapper.MAPPER.map(compteDto,Compte.class);
+		Compte compteSauvegarde = serviceCompte.updateCompte(compteEntity);
+		//on peut par exemple retourner en retour le compte sauvegardé
+		return GenericMapper.MAPPER.map(compteSauvegarde,CompteDto.class);
+	}
+
 	
 	//http://localhost:8181/appliSpring/rest/api-bank/comptes/1 ou 2
 	//A CODER EN TP
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteCompteById(@PathVariable("id") long numeroCompte) {
+		serviceCompte.deleteCompte(numeroCompte);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+	}
 	
 	
 	

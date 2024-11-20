@@ -38,7 +38,7 @@ function blankObject(){
 }
 
 function getWsBaseUrl(){
-	return "./rest/api-bank/compte";	
+	return "./rest/api-bank/comptes";
 }
 
 //obj = object with values to check
