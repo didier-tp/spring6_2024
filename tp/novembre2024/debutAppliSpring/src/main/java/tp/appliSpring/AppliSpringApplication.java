@@ -23,8 +23,8 @@ public class AppliSpringApplication extends SpringBootServletInitializer {
 		String profilsActifs  = System.getProperty("spring.profiles.active");
 		if(profilsActifs==null || profilsActifs.equals("")) {
 			//valeur par défaut si pas encore précisé
-			System.setProperty("spring.profiles.default", "dev,reInit");
-			//System.setProperty("spring.profiles.default", "dev,reInit,withSecurity");
+			//System.setProperty("spring.profiles.default", "dev,reInit");
+			System.setProperty("spring.profiles.default", "dev,reInit,withSecurity");
 			//System.setProperty("spring.profiles.default", "DEV"); //avec H2 et reInit
 			//System.setProperty("spring.profiles.default", "DEV2"); //avec mysql et reInit
 			//System.setProperty("spring.profiles.active", "dev2,reInit");
