@@ -1,0 +1,14 @@
+package tp.prefixeur;
+
+public class Prefixeur {
+
+    private String prefixe;
+
+    public String prefixer(String message){
+        return this.prefixe + message;
+    }
+
+    public void setPrefixe(String prefixe) {
+        this.prefixe = prefixe;
+    }
+}

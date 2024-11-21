@@ -1,5 +1,7 @@
 package tp.tpSpringBatch;
 
+import org.mycontrib.basic.comp.BasicPrefixeur;
+import org.mycontrib.basic.comp.Prefixeur;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
@@ -8,21 +10,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
+//import tp.prefixeur.Prefixeur;
+//import tp.prefixeur.PrefixeurConfig;
 
 @SpringBootApplication(/*exclude = { DataSourceAutoConfiguration.class }*/)
+//@Import(PrefixeurConfig.class)
 public class TpSpringBatchApplication  implements CommandLineRunner{
-	
+
+
+
 	private final JobLauncher jobLauncher;
 	private final ApplicationContext applicationContext;
+	private Prefixeur prefixeur;
 	
 	@Autowired
 	public TpSpringBatchApplication(JobLauncher jobLauncher,
-			                          ApplicationContext applicationContext)  {
+			                          ApplicationContext applicationContext,
+									Prefixeur prefixeur)  {
 		//injection by constructor  
 	    this.jobLauncher = jobLauncher;
 	    this.applicationContext = applicationContext;
+		this.prefixeur=prefixeur;
 	}
 
 	public static void main(String[] args) {
@@ -38,6 +51,7 @@ public class TpSpringBatchApplication  implements CommandLineRunner{
 		//String defaultJobName="fromCsvToConsoleJob";
 		String defaultJobName="fromCsvToXmlJob";
 		//String defaultJobName="fromDbExtractStatToCsvJob";
+		//String defaultJobName="generateDbDataSetJob";
 		String jobName = null;
 		if(args.length>0)
 			jobName=args[0];
@@ -51,7 +65,7 @@ public class TpSpringBatchApplication  implements CommandLineRunner{
 		String defaultOutputFilePath="data/output/xml/products.xml";
 		String outputFilePath=System.getProperty("outputFilePath", defaultOutputFilePath);
 		
-		System.out.println("****>>> jobName="+jobName +  " inputFilePath=" + inputFilePath + " outputFilePath=" + outputFilePath);
+		System.out.println(prefixeur.prefixer(">>> jobName="+jobName +  " inputFilePath=" + inputFilePath + " outputFilePath=" + outputFilePath));
 		
 		Job job = (Job) applicationContext.getBean(jobName);
 	 

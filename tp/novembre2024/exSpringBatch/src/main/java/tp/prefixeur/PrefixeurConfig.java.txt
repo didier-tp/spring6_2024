@@ -1,0 +1,15 @@
+package tp.prefixeur;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class PrefixeurConfig {
+
+    @Bean
+    public Prefixeur prefixeur(){
+        Prefixeur p = new Prefixeur();
+        p.setPrefixe("####");
+        return p;
+    }
+}

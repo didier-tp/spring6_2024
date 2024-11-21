@@ -2,6 +2,8 @@ package tp.tpSpringBatch.config;
 
 import javax.sql.DataSource;
 
+import org.mycontrib.basic.comp.BasicPrefixeur;
+import org.mycontrib.basic.comp.Prefixeur;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.batch.BatchDataSource;
@@ -19,6 +21,14 @@ import org.springframework.context.annotation.Primary;
 //SIMPLE eventuel complement ou redéfinition partielle de la 
 //configuration automatique apportée par spring-boot-starter-batch
 public class AutomaticSpringBootBatchJobRepositoryConfig {
+
+
+	/*
+	@Bean
+	public Prefixeur prefixeur() {
+		return new BasicPrefixeur("$$$$$$$$"
+		);
+	}*/
 	
 	/*
 	 NB: in application.properties
