@@ -1,0 +1,73 @@
+*avoid inheritance because it's no easy to maintain when evolution of versions
+*immutable DTO is good
+    ==> java record may be ok (no inheritance , immutable , …)
+*if possible , dont use dto as parameter in internal service API but use separate (destructured) basic variables
+*if possible , use same DTO for input and output (because it's more simple/efficient)
+*nested DTO : ok but just few levels (only if it's useful/necessary) , flat is usually good 
+*in internal service api , use DTOs to return data from queries (with ORM projection if possible)
+use converter/mapper if possible
+*builder pattern may be used
+*if possible, avoid null value in DTO ==> CreateXyzDto without null
+
+====================
+DTO in layers:
+
+REST API layer : DTO
+Persistent layer : Entity , DTO only in readonly projection
+Internal business/domain Service : record for some return values and readonly values , class for input/flexible/mutable entity ???
+
+========
+simplified hexa:
+
+
+interface XyService exends GenericService<Xy>{
+//…
+}
+
+//pour de la souplesse , pas de record et Xy = structure métier de référence , éventuelle variante XyEx ou XyEnsential ou XyWithDetails ou ...
+(domain.)Xy : pojo de référence de niveau métier (assimilable à une entite ou bien un Dto , selon impl... ) 
+sxy.searchById():Xy  //pas de pb de perf
+sxy.create(Xy xy):Xy //avec xy.id à null pour simplifier et éviter XyToCreate
+sxy.update(Xy xy):Xy
+sxy.removeById()
+sxy.searchZzBycc() : ZzView as record
+
+===========
+
+
+
+interface xyStorageSpi implements StorageSpi<Xy>{
+…
+}
+
+avec du coté impl_persistance : 
+un usage de converter/mapper vers XyEntity (ou éventuellement EXy ou _Xy ou ...) 
+
+============
+
+XyController exends AbstractGenericController<Xy>{
+    //où l'on contrôle exactement tout en ayant tout de même
+    //la possibilité d'invoquer super.defaultGet() , super.defaultPost() déclarées privées
+    //XyApiDto only if Xy cannot be used directly
+}
+ou bien mieux encore:
+XyController {
+   private GenericDefaultController<Xy> internalDefaultController; //to delegate
+//...
+}
+
+=============
+core.yxdomain.model.Xy
+                 .ZZview
+core.xydomain.service.XyService
+                      XyServiceImpl
+core.xydomain.spi.storage.XyStrorageSpi
+=============
+core.xypersistance.... ou ...
+====
+rest.xyApi... ou 
+
+
+
+
+

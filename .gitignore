@@ -1,4 +1,7 @@
-
+**/*.class
+**/*.jar
+**/.idea
+**/target
 
 */*.class
 */.settings/*
