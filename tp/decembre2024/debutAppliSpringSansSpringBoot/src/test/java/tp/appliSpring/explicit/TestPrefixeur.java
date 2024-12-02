@@ -3,7 +3,10 @@ package tp.appliSpring.explicit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -19,14 +22,20 @@ import org.junit.jupiter.api.Assertions;
 @ActiveProfiles({"maj"})
 public class TestPrefixeur {
 
+    private static Logger logger = LoggerFactory.getLogger(TestPrefixeur.class);
+
+    @Value("${preferences.prefixe:#}")
+    private String prefixe;
+
     @Autowired
     private Prefixeur prefixeur; //à tester
 
     @Test
     public void testPrefixer(){
         String res = prefixeur.prefixer("spring");
-        //
-        assertEquals(">>>SPRING",res);
+        logger.debug("prefixe dans .properties = "+ prefixe);
+        logger.debug("res testPrefixer = "+ res);
+        assertEquals(prefixe+"SPRING",res);
         //Assertions.assertEquals(">>>spring",res);
     }
 }
