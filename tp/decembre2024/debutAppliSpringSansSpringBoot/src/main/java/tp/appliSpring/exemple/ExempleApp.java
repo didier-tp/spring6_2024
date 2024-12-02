@@ -13,8 +13,10 @@ public class ExempleApp {
 		
 		MonCalculateur monCalculateur = contextSpring.getBean(MonCalculateur.class);
 		System.out.println("resCalcul="+monCalculateur.calculer(4));//4*4=16.0 ou autre 
-		
-		//A completer ...
+
+		Coordinateur coordinateurPrisEnChargeParSpring =
+				contextSpring.getBean(Coordinateur.class);
+		coordinateurPrisEnChargeParSpring.calculerEtAfficher();
 		
 		((AnnotationConfigApplicationContext) contextSpring).close();
 	}
