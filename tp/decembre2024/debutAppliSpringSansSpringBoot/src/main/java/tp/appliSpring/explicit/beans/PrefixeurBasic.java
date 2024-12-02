@@ -13,7 +13,7 @@ public class PrefixeurBasic implements Prefixeur{
 
     @Override
     public String prefixer(String message) {
-        return prefixe + message;
+        return prefixe  + message;
     }
 
     public String getPrefixe() {  return prefixe;   }
