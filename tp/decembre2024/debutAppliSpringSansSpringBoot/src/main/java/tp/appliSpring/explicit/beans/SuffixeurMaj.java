@@ -13,7 +13,7 @@ public class SuffixeurMaj implements Suffixeur{
 
     @Override
     public String suffixer(String message) {
-        return  message + suffixe;
+        return  (message + suffixe).toUpperCase();
     }
 
     public String getSuffixe() {  return suffixe;   }
