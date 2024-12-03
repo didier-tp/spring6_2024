@@ -14,10 +14,16 @@ public class ExempleApp {
 		
 		//MonCalculateur monCalculateur = contextSpring.getBean(MonCalculateur.class); //ok si une seule version de MonCalculateur
 		MonCalculateur monCalculateur = (MonCalculateur) contextSpring.getBean("monCalculateurCarre");
+		System.out.println("monCalculateur="+monCalculateur.toString());
+		if(monCalculateur instanceof MonCalculateurCarre)
+			System.out.println("monCalculateur est de type MonCalculateurCarre");
+		else
+			System.out.println("monCalculateur n'est pas de type MonCalculateurCarre");
 		//MonCalculateur monCalculateur = contextSpring.getBean("monCalculateurCarre" , MonCalculateur.class);
 		System.out.println("resCalcul="+monCalculateur.calculer(4));//4*4=16.0 ou autre 
 
 		Coordinateur coordinateurPrisEnChargeParSpring =contextSpring.getBean(Coordinateur.class);
+		System.out.println("coordinateurPrisEnChargeParSpring="+coordinateurPrisEnChargeParSpring.toString());
 		coordinateurPrisEnChargeParSpring.calculerEtAfficher();
 
 		CoordinateurAvecInjectionParConstructeur coordinateurPrisEnChargeParSpring2 =
