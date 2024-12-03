@@ -14,6 +14,7 @@ public class ExempleApp {
 		
 		//MonCalculateur monCalculateur = contextSpring.getBean(MonCalculateur.class); //ok si une seule version de MonCalculateur
 		MonCalculateur monCalculateur = (MonCalculateur) contextSpring.getBean("monCalculateurCarre");
+		//MonCalculateurCarre monCalculateur = (MonCalculateurCarre) contextSpring.getBean("monCalculateurCarre"); //erreur de type class jdk.proxy2.$Proxy27 si Create new scratch file from selection
 		System.out.println("monCalculateur="+monCalculateur.toString());
 		if(monCalculateur instanceof MonCalculateurCarre)
 			System.out.println("monCalculateur est de type MonCalculateurCarre");
