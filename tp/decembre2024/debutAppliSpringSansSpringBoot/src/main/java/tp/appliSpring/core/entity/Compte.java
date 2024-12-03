@@ -15,13 +15,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
-
+@Entity
 //@NamedQuery(name = "Compte.findWithOperations" , query="...")
 public class Compte {
 
-   
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numero;
-    
+
+   @Column(length = 64)  //VARCHAR(64) si table créée automatiquement (selon config)
     private String label;
     
     private Double solde;
