@@ -5,7 +5,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class ExempleApp {
 	public static void main(String[] args) {
-		
+
+		System.setProperty("spring.profiles.default", "perf"); //pour activer les log de perf
 		
 		ApplicationContext contextSpring = new AnnotationConfigApplicationContext(ExempleConfig.class);
 		//contextSpring représente un ensemble de composants pris en charge par spring

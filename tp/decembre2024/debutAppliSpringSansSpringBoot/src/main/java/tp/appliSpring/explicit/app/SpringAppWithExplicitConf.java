@@ -6,6 +6,7 @@ import tp.appliSpring.explicit.beans.Encadreur;
 import tp.appliSpring.explicit.beans.Prefixeur;
 import tp.appliSpring.explicit.conf.ExempleConfigExplicite;
 
+
 public class SpringAppWithExplicitConf {
 	public static void main(String[] args) {
 
