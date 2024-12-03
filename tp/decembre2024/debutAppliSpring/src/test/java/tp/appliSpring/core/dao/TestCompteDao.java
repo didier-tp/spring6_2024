@@ -21,13 +21,34 @@ import tp.appliSpring.core.entity.Compte;
 //@ExtendWith(SpringExtension.class) //si junit5/jupiter
 @SpringBootTest(classes= {AppliSpringApplication.class})//reprendre la configuration de la classe principale
 @ActiveProfiles({  "dev" }) //pour analyser application-dev.properties
+//@ActiveProfiles({  "dev2" })
 public class TestCompteDao {
 	
     private static Logger logger = LoggerFactory.getLogger(TestCompteDao.class);
 	
 	@Autowired
 	private DaoCompte daoCompte; //à tester
-	
+
+	@Autowired
+	private DaoOperation daoOperation; //pour aider à tester
+
+	@Test
+	public void testRechercherCompteParSoldeMini() {
+		//on ajoute plein de s avec des soldes diférents
+
+		//on recherche les comptes dont le solde est superieur au minimum = 0 (ou 50.0)
+
+		//on verifie qu'on a les bons
+	}
+
+	@Test
+	public void testRechercherCompteAvecOperations() {
+		//on ajoute plein de comptes avec des operations rattachées
+
+		//on recherche un de ces comptes selon un numero precis
+
+		//on verifie qu'on a recuperé le bon compte AVEC les bonnes operations rattachées:
+	}
 
 	@Test
 	public void testAjoutEtRelectureEtSuppression() {
