@@ -8,6 +8,8 @@
 		<version>3.2.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	<!-- <packaging>jar</packaging> -->
+	<packaging>war</packaging>
 	<groupId>tp</groupId>
 	<artifactId>debutAppliSpring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -69,6 +71,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>appliSpring</finalName> <!-- nom du .jar ou .war construit -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
