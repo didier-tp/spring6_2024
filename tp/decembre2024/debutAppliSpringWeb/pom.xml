@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.2.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<packaging>jar</packaging>
-	<!-- <packaging>war</packaging>  -->
 	<groupId>tp</groupId>
-	<artifactId>debutAppliSpring</artifactId>
+	<artifactId>debutAppliSpringWeb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>appliSpring</name>
-	<description>Demo project for Spring Boot</description>
+	<name>debutAppliSpringWeb</name>
+	<description>Spring Boot App (avec partie web)</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -28,6 +27,16 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+    
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -44,7 +53,7 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- springdoc-openapi-ui for spring5/springBoot2 , 
 		     springdoc-openapi-starter-webmvc-ui for spring6/springBoot3 -->
 		<dependency>
@@ -57,7 +66,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -71,7 +80,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>appliSpring</finalName> <!-- nom du .jar ou .war construit -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
