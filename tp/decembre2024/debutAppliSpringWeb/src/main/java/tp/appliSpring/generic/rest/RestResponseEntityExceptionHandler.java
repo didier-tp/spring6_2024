@@ -17,7 +17,7 @@ import tp.appliSpring.generic.dto.ApiError;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@ControllerAdvice
+@ControllerAdvice
 public class RestResponseEntityExceptionHandler 
    extends ResponseEntityExceptionHandler {
 	

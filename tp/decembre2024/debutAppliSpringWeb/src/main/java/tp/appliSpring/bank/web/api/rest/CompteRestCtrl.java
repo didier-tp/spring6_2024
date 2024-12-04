@@ -8,6 +8,8 @@ import tp.appliSpring.bank.core.model.Compte;
 import tp.appliSpring.bank.core.service.ServiceCompte;
 import tp.appliSpring.bank.persistence.entity.CompteEntity;
 import tp.appliSpring.bank.persistence.repository.CompteRepository;
+import tp.appliSpring.generic.dto.MessageDto;
+import tp.appliSpring.generic.exception.EntityNotFoundException;
 
 import java.util.List;
 
@@ -46,13 +48,20 @@ public class CompteRestCtrl {
 	}
 
 
-    /*
+/*
 	//V2 avec ResponseEntity<?> mais sans ExceptionHandler
 	//declencher en mode GET avec
 	//http://localhost:8181/appliSpring/rest/api-bank/v1/comptes/1 ou 2
 	@GetMapping("/{id}")
-	....
-   */
+	public ResponseEntity<?> getCompteById(@PathVariable("id") long numeroCompte) {
+        try {
+            Compte compte = serviceCompte.searchById(numeroCompte);
+			return new ResponseEntity<Compte>(compte, HttpStatus.OK);
+        } catch (EntityNotFoundException e) {
+			return new ResponseEntity<MessageDto>(new MessageDto(e.getMessage()), HttpStatus.NOT_FOUND);
+        }
+	}
+*/
 
 	//GET Multiple
 	//http://localhost:8181/appliSpring/rest/api-bank/v1/comptes
