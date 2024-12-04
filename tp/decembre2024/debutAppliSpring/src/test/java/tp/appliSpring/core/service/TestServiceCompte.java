@@ -8,8 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import tp.appliSpring.AppliSpringApplication;
+import tp.appliSpring.core.dao.DaoOperation;
 import tp.appliSpring.core.entity.Compte;
+import tp.appliSpring.core.entity.Operation;
 import tp.appliSpring.core.exception.BankException;
+
+import java.util.Date;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(classes= {AppliSpringApplication.class})//reprendre la configuration de la classe principale
 @ActiveProfiles({  "dev" }) //pour analyser application-dev.properties
@@ -19,6 +25,31 @@ public class TestServiceCompte {
 
     @Autowired
     private ServiceCompte serviceCompte; //à tester
+
+    @Autowired
+    private DaoOperation daoOperation; //pour aider à tester
+
+    @Test
+    public void testRechercherCompteAvecOperations() {
+        Compte compteA = this.serviceCompte.sauvegarderCompte(new Compte(null,"compteA",200.0));
+        Operation op1CptA = new Operation(null,"achat 1a" , -15.0 , new Date());
+        op1CptA.setCompte(compteA);this.daoOperation.save(op1CptA);
+        Operation op2CptA = new Operation(null,"achat 2a" , -16.0 , new Date());
+        op2CptA.setCompte(compteA);this.daoOperation.save(op2CptA);
+
+        Compte compteB = this.serviceCompte.sauvegarderCompte(new Compte(null,"compteB",200.0));
+        Operation op1CptB = new Operation(null,"achat 1b" , -12.0 , new Date());
+        op1CptB.setCompte(compteB);this.daoOperation.save(op1CptB);
+        Operation op2CptB = new Operation(null,"achat 2b" , -13.0 , new Date());
+        op2CptB.setCompte(compteB);this.daoOperation.save(op2CptB);
+
+        //Compte compteBReluAvecOp = daoCompte.findById(compteB.getNumero()).orElse(null);
+        Compte compteBReluAvecOp = serviceCompte.rechercherCompte(compteB.getNumero());
+        assertTrue(compteBReluAvecOp.getLabel().equals("compteB"));
+        assertTrue(compteBReluAvecOp.getOperations().size()==2);
+        logger.debug("compteBReluAvecOp="+compteBReluAvecOp);
+        logger.debug("operations de compteBReluAvecOp="+compteBReluAvecOp.getOperations());
+    }
 
     @Test
     public void testVirement() {

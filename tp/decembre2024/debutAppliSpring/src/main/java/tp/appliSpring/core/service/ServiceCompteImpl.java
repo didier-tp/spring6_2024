@@ -40,7 +40,7 @@ public class ServiceCompteImpl implements ServiceCompte {
 	@Transactional
 	public Compte rechercherCompte(long numCpt)throws NotFoundException {
 		try {
-			//Compte cpt  =daoCompte.findById(numCpt);
+			//Compte cpt  =daoCompte.findById(numCpt).orElse(null);
 			//for(Operation op : cpt.getOperations()); //bidouille affreuse pour eviter lazy
 			//cpt.getOperations().size();
 			
