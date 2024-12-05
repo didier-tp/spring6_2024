@@ -1,5 +1,7 @@
 package tp.appliSpring.bank.core.service.direct;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.observation.annotation.Observed;
@@ -33,13 +35,34 @@ public class ServiceCompteDirectImpl extends GenericServiceDirectImpl<Compte,Com
 
 	private CompteRepository daoCompte;
 	private ObservationRegistry observationRegistry;
-
+	private final Counter accountCreatedCounter;
 	@Autowired
-	public ServiceCompteDirectImpl(CompteRepository daoCompte,ObservationRegistry observationRegistry){
+	public ServiceCompteDirectImpl(CompteRepository daoCompte,
+								   ObservationRegistry observationRegistry,
+								   MeterRegistry registry){
 		super(Compte.class,CompteEntity.class,daoCompte);
 		this.daoCompte=daoCompte;
 		this.observationRegistry=observationRegistry;
+		this.accountCreatedCounter=Counter.builder("accounts.created")
+				.description("Number of accounts created")
+				.register(registry);
+		//.../actuator/metrics/accounts.created
 	}
+	/*
+	{"name":"accounts.created","description":"Number of accounts created",
+	"measurements":[{"statistic":"COUNT","value":4.0}],"availableTags":[]}
+	 */
+
+	/*
+	micrometer :
+	Counter : increment only
+	Gauge : increment or decrement
+	Timer : execution times (max ,total ,avg , ...)
+	     Observation.observe( () -> { code_of_duration_to_observe} )
+	     build automatically a sort of Timer (like @Observe() on top of a whole method)
+
+    //.../actuator/metrics/_name_of_metric_or_observation_
+	 */
 
 	@Override
 	@Observed(name = "searchById")
@@ -68,6 +91,7 @@ public class ServiceCompteDirectImpl extends GenericServiceDirectImpl<Compte,Com
 				.createNotStarted("CREATED_ACCOUNT_STAT", observationRegistry)
 				//.lowCardinalityKeyValue("xxx", "yyyy") //bounded (non infinite) set size
 				.observe(() -> {
+					this.accountCreatedCounter.increment();
 					// Execute business logic here
 					Compte compte =  super.create(obj);
 					/*
