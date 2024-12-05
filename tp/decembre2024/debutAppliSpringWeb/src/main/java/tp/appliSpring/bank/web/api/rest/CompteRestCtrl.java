@@ -85,7 +85,7 @@ public class CompteRestCtrl {
 	//avec dans la partie "body" de la requête
 	// { "numero" : null , "label" : "comptequiVaBien" , "solde" : 50.0 }
 	@PostMapping("")
-	public ResponseEntity<?> postCompte(/*@Valid*/ @RequestBody CompteToCreate compte) {
+	public ResponseEntity<?> postCompte(@Valid @RequestBody CompteToCreate compte) {
 		Compte compteSauvegarde = serviceCompte.create(compte);  //avec numero auto_incrémenté
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
