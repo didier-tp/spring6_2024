@@ -20,6 +20,7 @@ import java.util.List;
 
 @RestController //@Component de type controller d'api rest
 @RequestMapping(value="/rest/api-bank/v1/comptes" , headers="Accept=application/json")
+//@CrossOrigin(origins = "*" , methods = { RequestMethod.GET , RequestMethod.POST})
 public class CompteRestCtrl {
 
     /*
