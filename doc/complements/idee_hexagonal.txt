@@ -1,0 +1,8 @@
+considérer le cœur domain/service comme :
+  - à la fois une chose en pur java (au niveau des tests unitaires/fonctionnels)
+  - à la fois une chose qui fonctionne bien en mode @Transactional une fois bien intégré
+
+========
+à tester : @Transacional ajouté dynamiquement si possible
+https://nikasakana.medium.com/custom-annotation-processing-with-spring-boot-ed4a77f86f7b (BeanPostProcessor)
+peut être interpréter @MyDomainService ou @AppService ou @BusinessService comme @Transactional + @Service si possible

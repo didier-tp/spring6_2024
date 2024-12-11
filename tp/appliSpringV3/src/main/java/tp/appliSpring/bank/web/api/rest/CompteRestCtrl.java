@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
@@ -27,6 +28,8 @@ import tp.appliSpring.generic.exception.EntityNotFoundException;
 
 @RestController //@Component de type controller d'api rest
 @RequestMapping(value="/rest/api-bank/v1/comptes" , headers="Accept=application/json")
+@CrossOrigin(origins = "*" , methods = { RequestMethod.GET , RequestMethod.POST ,
+		             RequestMethod.PATCH , RequestMethod.DELETE , RequestMethod.PUT})
 public class CompteRestCtrl {
 
 	/*
@@ -135,7 +138,7 @@ public class CompteRestCtrl {
 		compte.setNumero(idToUpdate);
 		Compte compteMisAJour = serviceCompte.update(compte);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //204 : OK sans aucun message dans partie body
-		//execption handler may return NOT_FOUND or INTERNAL_SERVER_ERROR
+		//exception handler may return NOT_FOUND or INTERNAL_SERVER_ERROR
 	}
 
 	//http://localhost:8181/appliSpring/rest/api-bank/v1/comptes/1 ou 2
@@ -143,11 +146,12 @@ public class CompteRestCtrl {
 	@ApiResponse(responseCode = "404", ref = "#/components/responses/NotFoundErrorResponse")
 	@ApiResponse(responseCode = "204", ref = "#/components/responses/NoContentResponse")
 	@ApiResponse(responseCode = "500", ref = "#/components/responses/InternalServerErrorResponse")
+	@PreAuthorize("hasAuthority('SCOPE_resource.delete')")
 	public ResponseEntity<?> deleteCompteById(@PathVariable("id") Long id) {
 		serviceCompte.removeById(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //NO_CONTENT = OK mais sans message
 		//return ResponseEntity.ok(new MessageDto("compte with id=" + id + " successfully deleted")); //200/OK + message
-		//execption handler may return NOT_FOUND or INTERNAL_SERVER_ERROR
+		//exception handler may return NOT_FOUND or INTERNAL_SERVER_ERROR
 	}
 }
 
