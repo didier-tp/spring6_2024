@@ -29,8 +29,8 @@ public class Compte {
     
     private Double solde;
     
-  
-  //  private List<Operation> operations = new ArrayList<>(); //+get/set
+    @OneToMany(mappedBy = "compte" , fetch = FetchType.LAZY)
+    private List<Operation> operations = new ArrayList<>(); //+get/set
     
   //+get/set , constructeur , toString()
     
@@ -79,6 +79,16 @@ public class Compte {
 
 	public void setSolde(Double solde) {
 		this.solde = solde;
+	}
+
+
+	public List<Operation> getOperations() {
+		return operations;
+	}
+
+
+	public void setOperations(List<Operation> operations) {
+		this.operations = operations;
 	}
 	
 	

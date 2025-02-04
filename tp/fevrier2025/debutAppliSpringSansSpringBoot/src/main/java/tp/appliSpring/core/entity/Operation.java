@@ -3,30 +3,32 @@ package tp.appliSpring.core.entity;
 
 import java.util.Date;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
-
-
+@Entity
 public class Operation {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numero;
     
     private String label;
     
     private Double montant;
     
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateOp;
     
-    
-   // private Compte compte;
+    @ManyToOne
+    @JoinColumn(name = "num_compte")
+    private Compte compte; //+get/set
     
 
 	public Operation() {
@@ -76,6 +78,14 @@ public class Operation {
 
 	public void setDateOp(Date dateOp) {
 		this.dateOp = dateOp;
+	}
+
+	public Compte getCompte() {
+		return compte;
+	}
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
 	}
 
     
