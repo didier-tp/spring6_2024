@@ -17,7 +17,8 @@ import jakarta.persistence.Transient;
 
 
 @Entity
-//@NamedQuery(name = "Compte.findWithOperations" , query="...")
+@NamedQuery(name = "Compte.findWithOperations" , 
+           query="SELECT c FROM Compte c LEFT JOIN FETCH c.operations o WHERE c.numero=?1")
 public class Compte {
 
     @Id

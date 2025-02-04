@@ -47,6 +47,13 @@ public class TestCompteDao {
 		op2.setCompte(compteCSauvegarde);
 		daoOperation.save(op2);
 		
+		//Compte compteRelu = this.daoCompte.findById(compteCSauvegarde.getNumero()); //bug au niveau for() en mode lazy
+		Compte compteRelu = this.daoCompte.findWithOperations(compteCSauvegarde.getNumero());//ok grace au mot clef FETCH
+		logger.debug("compteRelu apres insertion=" + compteRelu);
+		for(Operation op : compteRelu.getOperations()) {
+			logger.debug("\t op" + op);
+		}
+		
 		
 	}
 
