@@ -13,15 +13,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 
-
+@Entity
 //@NamedQuery(name = "Compte.findWithOperations" , query="...")
 public class Compte {
 
-   
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//pour récupérer pk auto-incrémentée par base h2 ou autre
     private Long numero;
     
+    @Column(length=64,name="label")
     private String label;
     
     private Double solde;

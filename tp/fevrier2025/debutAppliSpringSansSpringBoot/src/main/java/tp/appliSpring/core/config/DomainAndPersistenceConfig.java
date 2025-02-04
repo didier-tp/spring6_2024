@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import jakarta.persistence.EntityManagerFactory;
 
-//@Configuration
+@Configuration
 @EnableTransactionManagement() // "transactionManager" (not "txManager") is expected !!!
 @ComponentScan(basePackages = { "tp.appliSpring.core.dao" ,  "tp.appliSpring.core.service" ,  "tp.appliSpring.core.init"})
 public class DomainAndPersistenceConfig {
@@ -30,7 +30,7 @@ public class DomainAndPersistenceConfig {
 	private String actionJpa = "none"; // ou bien "drop-and-create"
 
 	// JpaVendorAdapter (Hibernate ou OpenJPA ou ...)
-	//@Bean
+	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
 		hibernateJpaVendorAdapter.setShowSql(false);
@@ -44,7 +44,7 @@ public class DomainAndPersistenceConfig {
 	}
 
 	// EntityManagerFactory
-	//@Bean(name = { "entityManagerFactory" })
+	@Bean(name = { "entityManagerFactory" })
 	public EntityManagerFactory entityManagerFactory(JpaVendorAdapter jpaVendorAdapter, DataSource dataSource) {
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 		factory.setJpaVendorAdapter(jpaVendorAdapter);
@@ -59,7 +59,7 @@ public class DomainAndPersistenceConfig {
 	
 	
 	// Transaction Manager for JPA or ...
-	//@Bean(name = "transactionManager") 
+	@Bean(name = "transactionManager") 
 	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
 		JpaTransactionManager txManager = new JpaTransactionManager();
 		txManager.setEntityManagerFactory(entityManagerFactory);
