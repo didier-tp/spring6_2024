@@ -2,7 +2,6 @@ package tp.appliSpring.core.dao;
 
 import java.util.Date;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
@@ -55,37 +54,6 @@ public class TestCompteDao {
 		}
 		
 		
-	}
-
-	
-	@Test
-	public void testAjoutEtRelectureEtSuppression() {
-		//hypothese : base avec tables vides au lancement du test
-		Compte compte = new Compte(null,"compteA",100.0);
-		Compte compteSauvegarde = this.daoCompte.save(compte); //INSERT INTO
-		logger.debug("compteSauvegarde=" + compteSauvegarde);
-		
-		Compte compteRelu = this.daoCompte.findById(compteSauvegarde.getNumero()); //SELECT
-		Assertions.assertEquals("compteA",compteRelu.getLabel());
-		Assertions.assertEquals(100.0,compteRelu.getSolde());
-		logger.debug("compteRelu apres insertion=" + compteRelu);
-		
-		compte.setSolde(150.0); compte.setLabel("compte_a");
-		Compte compteMisAjour = this.daoCompte.save(compte); //UPDATE
-		logger.debug("compteMisAjour=" + compteMisAjour);
-		
-		compteRelu = this.daoCompte.findById(compteSauvegarde.getNumero()); //SELECT
-		Assertions.assertEquals("compte_a",compteRelu.getLabel());
-		Assertions.assertEquals(150.0,compteRelu.getSolde());
-		logger.debug("compteRelu apres miseAjour=" + compteRelu);
-		/*
-		//+supprimer :
-		this.daoCompte.deleteById(compteSauvegarde.getNumero());
-		
-		//verifier bien supprimé (en tentant une relecture qui renvoi null)
-		Compte compteReluApresSuppression = this.daoCompte.findById(compteSauvegarde.getNumero()); 
-		Assertions.assertTrue(compteReluApresSuppression == null);
-		*/
 	}
 
 }

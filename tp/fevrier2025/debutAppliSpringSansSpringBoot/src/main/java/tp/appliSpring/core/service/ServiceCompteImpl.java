@@ -17,8 +17,8 @@ import tp.appliSpring.core.exception.NotFoundException;
 public class ServiceCompteImpl implements ServiceCompte {
 	
 	@Autowired
-	@Qualifier("simu")
-	//@Qualifier("jpa")
+	//@Qualifier("simu")
+	@Qualifier("jpa")
 	private DaoCompte daoCompte;
 
 	@Transactional()
@@ -70,4 +70,5 @@ public class ServiceCompteImpl implements ServiceCompte {
 		return null;
 	}
 
+	
 }
