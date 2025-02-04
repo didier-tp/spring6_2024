@@ -30,6 +30,15 @@ public class DaoCompteJdbc /*extends JdbcDaoSupport*/ implements DaoCompte {
 	
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	
+	public Compte update(Compte compte) {
+		SqlParameterSource parameters = new MapSqlParameterSource()
+				.addValue("numero", compte.getNumero())
+				.addValue("label", compte.getLabel())
+				.addValue("solde", compte.getSolde());
+				namedParameterJdbcTemplate.update(UPDATE_SQL, parameters);
+		return compte;
+	}
 
 	@Override
 	public Compte findById(Long numCpt) {
@@ -71,14 +80,7 @@ public class DaoCompteJdbc /*extends JdbcDaoSupport*/ implements DaoCompte {
 		return compte;
 	}
 	
-	public Compte update(Compte compte) {
-		SqlParameterSource parameters = new MapSqlParameterSource()
-				.addValue("numero", compte.getNumero())
-				.addValue("label", compte.getLabel())
-				.addValue("solde", compte.getSolde());
-				namedParameterJdbcTemplate.update(UPDATE_SQL, parameters);
-		return compte;
-	}
+	
 
 	@Override
 	public List<Compte> findAll() {
