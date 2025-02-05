@@ -2,10 +2,19 @@ package tp.appliSpring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class AppliSpringApplication {
+public class AppliSpringApplication extends SpringBootServletInitializer {
 	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		builder.profiles("dev","reInit");  //setting profiles here
+		// or with system properties of the server (ex: tomcat)
+		return builder.sources(AppliSpringApplication.class);
+	}
+
 	public static void initProfiles() {
 		//java .... -Dspring.profiles.active=reInit,dev
 		String profilsActifs  = System.getProperty("spring.profiles.active");
