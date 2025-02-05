@@ -31,6 +31,7 @@ public interface DaoCompte extends JpaRepository<Compte,Long>{
 	//findBy+Solde+GreaterThanEqual avec Compte.solde qui existe
 	List<Compte> findBySoldeGreaterThanEqual(double soldeMini);
 	
+	//Projection JPA/Hibernate dans classe quelconque (ici IdValue qui peut être un DTO)
 	@Query("SELECT new tp.appliSpring.core.entity.temp.IdValue(c.numero , c.label) FROM Compte c")
 	List<IdValue> findAllIdValue();
 }

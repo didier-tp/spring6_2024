@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.MethodMode;
 import org.springframework.test.context.ActiveProfiles;
 
 import tp.appliSpring.AppliSpringApplication;
@@ -30,7 +32,7 @@ public class TestServiceCompte {
 	
 	@Test
 	public void testRechercherCompte() {
-		Compte cptA = new Compte(null,"compteA",100.0);
+		Compte cptA = new Compte(null,"compteA",1200.0);
 		Compte cptA_sauvegarde = serviceCompte.sauvegarderCompte(cptA);
 		
         Operation op1 = new Operation(null,"achat 1" , -5.0 , new Date());
@@ -51,6 +53,7 @@ public class TestServiceCompte {
 	}
 	
 	@Test
+	//@DirtiesContext(methodMode = MethodMode.BEFORE_METHOD)
 	public void testRechercherComptesAvecSoldeMini() {
 		serviceCompte.sauvegarderCompte(new Compte(null,"compteA1",1000.0));
 		serviceCompte.sauvegarderCompte(new Compte(null,"compteA2",100.0));
@@ -62,6 +65,7 @@ public class TestServiceCompte {
 		
 		
 		//Assert.assertTrue(.) en JUnit4
+		//Assertions.assertTrue(listeCpt.size()==2);//avec DirtiesContext
 		Assertions.assertTrue(listeCpt.size()>=2);//en JUnit5"
         //...
 	}
