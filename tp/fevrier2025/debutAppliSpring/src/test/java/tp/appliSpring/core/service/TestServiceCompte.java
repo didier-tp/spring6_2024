@@ -1,6 +1,7 @@
 package tp.appliSpring.core.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -46,6 +47,22 @@ public class TestServiceCompte {
 		
 		//Assert.assertTrue(.) en JUnit4
 		Assertions.assertTrue(cptA_relu.getLabel().equals("compteA"));//en JUnit5"
+        //...
+	}
+	
+	@Test
+	public void testRechercherComptesAvecSoldeMini() {
+		serviceCompte.sauvegarderCompte(new Compte(null,"compteA1",1000.0));
+		serviceCompte.sauvegarderCompte(new Compte(null,"compteA2",100.0));
+		serviceCompte.sauvegarderCompte(new Compte(null,"compteA3",1500.0));
+		serviceCompte.sauvegarderCompte(new Compte(null,"compteA4",800.0));
+		
+		List<Compte> listeCpt = serviceCompte.rechercherComptesAvecSoldeMini(1000.0);
+		logger.debug("listeCpt (solde>=1000) ="+listeCpt);
+		
+		
+		//Assert.assertTrue(.) en JUnit4
+		Assertions.assertTrue(listeCpt.size()>=2);//en JUnit5"
         //...
 	}
 	

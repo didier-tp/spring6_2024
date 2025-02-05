@@ -3,8 +3,10 @@ package tp.appliSpring.core.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import tp.appliSpring.core.entity.Compte;
+import tp.appliSpring.core.entity.temp.IdValue;
 
 /*
  NB: avec l'extension spring-data , une classe d'implémentation de cette interface
@@ -28,4 +30,7 @@ public interface DaoCompte extends JpaRepository<Compte,Long>{
 	//car on a respecter la convention de nom de methode
 	//findBy+Solde+GreaterThanEqual avec Compte.solde qui existe
 	List<Compte> findBySoldeGreaterThanEqual(double soldeMini);
+	
+	@Query("SELECT new tp.appliSpring.core.entity.temp.IdValue(c.numero , c.label) FROM Compte c")
+	List<IdValue> findAllIdValue();
 }
