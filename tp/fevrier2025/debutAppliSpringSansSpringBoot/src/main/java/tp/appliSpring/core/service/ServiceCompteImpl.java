@@ -9,11 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tp.appliSpring.core.dao.DaoCompte;
 import tp.appliSpring.core.entity.Compte;
+import tp.appliSpring.core.entity.Operation;
 import tp.appliSpring.core.exception.BankException;
 import tp.appliSpring.core.exception.NotFoundException;
 
 @Service //@Component de type Service
-//@Transactional
+@Transactional
 public class ServiceCompteImpl implements ServiceCompte {
 	
 	@Autowired
@@ -21,7 +22,7 @@ public class ServiceCompteImpl implements ServiceCompte {
 	@Qualifier("jpa")
 	private DaoCompte daoCompte;
 
-	@Transactional()
+	//@Transactional()
 	//@Transactional(propagation = Propagation.REQUIRED)par défaut
 	public void transferer(double montant, long numCptDeb, long numCptCred)throws BankException {
 		try {
@@ -38,7 +39,7 @@ public class ServiceCompteImpl implements ServiceCompte {
 	}
 
 	@Override
-	@Transactional
+	//@Transactional
 	public Compte rechercherCompte(long numCpt)throws NotFoundException {
 		try {
 			//Compte cpt  =daoCompte.findById(numCpt);

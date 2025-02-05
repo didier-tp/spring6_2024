@@ -26,26 +26,26 @@ public class TestServiceCompte {
 	@Autowired
 	private ServiceCompte serviceCompte; //à tester
 	
-	//@Autowired
+	@Autowired
 	private DaoOperation daoOperation; //à tester
 	
-	//@Test
+	@Test
 	public void testRechercherCompte() {
 		Compte cptA = new Compte(null,"compteA",100.0);
 		Compte cptA_sauvegarde = serviceCompte.sauvegarderCompte(cptA);
 		
         Operation op1 = new Operation(null,"achat 1" , -5.0 , new Date());
-        //op1.setCompte(cptA_sauvegarde); daoOperation.save(op1);
+        op1.setCompte(cptA_sauvegarde); daoOperation.save(op1);
 		Operation op2 = new Operation(null,"achat 2" , -6.0 , new Date());
-		//op2.setCompte(cptA_sauvegarde);daoOperation.save(op2);
+		op2.setCompte(cptA_sauvegarde);daoOperation.save(op2);
 		
 		Compte cptA_relu = serviceCompte.rechercherCompte(cptA_sauvegarde.getNumero());
 		logger.debug("cptA_relu="+cptA_relu);
-		/*
+		
 		for(Operation op : cptA_relu.getOperations()) {
 			logger.debug("\t op="+op);
 		}
-		*/
+		
 		//Assert.assertTrue(.) en JUnit4
 		Assertions.assertTrue(cptA_relu.getLabel().equals("compteA"));//en JUnit5"
         //...
@@ -99,7 +99,7 @@ public class TestServiceCompte {
 		double soldeA_apres = compteAReluApresVirement.getSolde();
 		double soldeB_apres = compteBReluApresVirement.getSolde();
 		logger.debug("apres mauvais virement, soldeA_apres="+soldeA_apres + " et soldeB_apres=" + soldeB_apres);
-		//verifier -50 et +50 sur les différences de soldes sur A et B
+		//verifier -0 et +0 sur les différences de soldes sur A et B
 		Assertions.assertEquals(soldeA_avant , soldeA_apres,0.000001);
 		Assertions.assertEquals(soldeB_avant , soldeB_apres,0.000001);
 		
