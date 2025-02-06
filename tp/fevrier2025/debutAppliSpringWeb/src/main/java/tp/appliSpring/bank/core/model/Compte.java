@@ -1,6 +1,7 @@
 package tp.appliSpring.bank.core.model;
 
 import tp.appliSpring.generic.model.WithId;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ public class Compte implements WithId<Long> {
 
     private String label;
 
+    @Min(value = 0 , message = "le solde initial du compte doit etre positif") //TP , à mieux faire en banque
     private Double solde;
 
     public Compte(Long numero, String label, Double solde) {
