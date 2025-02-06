@@ -10,9 +10,9 @@ public class AppliSpringApplication extends SpringBootServletInitializer {
 	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		builder.profiles("dev","reInit");  //setting profiles here
+		return builder.profiles("dev","reInit") //setting profiles here
 		// or with system properties of the server (ex: tomcat)
-		return builder.sources(AppliSpringApplication.class);
+		      .sources(AppliSpringApplication.class);
 	}
 
 	public static void initProfiles() {

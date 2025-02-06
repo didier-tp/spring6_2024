@@ -15,20 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tp.appliSpring.bank.core.model.Compte;
 import tp.appliSpring.bank.core.service.ServiceCompte;
+import tp.appliSpring.bank.persistence.entity.CompteEntity;
+import tp.appliSpring.bank.persistence.repository.CompteRepository;
 
 @RestController // @Component de type controller d'api rest
 @RequestMapping(value = "/rest/api-bank/v1/comptes", headers = "Accept=application/json")
 public class CompteRestCtrl {
 
 	/*
-	 * //Code potentiellement en erreur à ne pas reproduire:
-	 * 
-	 * @Autowired private CompteRepository compteRepository;
-	 * 
-	 * @GetMapping("/{id}") public CompteEntity
-	 * badVersionWithoutDtoForGetCompteById(@PathVariable("id") long numeroCompte) {
-	 * return compteRepository.findById( numeroCompte).get(); //NB: plantage si pas
-	 * de @JsonIgnore et généralement sans_DTO = très mauvaise pratique }
+	  //Code potentiellement en erreur à ne pas reproduire:
+	  
+	  @Autowired private CompteRepository compteRepository;
+	  
+	  @GetMapping("/{id}") 
+	  public CompteEntity
+	  badVersionWithoutDtoForGetCompteById(@PathVariable("id") long numeroCompte) {
+	  return compteRepository.findById( numeroCompte).get(); //NB: plantage si pasde @JsonIgnore et généralement sans_DTO = très mauvaise pratique
+	   }
 	 */
 
 	private ServiceCompte serviceCompte;
@@ -38,6 +41,7 @@ public class CompteRestCtrl {
 		this.serviceCompte = serviceCompte;
 	}
 
+	
 	// Get By ID
 	// V1 avec DTO et V3 (avec automatisme ExceptionHandler)
 	// declencher en mode GET avec
@@ -65,6 +69,7 @@ public class CompteRestCtrl {
 		else
 			return serviceCompte.searchByIdWithMinimumBalance(soldeMini);
 	}
+	
 
 	// appelé en mode POST
 	// avec url = http://localhost:8181/appliSpring/rest/api-bank/v1/comptes
