@@ -1,19 +1,21 @@
 package tp.appliSpring.bank.core.service.direct;
 
-import tp.appliSpring.generic.service.direct.GenericServiceDirectImpl;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tp.appliSpring.generic.converter.GenericMapper;
-import tp.appliSpring.bank.core.exception.BankException;
-import tp.appliSpring.bank.core.service.ServiceCompte;
-import tp.appliSpring.bank.persistence.repository.CompteRepository;
-import tp.appliSpring.bank.persistence.entity.CompteEntity;
-import tp.appliSpring.bank.core.model.Compte;
 
-import java.util.List;
+import tp.appliSpring.bank.core.exception.BankException;
+import tp.appliSpring.bank.core.model.Compte;
+import tp.appliSpring.bank.core.service.ServiceCompte;
+import tp.appliSpring.bank.persistence.entity.CompteEntity;
+import tp.appliSpring.bank.persistence.repository.CompteRepository;
+import tp.appliSpring.generic.converter.GenericMapper;
+import tp.appliSpring.generic.exception.ConflictException;
+import tp.appliSpring.generic.service.direct.GenericServiceDirectImpl;
 
 /*
 implementation en s'appuyant directement sur le dao/repository
@@ -58,5 +60,14 @@ public class ServiceCompteDirectImpl extends GenericServiceDirectImpl<Compte,Com
 		List<CompteEntity> compteEntityList = daoCompte.findBySoldeGreaterThanEqual(soldeMini);
 		return GenericMapper.MAPPER.map(compteEntityList,Compte.class);
 	}
+
+	@Override
+	public Compte create(Compte obj) {
+		if(obj.getNumero()!= null && daoCompte.existsById(obj.getNumero()))
+			throw new ConflictException("compte deja existant avec id=" + obj.getNumero());
+		return super.create(obj);
+	}
+	
+	
 
 }
