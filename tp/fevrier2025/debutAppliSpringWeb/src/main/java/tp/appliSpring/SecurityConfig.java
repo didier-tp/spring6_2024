@@ -16,24 +16,24 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity()//pour que le test @PreAuthorize("hasRole('ADMIN')") puisse bien fonctionner
 public class SecurityConfig {
 
-	/*
+	
 	@Bean
 	@Order(1)
 	protected SecurityFilterChain restFilterChain(HttpSecurity http) throws Exception {
 		return http.securityMatcher("/rest/**")
 		    .authorizeHttpRequests(
-				auth -> auth.requestMatchers(HttpMethod.GET,"/......").permitAll()
-				            .requestMatchers("/.....").authenticated()
+				auth -> auth.requestMatchers(HttpMethod.GET,"/rest/api-bank/v1/comptes/**").permitAll()
+				            .requestMatchers("/rest/api-bank/v1/comptes/**").authenticated()
 				)
 		    .cors( Customizer.withDefaults())
 			.csrf( csrf -> csrf.disable() ) //important to get 401/Unauthorized
-		    .sessionManagement(sM ->
-		    		sM.sessionCreationPolicy(.......))  //important to get 401/Unauthorized
-		    .oauth2ResourceServer(.....)
+			.sessionManagement(sM ->
+					sM.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+					.oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()))
 		    //with spring.security.oauth2.resourceserver.jwt.issuer-uri=https://www.d-defrance.fr/keycloak/realms/sandboxrealm
 		  .build();
 	}
-	*/
+	
 		
 	@Bean
 	@Order(3)
