@@ -1,0 +1,67 @@
+pipeline {
+    //agent any
+    //agent { label 'maven' }
+    agent { label '! without-maven' }
+	environment{
+	    //NB: credential_dockerhub_didierdefrance69 is ID of credential
+		//prepared in "Admin Jenkins / Credentials / system /global"
+		dockerhub_credential_id='credential_dockerhub_didierdefrance69'
+		
+		//dockerRegistry is dockerhub
+		docker_registry= 'https://registry.hub.docker.com'
+		
+		docker_image_name='didierdefrance69/appli_spring:1'
+	}
+    stages {
+	    //stage('from_git') {
+        //    steps {
+        //          git url : 'https://github.com/didier-tp/spring6_2024' , branch : 'main'
+        //    }
+        //}
+        stage('mvn_clean_package_skip_test') {
+            steps {
+			script {
+              dir('tp/appliSpringV3') {
+					echo 'mvn clean package '
+					sh 'mvn clean package -Dmaven.test.skip=true'
+					}
+				}
+            }
+        }
+		stage('mvn test') {
+            steps {
+			script {
+              dir('tp/appliSpringV3') {
+					echo 'mvn test'
+					sh 'mvn test'
+					}
+				}
+            }
+        }
+		stage('build_docker_image') {
+			steps {
+            //sh 'docker build -t didierdefrance69/appli_spring:1 .'
+            //with Pipeline docker plugin:
+			script{
+			   dir('tp/appliSpringV3') {
+				    echo "docker_image_name=" + docker_image_name
+					//dockerImage = docker.build(docker_image_name)
+				    }
+				  }
+			   }
+        }
+		stage('push_docker_image') {
+            steps {
+			  script{
+			   dir('tp/appliSpringV3') {
+					echo "docker_registry=" + docker_registry
+					echo "dockerhub_credential_id=" +dockerhub_credential_id
+					//docker.withRegistry( docker_registry, dockerhub_credential_id ) { 
+					//     dockerImage.push() 
+					//	 }
+					  }
+					}
+				  }
+		}
+    }
+}
