@@ -10,7 +10,7 @@ pipeline {
 		//dockerRegistry is dockerhub
 		docker_registry= 'https://registry.hub.docker.com'
 		
-		docker_image_name='didierdefrance69/appli_spring:1'
+		docker_image_name='didierdefrance69/appli_spring_v3:1'
 	}
     stages {
 	    //stage('from_git') {
@@ -30,7 +30,7 @@ pipeline {
         }
 		stage('mvn test') {
             steps {
-			script {
+			 script {
               dir('tp/appliSpringV3') {
 					echo 'mvn test'
 					sh 'mvn test'
@@ -40,12 +40,10 @@ pipeline {
         }
 		stage('build_docker_image') {
 			steps {
-            //sh 'docker build -t didierdefrance69/appli_spring:1 .'
-            //with Pipeline docker plugin:
-			script{
+			 script{
 			   dir('tp/appliSpringV3') {
 				    echo "docker_image_name=" + docker_image_name
-					//dockerImage = docker.build(docker_image_name)
+					dockerImage = docker.build(docker_image_name)
 				    }
 				  }
 			   }
