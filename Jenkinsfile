@@ -43,7 +43,7 @@ pipeline {
 			 script{
 			   dir('tp/appliSpringV3') {
 				    echo "docker_image_name=" + docker_image_name
-					dockerImage = docker.build(docker_image_name)
+					//dockerImage = docker.build(docker_image_name)
 				    }
 				  }
 			   }
