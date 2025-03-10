@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-@Component
-@Aspect
+//@Component
+//@Aspect
+@Order(2) //n+1 order = inner/after order called , n-1 order : outer/before called
 //@Order(1) //n+1 order = inner/after order called , n-1 order : outer/before called
-@Order(2)   //n+1 order = inner/after order called , n-1 order : outer/before called
 @Profile("perf")
-public class MyPerfLogAspect {
+public class MyBasicLogAspect {
 
 	@Pointcut("execution(* tp.appliSpring.exemple.*.*(..))")
 	public void surPackageExemple() {}
@@ -35,13 +35,9 @@ public class MyPerfLogAspect {
 	//@Around("surPackageExemple() && annotAffPointcut()")
 	//@Around("annotLogExecutionTimePointcut()")
 	@Around("surPackageExemple() || surPackageService()")
-	public Object doPerfLog(ProceedingJoinPoint pjp) throws Throwable {
-		System.out.println("<< trace == debut == " + pjp.getSignature().toLongString() + " <<");
-		long td = System.nanoTime();
+	public Object doBasicLog(ProceedingJoinPoint pjp) throws Throwable {
 		Object objRes = pjp.proceed();
-		long tf = System.nanoTime();
-		System.out.println(
-				">> trace == fin == " + pjp.getSignature().toShortString() + " [" + (tf - td) / 1000000.0 + " ms] >>");
+		System.out.println(	">> basic-log : " + pjp.getSignature().toShortString() );
 		return objRes;
 	}
 	
