@@ -67,11 +67,24 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- NB: lombok nécessite idéalement un plugin intelliJ ou plugin eclipse
+		pour que les getter/setter générés soient bien vus par l'IDE
+		IntelliJ installe automatiquement le pluginLombok
+		Avec eclipse , il faut intaller explicitement le plugin lombok
+		via menu Help / intall new sofware / add 
+		    https://projectlombok.org/p2 
+			choisir plugin_lombok et accepter install (avec dépendances , licences, ....)
+			rédémarrer eclipse 
+		    project clean
+		-->
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
