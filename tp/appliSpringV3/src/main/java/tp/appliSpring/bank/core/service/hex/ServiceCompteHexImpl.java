@@ -54,8 +54,17 @@ public class ServiceCompteHexImpl extends GenericServiceHexImpl<Compte,CompteEnt
 
 
 	@Override
-	public List<Compte> searchByIdWithMinimumBalance(double soldeMini) {
+	public List<Compte> searchWithMinimumBalance(double soldeMini) {
 		return compteLoader.findBySoldeMini(soldeMini);
 	}
 
+	@Override
+	public List<Compte> searchCustomerAccounts(Long numClient) {
+		return List.of();
+	}
+
+	@Override
+	public void fixerProprietaireCompte(long numCompte, long numClient) {
+
+	}
 }

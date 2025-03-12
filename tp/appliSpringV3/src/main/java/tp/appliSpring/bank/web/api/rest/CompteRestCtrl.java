@@ -97,7 +97,7 @@ public class CompteRestCtrl {
 	public List<Compte> getComptesByCriteria(@RequestParam(value = "soldeMini", required = false) Double soldeMini) {
 		List<Compte> listeCompte = null; //new ArrayList<>();
 		if (soldeMini != null)
-			listeCompte = serviceCompte.searchByIdWithMinimumBalance(soldeMini);
+			listeCompte = serviceCompte.searchWithMinimumBalance(soldeMini);
 		if (soldeMini == null)
 			listeCompte = serviceCompte.searchAll();
 		return listeCompte;

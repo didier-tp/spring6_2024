@@ -37,14 +37,17 @@ public class ReInitDefaultDataSet {
 				                             cptA.getNumero());
 		Compte cptB = serviceCompte.create(new Compte(null,"compteB",200.0));
 
-		Client client1 = new Client(null, "alex", "Therieur", "12 rue Elle 75001 Paris", "email1");
-		serviceClient.create(client1);
+		Client client1 = serviceClient.create(new Client(null, "alex", "Therieur", "12 rue Elle 75001 Paris", "email1","pwd"));
+		serviceCompte.fixerProprietaireCompte(cptA.getNumero(),client1.getNumero());
+		serviceCompte.fixerProprietaireCompte(cptB.getNumero(),client1.getNumero());
 
 		Compte cptC = serviceCompte.create(new Compte(null,"compteC",20.0));
 		Compte cptD = serviceCompte.create(new Compte(null,"compteD",30.0));
 
-		Client client2 = new Client(null, "axelle", "Aire", "13 rue Elle 75001 Paris", "email2");
-		serviceClient.create(client2);
+		Client client2 = serviceClient.create(new Client(null, "axelle", "Aire", "13 rue Elle 75001 Paris", "email2","pwd"));
+		serviceCompte.fixerProprietaireCompte(cptC.getNumero(),client2.getNumero());
+		serviceCompte.fixerProprietaireCompte(cptD.getNumero(),client2.getNumero());
+
 
 	}
 

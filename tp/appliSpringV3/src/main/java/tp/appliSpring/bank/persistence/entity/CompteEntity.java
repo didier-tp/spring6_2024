@@ -27,7 +27,10 @@ public class CompteEntity {
     @OneToMany(mappedBy = "compte" , fetch = FetchType.LAZY ,cascade = CascadeType.REMOVE)
     //@JsonIgnore
     private List<OperationEntity> operations = new ArrayList<>(); //+get/set
-    
+
+	@ManyToMany(mappedBy = "comptes" , cascade = CascadeType.DETACH) // coté secondaire avec mappedBy="nomJavaRelationInverse"
+	private List<ClientEntity> clients = new ArrayList<>();
+
   //+get/set , constructeur , toString()
     
 	@Override
@@ -86,6 +89,13 @@ public class CompteEntity {
 	public void setOperations(List<OperationEntity> operations) {
 		this.operations = operations;
 	}
-	
+
+	public List<ClientEntity> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<ClientEntity> clients) {
+		this.clients = clients;
+	}
 	
 }

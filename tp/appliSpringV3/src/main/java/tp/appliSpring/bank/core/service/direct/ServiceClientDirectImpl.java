@@ -3,6 +3,7 @@ package tp.appliSpring.bank.core.service.direct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tp.appliSpring.bank.core.exception.BankException;
@@ -29,11 +30,19 @@ public class ServiceClientDirectImpl extends GenericServiceDirectImpl<Client,Cli
 
 	private ClientRepository daoClient;
 
+	private PasswordEncoder passwordEncoder;
+
+	@Override
+	public Client create(Client obj) {
+		obj.setPassword(passwordEncoder.encode(obj.getPassword()));
+		return super.create(obj);
+	}
 
 	@Autowired
-	public ServiceClientDirectImpl(ClientRepository daoClient){
+	public ServiceClientDirectImpl(ClientRepository daoClient,PasswordEncoder passwordEncoder){
 		super(Client.class, ClientEntity.class,daoClient);
 		this.daoClient=daoClient;
+		this.passwordEncoder=passwordEncoder;
 	}
 
 
