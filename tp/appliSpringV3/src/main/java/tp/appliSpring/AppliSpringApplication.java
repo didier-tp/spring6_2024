@@ -39,4 +39,14 @@ public class AppliSpringApplication {
 	}
 
 
+	//pour test temporaire de @ConditionalOnMissingBean()
+	//sur xy.MySecurityConfig du sous projet mysecurity-autoconfigure :
+	/*
+	@Bean(name="permitListAsString")
+	public String monBeanPrioritaire(){
+		return "monChemin";
+	}
+    */
+
+
 }

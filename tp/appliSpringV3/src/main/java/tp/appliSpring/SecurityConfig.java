@@ -12,18 +12,28 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+//import xy.MySecurityConfig;
 
 @Configuration
 @Profile("withSecurity")
+//@Import(MySecurityConfig.class)//import nécessaire si dans package xy plutot que tp.appliSpring
+//plus besoin de @Import explicite si auto-configuration dans sous projet mysecurity-autoconfigure
 @EnableMethodSecurity()//pour que le test @PreAuthorize("hasRole('ADMIN')") puisse bien fonctionner
 public class SecurityConfig {
+
+	@Autowired(required = false)
+	@Qualifier("permitListAsString")
+	private String permitListAsString;
 
 	@Bean
 	@Order(1)
 	protected SecurityFilterChain restFilterChain(HttpSecurity http) throws Exception {
+
+		System.out.println("permitListAsString="+permitListAsString);//simple affichage
+		//avec du temps , on se sert de ça pour vraiment configurer la vrai securité plus bas
+
+
 		return http.securityMatcher("/rest/**")
 		    .authorizeHttpRequests(
 				auth -> auth/*.requestMatchers("/rest/api-login/v1/public/login").permitAll()*/
