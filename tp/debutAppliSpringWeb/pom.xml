@@ -18,6 +18,15 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+
+		<!-- partie optionnelle (pour dernier Tp) -->
+		<dependency>
+			<groupId>org.example</groupId>
+			<artifactId>mysecurity-autoconfigure</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<optional>true</optional>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -25,6 +34,16 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- partie secondaire thymeleaf -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
 
 		<dependency>

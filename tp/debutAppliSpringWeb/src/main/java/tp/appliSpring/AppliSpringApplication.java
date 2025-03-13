@@ -2,6 +2,9 @@ package tp.appliSpring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class AppliSpringApplication {
@@ -28,5 +31,21 @@ public class AppliSpringApplication {
 		//url de l'appli
 		System.out.println("http://localhost:8181/appliSpring");
 	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+		//or new BCryptPasswordEncoder(int strength) with strength between 4 and 31
+	}
+
+
+	//pour test temporaire de @ConditionalOnMissingBean()
+	//sur xy.MySecurityConfig du sous projet mysecurity-autoconfigure :
+	/*
+	@Bean(name="permitListAsString")
+	public String monBeanPrioritaire(){
+		return "monChemin";
+	}
+    */
 
 }

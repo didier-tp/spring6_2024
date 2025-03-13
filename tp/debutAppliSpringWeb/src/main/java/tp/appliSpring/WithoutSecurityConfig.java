@@ -10,16 +10,18 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @Profile("!withSecurity")
 public class WithoutSecurityConfig {
-	
+
 	@Bean
 	protected SecurityFilterChain withoutSecurityFilterChain(HttpSecurity http) throws Exception {
 		return http.securityMatcher("/**")
-		    .authorizeHttpRequests(
-				auth -> auth.requestMatchers("/**").permitAll()
+				.authorizeHttpRequests(
+						auth -> auth.requestMatchers("/**").permitAll()
+								.requestMatchers("/h2-console/**").permitAll()
 				)
-		  .cors( Customizer.withDefaults() )
-		  .csrf( csrf -> csrf.disable() )
-		  .build();
+				.cors( Customizer.withDefaults() )
+				.headers(headers -> headers.frameOptions().sameOrigin())//pour h2-console
+				.csrf( csrf -> csrf.disable() )
+				.build();
 	}
 
 }
