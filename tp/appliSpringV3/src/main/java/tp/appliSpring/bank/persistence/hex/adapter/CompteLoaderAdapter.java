@@ -43,5 +43,10 @@ public class CompteLoaderAdapter
         }else return Optional.empty();
     }
 
+    @Override
+    public List<Compte> findByCustomerNumber(long customerNum) {
+        List<CompteEntity> compteEntityList = daoCompte.findByClientsNumero(customerNum);
+        return GenericMapper.MAPPER.map(compteEntityList,Compte.class);
+    }
 }
 

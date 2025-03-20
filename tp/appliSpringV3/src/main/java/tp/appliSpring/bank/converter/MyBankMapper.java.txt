@@ -1,0 +1,54 @@
+package tp.appliSpring.bank.converter;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+import tp.appliSpring.bank.core.model.Client;
+import tp.appliSpring.bank.core.model.Compte;
+import tp.appliSpring.bank.persistence.entity.ClientEntity;
+import tp.appliSpring.bank.persistence.entity.CompteEntity;
+
+import java.util.List;
+
+//@Mapper // MyMapper.INSTANCE...
+@Mapper(componentModel = "spring") //for @Autowired
+public interface MyBankMapper {
+
+    MyBankMapper INSTANCE = Mappers.getMapper( MyBankMapper.class );
+
+    //@Mapping(target="firstname", source="prenom")
+    //@Mapping(target="lastname", source="nom")
+
+    //Client clientEntityToClient(ClientEntity source);
+    Client fromEntity(ClientEntity source);
+
+    //ClientEntity clientToClientEntity(Client source);
+    ClientEntity fromModel(Client source);
+
+    //Compte compteEntityToCompte(CompteEntity source);
+    Compte fromEntity(CompteEntity source);
+    List<Compte> fromEntities(List<CompteEntity> source);
+
+    //CompteEntity compteToCompteEntity(Compte source);
+    CompteEntity fromModel(Compte source);
+    List<CompteEntity> fromModels(List<Compte> source);
+
+
+}
+
+/*
+after mvn clean package :
+------------------------
+target/generated-sources/annotations/
+   tp.appliSpring.bank.converter.
+
+
+------
+Usage :  MyBankMapper.INSTANCE.fromEntity(...)
+         MyBankMapper.INSTANCE.fromModel(...)
+ou bien
+@Autowired
+MyBankMapper myBankMapper;
+et
+         myBankMapper.fromEntity(...)
+         myBankMapper.fromModel(...)
+ */

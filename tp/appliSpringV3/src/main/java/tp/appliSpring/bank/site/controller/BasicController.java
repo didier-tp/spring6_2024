@@ -5,10 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import tp.appliSpring.bank.core.model.Client;
+import tp.appliSpring.bank.site.form.InscriptionForm;
 
 
 @Controller
 @RequestMapping("/site/basic")
+//@SessionAttributes({"x" ,"racine" })
 public class BasicController {
     @RequestMapping("helloWorld")
     public String helloWorld(Model model) {
@@ -29,13 +33,42 @@ public class BasicController {
         return "calcul_tva" ;//.jsp ou .html(thymeleaf)
     }
 
+    @ModelAttribute("x")
+    public Double addDefaultXAttributeInModel() {
+        return 0.0;
+    }
+
+    @ModelAttribute("racine")
+    public Double addDefaultRacineAttributeInModel() {
+        return 0.0;
+    }
+
     @RequestMapping("calculRacineCarree")
     public String calculRacineCarree(Model model,
-                                     @RequestParam(name="x",defaultValue = "0") double x) {
-        double racine=Math.sqrt(x);
-        model.addAttribute("x", x);
-        model.addAttribute("racine", racine);
+                                     @RequestParam(name="x",required = false) Double x) {
+        if(x!=null) {
+            double racine = Math.sqrt(x);
+            model.addAttribute("x", x);
+            model.addAttribute("racine", racine);
+        }
         return "calcul_racine" ;//.jsp ou .html(thymeleaf)
+    }
+
+    @ModelAttribute("inscriptionF")
+    public InscriptionForm addDefaultInscriptionAttributeInModel() {
+        return new InscriptionForm();
+    }
+    @RequestMapping("toInscription")
+    public String toInscription(Model model) {
+        return "inscription";
+    }
+    @RequestMapping("doInscription")
+    public String doInscription(Model model,
+                                @ModelAttribute InscriptionForm inscriptionForm) {
+        if(inscriptionForm.getSportif()==false)
+            inscriptionForm.setSportPrincipal(null);
+        model.addAttribute("inscriptionF" , inscriptionForm );
+        return "recapInscription";
     }
 
 }

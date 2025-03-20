@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -56,4 +58,9 @@ public class RestResponseEntityExceptionHandler
 	protected ResponseEntity<Object> handleConflict(ConflictException ex) {
 		return buildResponseEntity(new ApiError(HttpStatus.CONFLICT, ex.getMessage()));
 	}*/
+
+	//AuthorizationDeniedException (since spring 6.3) is a subclass of AccessDeniedException
+    //need specific exception handler in security config
+
+
 }

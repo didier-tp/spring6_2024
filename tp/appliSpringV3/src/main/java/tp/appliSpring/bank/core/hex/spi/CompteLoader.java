@@ -10,4 +10,5 @@ public interface CompteLoader extends Loader<Compte,Long> {
     //with .loadById(id,"withOperations" as wishedDetails) impl
 
     List<Compte> findBySoldeMini(double soldeMini);
+    List<Compte> findByCustomerNumber(long customerNum);
 }

@@ -1,4 +1,4 @@
-package tp.appliSpring.bank.site.controller;
+package tp.appliSpring.bank.site.controller.advice;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ControllerAdvice(annotations = Controller.class)
+@ControllerAdvice("tp.appliSpring.bank.site.controller")
 public class ErrorController {
 
     private static Logger logger = LoggerFactory.getLogger(ErrorController.class);

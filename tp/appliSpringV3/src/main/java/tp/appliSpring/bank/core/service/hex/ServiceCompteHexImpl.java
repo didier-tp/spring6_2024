@@ -60,11 +60,11 @@ public class ServiceCompteHexImpl extends GenericServiceHexImpl<Compte,CompteEnt
 
 	@Override
 	public List<Compte> searchCustomerAccounts(Long numClient) {
-		return List.of();
+		return compteLoader.findByCustomerNumber(numClient);
 	}
 
 	@Override
 	public void fixerProprietaireCompte(long numCompte, long numClient) {
-
+        compteSaver.setAccountOwnerNumber(numCompte, numClient);
 	}
 }

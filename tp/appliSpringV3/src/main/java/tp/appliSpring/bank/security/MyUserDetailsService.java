@@ -1,4 +1,4 @@
-package tp.appliSpring.bank.site.security;
+package tp.appliSpring.bank.security;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,9 @@ import tp.appliSpring.bank.core.service.ServiceClient;
 
 
 @Profile("withSecurity")
-@Qualifier("site")
+@Qualifier("local") //used by "/site/..." (SpringMvc & thymeleaf or jsp)
+                    //do not used by /rest/... with oauth2/oidc/keycloak
+                    //used by "/rest/..." and  withoutOAuth2 profile
 @Service()
 public class MyUserDetailsService implements UserDetailsService {
 	Logger logger = LoggerFactory.getLogger(MyUserDetailsService.class);

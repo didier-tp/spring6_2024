@@ -90,15 +90,19 @@ public class CompteRestCtrl {
 	//GET Multiple
 	//http://localhost:8181/appliSpring/rest/api-bank/v1/comptes
 	//http://localhost:8181/appliSpring/rest/api-bank/v1/comptes?soldeMini=50
+	//http://localhost:8181/appliSpring/rest/api-bank/v1/comptes?numClient=1
 	//http://localhost:8181/appliSpring/rest/api-bank/v1/comptes?soldeMini=50&critere2=val2&critere3=val3
 	@GetMapping("")
 	@ApiResponse(responseCode = "200", ref = "#/components/responses/CompteResponse")
 	@ApiResponse(responseCode = "500", ref = "#/components/responses/InternalServerErrorResponse")
-	public List<Compte> getComptesByCriteria(@RequestParam(value = "soldeMini", required = false) Double soldeMini) {
+	public List<Compte> getComptesByCriteria(@RequestParam(value = "soldeMini", required = false) Double soldeMini,
+											 @RequestParam(value = "numClient", required = false) Long numClient) {
 		List<Compte> listeCompte = null; //new ArrayList<>();
 		if (soldeMini != null)
 			listeCompte = serviceCompte.searchWithMinimumBalance(soldeMini);
-		if (soldeMini == null)
+		if (numClient != null)
+			listeCompte = serviceCompte.searchCustomerAccounts(numClient);
+		if (soldeMini == null && numClient == null)
 			listeCompte = serviceCompte.searchAll();
 		return listeCompte;
 	}
@@ -111,6 +115,8 @@ public class CompteRestCtrl {
 	@ApiResponse(responseCode = "201", ref = "#/components/responses/CreatedCompteResponse")
 	@ApiResponse(responseCode = "500", ref = "#/components/responses/InternalServerErrorResponse")
 	@PostMapping("")
+	//@PreAuthorize("hasAuthority('SCOPE_resource.write')")
+	@PreAuthorize("hasAuthority('SCOPE_resource.write') or hasRole('ADMIN') or hasRole('CUSTOMER')")
 	public ResponseEntity<?> postCompte(@Valid @RequestBody CompteToCreate compte) {
 		Compte compteSauvegarde = serviceCompte.create(compte);  //avec numero auto_incrémenté
 		URI location = ServletUriComponentsBuilder
@@ -134,6 +140,8 @@ public class CompteRestCtrl {
 	@ApiResponse(responseCode = "404", ref = "#/components/responses/NotFoundErrorResponse")
 	@ApiResponse(responseCode = "204", ref = "#/components/responses/NoContentResponse")
 	@ApiResponse(responseCode = "500", ref = "#/components/responses/InternalServerErrorResponse")
+	//@PreAuthorize("hasAuthority('SCOPE_resource.write')")
+	@PreAuthorize("hasAuthority('SCOPE_resource.write') or hasRole('ADMIN') or hasRole('CUSTOMER')")
 	public ResponseEntity<Compte> putCompte(@RequestBody Compte compte, @PathVariable("id") Long idToUpdate) {
 		compte.setNumero(idToUpdate);
 		Compte compteMisAJour = serviceCompte.update(compte);
@@ -146,7 +154,8 @@ public class CompteRestCtrl {
 	@ApiResponse(responseCode = "404", ref = "#/components/responses/NotFoundErrorResponse")
 	@ApiResponse(responseCode = "204", ref = "#/components/responses/NoContentResponse")
 	@ApiResponse(responseCode = "500", ref = "#/components/responses/InternalServerErrorResponse")
-	@PreAuthorize("hasAuthority('SCOPE_resource.delete')")
+	//@PreAuthorize("hasAuthority('SCOPE_resource.delete')")
+	@PreAuthorize("hasAuthority('SCOPE_resource.delete') or hasRole('ADMIN') or hasRole('CUSTOMER')")
 	public ResponseEntity<?> deleteCompteById(@PathVariable("id") Long id) {
 		serviceCompte.removeById(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //NO_CONTENT = OK mais sans message

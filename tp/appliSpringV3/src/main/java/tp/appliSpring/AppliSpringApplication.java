@@ -18,6 +18,7 @@ public class AppliSpringApplication {
 		}else {
 			String defaultProfils  = "dev,reInit";
 			//String defaultProfils  = "dev,reInit,withSecurity";
+			//String defaultProfils  = "dev,reInit,withSecurity,withoutOAuth2";
 			//String defaultProfils  = "dev2,reInit";
 			//String defaultProfils  = "prod";
 			System.setProperty("spring.profiles.default", defaultProfils);
@@ -42,7 +43,7 @@ public class AppliSpringApplication {
 	//pour test temporaire de @ConditionalOnMissingBean()
 	//sur xy.MySecurityConfig du sous projet mysecurity-autoconfigure :
 	/*
-	@Bean(name="permitListAsString")
+	@Bean(name="permitAllListAsString")
 	public String monBeanPrioritaire(){
 		return "monChemin";
 	}

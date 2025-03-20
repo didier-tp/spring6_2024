@@ -1,8 +1,7 @@
 package tp.appliSpring.bank.site.controller;
 
-import java.util.List;
-import java.util.UUID;
-
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,15 +9,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
-import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import tp.appliSpring.bank.core.model.Client;
 import tp.appliSpring.bank.core.model.Compte;
 import tp.appliSpring.bank.core.service.ServiceClient;
 import tp.appliSpring.bank.core.service.ServiceCompte;
 import tp.appliSpring.bank.site.form.VirementForm;
+import tp.appliSpring.generic.exception.EntityNotFoundException;
+
+import java.util.List;
 
 
 @Controller
@@ -29,6 +31,8 @@ public class BankController {
 	private ServiceClient serviceClient;
 
 	@Autowired
+	//@Qualifier("direct") //by default @Primary
+	//@Qualifier("hex")
 	private ServiceCompte serviceCompte;
 
 	@Autowired
@@ -52,71 +56,49 @@ public class BankController {
 		return new VirementForm(null,null, null);
 	}
 
-
-	@RequestMapping("/clientLoginWithSecurity")
-	public String clientLoginWithSecurity(Model model) {
-		//avec "navigation hook" géré automatiquement par spring-security (redirection automatique vers login.html , ...)
-
-		//on récupère le username de l'utilisateur loggé avec spring security
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if (auth != null){
-			String username =auth.getName();
-			System.out.println("clientLoginWithSecurity , username="+username);
-			//on considère que username vaut (par convention dans ce Tp) "client_" + numClient
-			//et on extrait donc le numero du client authentifié:
-			Long numClient= Long.parseLong(username.substring(7));
-			System.out.println("clientLoginWithSecurity , numClient="+numClient);
-			if(numClient!=null) {
-				Client client = serviceClient.searchById(numClient);
-				model.addAttribute("client", client);
-
-				model.addAttribute("password", "pwd");//cas d'école (tp)
-				model.addAttribute("message", "successful login");
-				model.addAttribute("numClient", numClient);
-			}
-			return "client_direct_login";
-		}
-		return "welcome";
+	private Long automaticNumClientRetreiveAfterSpringSecurityLogin(){
+		Long numCli = null;
+        //on récupère le username de l'utilisateur loggé avec spring security
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            if (auth != null){
+                String username =auth.getName();
+                System.out.println("client WithSecurity , username="+username);
+                //on considère que username vaut (par convention dans ce Tp) "client_" + numClient
+                //et on extrait donc le numero du client authentifié:
+                Long numClient= Long.parseLong(username.substring(7));
+                System.out.println("client WithSecurity , numClient="+numClient);
+                numCli=numClient;
+            }
+        } catch (Exception e) {
+			System.err.println("automaticNumClientRetreiveAfterSpringSecurityLogin: " + e.getMessage());
+        }
+        return numCli;
 	}
 
-	//direct , without spring security
-	@RequestMapping("/clientLoginDirect")
+	@RequestMapping("/espace_client")
 	 public String clientLogin(Model model,
-			 @RequestParam(name="numClient", required = false)  Long numClient,
-			 @RequestParam(name="password", required = false)  String password) {
-		System.out.println("/site/compte/clientLoginDirect with numClient="+numClient + " and tempPassword=" + password);
+			 @RequestParam(name="numClient", required = false)  Long numClient) {
+		System.out.println("/site/bank/espace_client with numClient="+numClient );
 		String message="";
 		if(numClient==null )
+			numClient = automaticNumClientRetreiveAfterSpringSecurityLogin();
+		if(numClient==null )
 			message="numClient is required";
-		else {
-			if(password==null || password.isEmpty())
-				message="tempPassword is required";
-			/*
-			else {
-				if(!password.equals("pwd")) {
-					message="wrong tempPassword";
-				}
-				else {
-					message="successful login";
-				}
-			}*/
-		}
 		if(numClient!=null) {
-			Client client = serviceClient.searchById(numClient);
-			String cryptedPwd = client.getPassword();
-			System.out.println("/site/compte/clientLoginDirect: cryptedPwd="+cryptedPwd);
-			if(passwordEncoder.matches(password,cryptedPwd)){
-				message="successful login";
-				model.addAttribute("client", client);
-			}else{
-				message="wrong password";
-			}
-		}
+            try {
+                Client client = serviceClient.searchById(numClient);
+                model.addAttribute("client", client);
+                String cryptedPwd = client.getPassword();
+                System.out.println("/site/bank/espace_client: cryptedPwd="+cryptedPwd);
+            } catch (EntityNotFoundException e) {
+                message=e.getMessage();
+            }
+        }
 	    
 		model.addAttribute("message", message);
 		model.addAttribute("numClient", numClient);
-		model.addAttribute("password", password);
-	    return "client_direct_login"; //aiguiller sur la vue "client_direct_login"
+	    return "espace_client_bank"; //aiguiller sur la vue "espace_client_bank"
 	 }
 
 	@RequestMapping("comptesDuClient")

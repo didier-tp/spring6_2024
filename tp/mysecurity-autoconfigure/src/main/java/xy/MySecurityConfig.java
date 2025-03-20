@@ -2,28 +2,41 @@
 package xy;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import xy.properties.SecurityProperties;
 
 @Configuration
-@ConfigurationPropertiesScan("xy.properties")
+@Import(MySecurityAreaConfig.class)
 public class MySecurityConfig {
 
-    @Autowired(required = false)
-    public SecurityProperties securityProperties;
+    @Autowired @Qualifier("permitAllListAsString")
+    private String permitAllListAsString;
 
-    @Bean(name="permitListAsString")
-    @ConditionalOnMissingBean(name="permitListAsString")
-    public String permitListAsString(){
-        System.out.println("autoconfig");
-        if(securityProperties!=null && securityProperties.getArea()!=null) {
-            return securityProperties.getArea().getPermitList();
-        }else {
-            return ""; //par défaut
-        }
+    @Autowired @Qualifier("permitGetListAsString")
+    private String permitGetListAsString;
+
+    @Autowired @Qualifier("authListAsString")
+    private String authListAsString;
+
+    static String[] asStringArray(String pathListWithSeparator){
+        if(pathListWithSeparator==null || pathListWithSeparator.isEmpty())
+            return new String[0];
+        return pathListWithSeparator.split(";");
+    }
+
+    @Bean(name="myPermissionConfigurer")
+    @ConditionalOnMissingBean(name="myPermissionConfigurer")
+    public MyPermissionConfigurer myDefaultPermissionConfigurer(){
+        return new MyDefaultPermissionConfigurer(
+                asStringArray(permitAllListAsString),
+                asStringArray(permitGetListAsString),
+                asStringArray(authListAsString)
+        );
     }
 
 }
