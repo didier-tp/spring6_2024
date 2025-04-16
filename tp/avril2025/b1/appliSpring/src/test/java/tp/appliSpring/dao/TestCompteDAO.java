@@ -3,10 +3,12 @@ package tp.appliSpring.dao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import tp.appliSpring.entity.Compte;
 
 @SpringBootTest
+@ActiveProfiles("dev")//pour prendre en compte application-dev.properties
 public class TestCompteDAO {
 	
 	@Autowired
