@@ -1,6 +1,9 @@
 package tp.appliSpring.dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -24,6 +27,18 @@ public class TestCompteDao {
 	
 	@Autowired
 	private CompteDao compteDao;//composant à tester
+	
+	@Test
+	public void testSelonSoldeMini() {
+		compteDao.save(new Compte(null,"c1",500.0));
+		compteDao.save(new Compte(null,"c2",600.0));
+		compteDao.save(new Compte(null,"c3",700.0));
+		//List<Compte> comptesAvecAuMoins550euros = compteDao.findSelonSoldeMini(550.0);
+		List<Compte> comptesAvecAuMoins550euros = compteDao.findBySoldeGreaterThanEqual(550.0);
+		assertTrue(comptesAvecAuMoins550euros.size()>=2);
+		logger.debug("comptesAvecAuMoins550euros="+comptesAvecAuMoins550euros);
+	}
+	
 	
 	@Test
 	public void testDao() {
