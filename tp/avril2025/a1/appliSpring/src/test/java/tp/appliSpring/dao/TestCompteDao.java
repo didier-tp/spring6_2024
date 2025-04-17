@@ -20,8 +20,8 @@ import tp.appliSpring.entity.Compte;
 //et le fichier application.properties
 
 //pour tenir compte en plus de application-mysql.properties il faut ajouter @ActiveProfile
-//@ActiveProfiles("mysql")
-@ActiveProfiles("postgres")
+@ActiveProfiles("mysql")
+//@ActiveProfiles("postgres")
 public class TestCompteDao {
 	
 	Logger logger = LoggerFactory.getLogger(TestCompteDao.class);
