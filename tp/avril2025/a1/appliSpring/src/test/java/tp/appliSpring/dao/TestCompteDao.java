@@ -20,7 +20,8 @@ import tp.appliSpring.entity.Compte;
 //et le fichier application.properties
 
 //pour tenir compte en plus de application-mysql.properties il faut ajouter @ActiveProfile
-@ActiveProfiles("mysql")
+//@ActiveProfiles("mysql")
+@ActiveProfiles("postgres")
 public class TestCompteDao {
 	
 	Logger logger = LoggerFactory.getLogger(TestCompteDao.class);
@@ -33,8 +34,8 @@ public class TestCompteDao {
 		compteDao.save(new Compte(null,"c1",500.0));
 		compteDao.save(new Compte(null,"c2",600.0));
 		compteDao.save(new Compte(null,"c3",700.0));
-		//List<Compte> comptesAvecAuMoins550euros = compteDao.findSelonSoldeMini(550.0);
-		List<Compte> comptesAvecAuMoins550euros = compteDao.findBySoldeGreaterThanEqual(550.0);
+		List<Compte> comptesAvecAuMoins550euros = compteDao.findSelonSoldeMini(550.0);
+		//List<Compte> comptesAvecAuMoins550euros = compteDao.findBySoldeGreaterThanEqual(550.0);
 		assertTrue(comptesAvecAuMoins550euros.size()>=2);
 		logger.debug("comptesAvecAuMoins550euros="+comptesAvecAuMoins550euros);
 	}
