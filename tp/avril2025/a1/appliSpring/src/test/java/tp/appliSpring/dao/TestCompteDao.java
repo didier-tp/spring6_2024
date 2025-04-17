@@ -1,6 +1,8 @@
 package tp.appliSpring.dao;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -10,12 +12,14 @@ import org.springframework.test.context.ActiveProfiles;
 //et le fichier application.properties
 
 //pour tenir compte en plus de application-mysql.properties il faut ajouter @ActiveProfile
-@ActiveProfiles
+@ActiveProfiles("mysql")
 public class TestCompteDao {
+	
+	Logger logger = LoggerFactory.getLogger(TestCompteDao.class);
 	
 	@Test
 	public void testDao() {
-		System.out.println("testDao");
+		logger.debug("testDao");
 	}
 
 }
