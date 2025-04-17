@@ -4,6 +4,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import tp.appliSpring.entity.Compte;
 
-public interface CompteDao extends JpaRepository<Compte,Long>{
+/*
+ DAO (alias Repository) : Data Access Object
+ */
 
+public interface CompteDao extends JpaRepository<Compte,Long>{
+     /*
+      principales méthodes héritées:
+      .save(compte)
+      .findById(numero)
+      .deleteById(numero)
+      .findAll()
+      */
 }
