@@ -1,5 +1,7 @@
 package tp.appliSpring.dao;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,9 +27,14 @@ public class TestCompteDao {
 	
 	@Test
 	public void testDao() {
-		Compte cA = new Compte(null,"commpteA",50.0);//nouveau compte pas encore sauvegardé
+		Compte cA = new Compte(null,"compteA",50.0);//nouveau compte pas encore sauvegardé
 		cA /* compte sauvegardé */= compteDao.save(cA);
 		logger.debug(cA.toString());
+		
+		Compte cARelu = compteDao.findById(cA.getNumero()).get();
+		assertEquals("compteA",cARelu.getLabel());
+		assertEquals(50.0,cARelu.getSolde(),0.000001);
+		logger.debug(cARelu.toString());
 	}
 
 }
