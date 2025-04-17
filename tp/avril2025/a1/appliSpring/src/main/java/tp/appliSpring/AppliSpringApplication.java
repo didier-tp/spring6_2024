@@ -8,6 +8,7 @@ public class AppliSpringApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AppliSpringApplication.class, args);
+		System.out.println("http://localhost:8181/appliSpring");
 	}
 
 }
