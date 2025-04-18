@@ -12,8 +12,14 @@ import tp.appliSpring.exception.BankException;
 @Service //composant spring de type service métier
 public class ServiceCompteImpl implements ServiceCompte{
 	
-	@Autowired //injection de dépendance (par correspondance de type)
+	//@Autowired //injection de dépendance (par correspondance de type)
 	private CompteDao compteDao;
+	
+	
+	//injection de dépendance par constructeur (avec @Autowired implicite , sous entendu)
+	public ServiceCompteImpl(CompteDao compteDao) {
+		this.compteDao = compteDao;
+	}
 
 	@Override
 	public Compte searchById(long numeroCompte) {
@@ -34,7 +40,7 @@ public class ServiceCompteImpl implements ServiceCompte{
 
 	@Override
 	public Compte insertCompte(Compte c) {
-		return compteDao.save(c);
+		return compteDao.save(c); //on retourne le compte inséré en base avec la clef primaire auto incrémenté
 	}
 
 	@Override
