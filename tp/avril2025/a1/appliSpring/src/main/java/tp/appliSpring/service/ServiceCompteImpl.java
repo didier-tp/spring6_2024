@@ -34,14 +34,12 @@ public class ServiceCompteImpl implements ServiceCompte{
 
 	@Override
 	public Compte insertCompte(Compte c) {
-		// TODO Auto-generated method stub
-		return null;
+		return compteDao.save(c);
 	}
 
 	@Override
 	public void updateCompte(Compte c) {
-		// TODO Auto-generated method stub
-		
+		compteDao.save(c);
 	}
 
 	@Override
