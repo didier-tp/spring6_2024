@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import tp.appliSpring.entity.Compte;
+import tp.appliSpring.exception.BankException;
 
 
 @SpringBootTest()
@@ -34,6 +35,25 @@ public class TestServiceCompte {
 		logger.debug("apres virement c1=" + c1Apres.getSolde() +  " c2=" + c2Apres.getSolde());
 		assertEquals(c1Apres.getSolde(),c1.getSolde()-5 ,0.000001);
 		assertEquals(c2Apres.getSolde(),c2.getSolde()+5 ,0.000001);
+	}
+	
+	
+	@Test
+	public void testMauvaisVirement() {
+		Compte c1 = serviceCompte.insertCompte(new Compte(null,"compteC1",50.0));
+		Compte c2 = serviceCompte.insertCompte(new Compte(null,"compteC2",40.0));
+		logger.debug("avant mauvais virement c1=" + c1.getSolde() +  " c2=" + c2.getSolde());
+		try {
+			serviceCompte.transferer(5.0, c1.getNumero(), - c2.getNumero());
+			//erreur volontaire (dans le test) sur numCptCred = -2
+		} catch (BankException e) {
+			logger.info("exception normale: " + e.getMessage());
+		}
+		Compte c1Apres = serviceCompte.searchById(c1.getNumero());
+		Compte c2Apres = serviceCompte.searchById(c2.getNumero());
+		logger.debug("apres mauvais virement c1=" + c1Apres.getSolde() +  " c2=" + c2Apres.getSolde());
+		assertEquals(c1Apres.getSolde(),c1.getSolde() ,0.000001);
+		assertEquals(c2Apres.getSolde(),c2.getSolde() ,0.000001);
 	}
 	
 	@Test
