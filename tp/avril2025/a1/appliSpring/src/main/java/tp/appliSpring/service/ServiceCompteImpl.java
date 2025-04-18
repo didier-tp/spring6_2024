@@ -2,15 +2,22 @@ package tp.appliSpring.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import tp.appliSpring.dao.CompteDao;
 import tp.appliSpring.entity.Compte;
 import tp.appliSpring.exception.BankException;
 
+@Service //composant spring de type service métier
 public class ServiceCompteImpl implements ServiceCompte{
+	
+	@Autowired //injection de dépendance (par correspondance de type)
+	private CompteDao compteDao;
 
 	@Override
 	public Compte searchById(long numeroCompte) {
-		// TODO Auto-generated method stub
-		return null;
+		return compteDao.findById(numeroCompte).get();
 	}
 
 	@Override
