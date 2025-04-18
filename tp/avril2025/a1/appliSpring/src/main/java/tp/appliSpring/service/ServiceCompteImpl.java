@@ -53,10 +53,19 @@ public class ServiceCompteImpl implements ServiceCompte{
 	}
 
 	@Override
-	//@Transactional()
 	public void transferer(double montant, long numCptDeb, long numCptCred) throws BankException {
-		// TODO Auto-generated method stub
-		
+		try {
+			Compte cptDeb = compteDao.findById(numCptDeb).get();
+			cptDeb.setSolde(cptDeb.getSolde()-montant);
+			compteDao.save(cptDeb);
+			
+			Compte cptCred = compteDao.findById(numCptCred).get();
+			cptCred.setSolde(cptCred.getSolde()+montant);
+			compteDao.save(cptCred);
+		} catch (Exception e) {
+			//e.printStackTrace();
+			throw new BankException("echec virement", e);
+		}
 	}
 	
 }
