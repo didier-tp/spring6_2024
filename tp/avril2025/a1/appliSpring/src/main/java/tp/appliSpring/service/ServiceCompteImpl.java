@@ -2,8 +2,8 @@ package tp.appliSpring.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tp.appliSpring.dao.CompteDao;
 import tp.appliSpring.entity.Compte;
@@ -28,14 +28,12 @@ public class ServiceCompteImpl implements ServiceCompte{
 
 	@Override
 	public List<Compte> searchAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return compteDao.findAll();
 	}
 
 	@Override
 	public List<Compte> searchBySoldeMini(double soldeMini) {
-		// TODO Auto-generated method stub
-		return null;
+		return compteDao.findSelonSoldeMini(soldeMini);
 	}
 
 	@Override
@@ -50,11 +48,12 @@ public class ServiceCompteImpl implements ServiceCompte{
 
 	@Override
 	public void removeById(long numCompte) {
-		// TODO Auto-generated method stub
+		compteDao.deleteById(numCompte);
 		
 	}
 
 	@Override
+	//@Transactional()
 	public void transferer(double montant, long numCptDeb, long numCptCred) throws BankException {
 		// TODO Auto-generated method stub
 		
