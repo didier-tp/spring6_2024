@@ -53,6 +53,7 @@ public class ServiceCompteImpl implements ServiceCompte{
 	}
 
 	@Override
+	@Transactional
 	public void transferer(double montant, long numCptDeb, long numCptCred) throws BankException {
 		try {
 			Compte cptDeb = compteDao.findById(numCptDeb).get();
