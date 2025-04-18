@@ -22,6 +22,20 @@ public class TestServiceCompte {
 	@Autowired
 	private ServiceCompte serviceCompte;//composant à tester
 	
+	
+	@Test
+	public void testBonVirement() {
+		Compte c1 = serviceCompte.insertCompte(new Compte(null,"compteC1",50.0));
+		Compte c2 = serviceCompte.insertCompte(new Compte(null,"compteC2",40.0));
+		logger.debug("avant virement c1=" + c1.getSolde() +  " c2=" + c2.getSolde());
+		serviceCompte.transferer(5.0, c1.getNumero(), c2.getNumero());
+		Compte c1Apres = serviceCompte.searchById(c1.getNumero());
+		Compte c2Apres = serviceCompte.searchById(c2.getNumero());
+		logger.debug("apres virement c1=" + c1Apres.getSolde() +  " c2=" + c2Apres.getSolde());
+		assertEquals(c1Apres.getSolde(),c1.getSolde()-5 ,0.000001);
+		assertEquals(c2Apres.getSolde(),c2.getSolde()+5 ,0.000001);
+	}
+	
 	@Test
 	public void testService() {
 		Compte cA = new Compte(null,"compteA",50.0);//nouveau compte pas encore sauvegardé
