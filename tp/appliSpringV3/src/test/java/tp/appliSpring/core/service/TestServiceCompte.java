@@ -10,7 +10,13 @@ import org.springframework.test.context.ActiveProfiles;
 import tp.appliSpring.AppliSpringApplication;
 import tp.appliSpring.bank.core.model.Compte;
 import tp.appliSpring.bank.core.exception.BankException;
+import tp.appliSpring.bank.core.model.Operation;
 import tp.appliSpring.bank.core.service.ServiceCompte;
+import tp.appliSpring.bank.core.service.ServiceOperation;
+import java.util.Date;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(classes= {AppliSpringApplication.class})//reprendre la configuration de la classe principale
 @ActiveProfiles({  "dev" })
@@ -22,6 +28,9 @@ public class TestServiceCompte {
     //@Qualifier("direct") // by default, primary
     //@Qualifier("hex")
     private ServiceCompte serviceCompte; //à tester
+
+    @Autowired
+    private ServiceOperation serviceOperation;
 
     @Test
     public void testVirement() {
@@ -91,5 +100,21 @@ public class TestServiceCompte {
         Assertions.assertEquals(soldeA_avant , soldeA_apres, 0.000001);
         Assertions.assertEquals(soldeB_avant , soldeB_apres, 0.000001);
     }
+
+        @Test
+        public void testCompteAvecOperation(){
+            Compte cptA = serviceCompte.create(new Compte(null,"compteA",100.0));
+            serviceOperation.create(new Operation(null,"achat 1" , -5.0 , new Date()), cptA.getNumero());
+            serviceOperation.create(new Operation(null,"achat 2" , -6.0 , new Date()), cptA.getNumero());
+            Compte cptB = serviceCompte.create(new Compte(null,"compteB",200.0));
+
+            Compte compteAReluAvecOp = serviceCompte.searchById(cptA.getNumero());
+            assertTrue(compteAReluAvecOp.getLabel().equals("compteA"));
+
+            // afficher les operations de compteAReluAvecOpavec le bon comportement de @Transactional :
+            List<Operation> operations = serviceOperation.searchByCompte(cptA.getNumero());
+            assertTrue(operations.size()==2);
+            logger.debug("operations de compteAReluAvecOp="+operations);
+        }
 
 }
