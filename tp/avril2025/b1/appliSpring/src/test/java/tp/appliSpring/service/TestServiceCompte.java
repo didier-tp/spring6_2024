@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import tp.appliSpring.entity.Compte;
+import tp.appliSpring.exception.BankException;
 
 @SpringBootTest //extension Spring pour Junit
 //démarre un test en reprenant la configuration de la classe principale (celle où il y a main())
@@ -32,6 +33,24 @@ public class TestServiceCompte {
 		logger.debug("apres bon virement, cx:" + cxApres.getSolde() + " cy:" + cyApres.getSolde());
 		assertEquals(cx.getSolde()-10, cxApres.getSolde(),0.00001);
 		assertEquals(cy.getSolde()+10, cyApres.getSolde(),0.00001);
+	}
+	
+	@Test
+	public void testMauvaisTransfert() {
+		Compte cx = serviceCompte.insertCompte(new Compte(null,"cxx",100.0));
+		Compte cy = serviceCompte.insertCompte(new Compte(null,"cyy",150.0));
+		logger.debug("avant mauvais virement, cx:" + cx.getSolde() + " cy:" + cy.getSolde());
+		try {
+			serviceCompte.transferer(10.0, cx.getNumero(), - cy.getNumero());//erreur volontaire dans le test
+		} catch (BankException e) {
+			System.out.println("exception normale/attendue : " + e.getMessage());
+			//e.printStackTrace();
+		} 
+		Compte cxApres = serviceCompte.searchByNumero(cx.getNumero());
+		Compte cyApres = serviceCompte.searchByNumero(cy.getNumero());
+		logger.debug("apres mauvais virement, cx:" + cxApres.getSolde() + " cy:" + cyApres.getSolde());
+		assertEquals(cx.getSolde(), cxApres.getSolde(),0.00001);
+		assertEquals(cy.getSolde(), cyApres.getSolde(),0.00001);
 	}
 	
 	@Test
