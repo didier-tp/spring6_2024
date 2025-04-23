@@ -13,10 +13,17 @@ import tp.appliSpring.exception.BankException;
 //@Transactional
 public class ServiceCompteImpl implements ServiceCompte{
 	
-	@Autowired //injection de dépendance selon correspondance de type
+	//@Autowired //injection de dépendance selon correspondance de type
 	//compteDAO va référencer un composant spring existant compatible avec
 	//l'interface CompteDAO
 	private CompteDAO compteDAO; 
+	
+	
+    @Autowired
+	public ServiceCompteImpl(CompteDAO compteDAO) {
+	    //injection de dépendance par constructeur
+		this.compteDAO = compteDAO;
+	}
 
 	@Override
 	public Compte searchByNumero(long num) {
@@ -30,33 +37,28 @@ public class ServiceCompteImpl implements ServiceCompte{
 
 	@Override
 	public List<Compte> searchAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return compteDAO.findAll();
 	}
 
 	@Override
 	public List<Compte> searchSelonSoldeMini(double soldeMini) {
-		// TODO Auto-generated method stub
-		return null;
+		return compteDAO.findSelonSoldeMini(soldeMini);
 	}
 
 	
-
 	@Override
 	public void updateCompte(Compte c) {
-		// TODO Auto-generated method stub
-		
+		compteDAO.save(c);
 	}
 
 	@Override
 	public void deleteCompteByNum(long num) {
-		// TODO Auto-generated method stub
-		
+		compteDAO.deleteById(num);
 	}
 
 	@Override
 	public void transferer(double montant, long numCptDeb, long numCptCred) throws BankException {
-		// TODO Auto-generated method stub
+		//...
 		
 	}
 	
