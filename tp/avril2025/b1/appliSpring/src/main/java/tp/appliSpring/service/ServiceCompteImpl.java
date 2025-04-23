@@ -11,7 +11,7 @@ import tp.appliSpring.entity.Compte;
 import tp.appliSpring.exception.BankException;
 
 @Service  //composant spring de type "service métier" 
-//@Transactional
+@Transactional
 public class ServiceCompteImpl implements ServiceCompte{
 	
 	//@Autowired //injection de dépendance selon correspondance de type
@@ -27,7 +27,7 @@ public class ServiceCompteImpl implements ServiceCompte{
 	}
     
     @Override
-    @Transactional
+    //@Transactional
 	public void transferer(double montant, long numCptDeb, long numCptCred) throws BankException {
     	try {
 			Compte cptDeb = compteDAO.findById(numCptDeb).get();
