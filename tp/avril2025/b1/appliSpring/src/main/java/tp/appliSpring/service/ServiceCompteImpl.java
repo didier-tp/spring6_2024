@@ -24,6 +24,17 @@ public class ServiceCompteImpl implements ServiceCompte{
 	    //injection de dépendance par constructeur
 		this.compteDAO = compteDAO;
 	}
+    
+    @Override
+	public void transferer(double montant, long numCptDeb, long numCptCred) throws BankException {
+		Compte cptDeb = compteDAO.findById(numCptDeb).get();
+		cptDeb.setSolde(cptDeb.getSolde()- montant);
+		compteDAO.save(cptDeb);
+		
+		Compte cptCred = compteDAO.findById(numCptCred).get();
+		cptCred.setSolde(cptCred.getSolde()+ montant);
+		compteDAO.save(cptCred);
+	}
 
 	@Override
 	public Compte searchByNumero(long num) {
@@ -56,10 +67,6 @@ public class ServiceCompteImpl implements ServiceCompte{
 		compteDAO.deleteById(num);
 	}
 
-	@Override
-	public void transferer(double montant, long numCptDeb, long numCptCred) throws BankException {
-		//...
-		
-	}
+
 	
 }
