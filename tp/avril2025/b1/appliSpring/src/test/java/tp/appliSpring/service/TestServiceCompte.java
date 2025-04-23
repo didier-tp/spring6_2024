@@ -22,6 +22,19 @@ public class TestServiceCompte {
 	private ServiceCompte serviceCompte; //chose à tester
 
 	@Test
+	public void testBonTransfert() {
+		Compte cx = serviceCompte.insertCompte(new Compte(null,"cx",100.0));
+		Compte cy = serviceCompte.insertCompte(new Compte(null,"cy",150.0));
+		logger.debug("avant bon virement, cx:" + cx.getSolde() + " cy:" + cy.getSolde());
+		serviceCompte.transferer(10.0, cx.getNumero(), cy.getNumero());
+		Compte cxApres = serviceCompte.searchByNumero(cx.getNumero());
+		Compte cyApres = serviceCompte.searchByNumero(cy.getNumero());
+		logger.debug("apres bon virement, cx:" + cxApres.getSolde() + " cy:" + cyApres.getSolde());
+		assertEquals(cx.getSolde()-10, cxApres.getSolde(),0.00001);
+		assertEquals(cy.getSolde()+10, cyApres.getSolde(),0.00001);
+	}
+	
+	@Test
 	public void testCompte() {
 		Compte cA = serviceCompte.insertCompte(new Compte(null,"cA",100.0));
 		logger.debug("cA=" + cA);
