@@ -29,13 +29,17 @@ public class ServiceCompteImpl implements ServiceCompte{
     @Override
     @Transactional
 	public void transferer(double montant, long numCptDeb, long numCptCred) throws BankException {
-		Compte cptDeb = compteDAO.findById(numCptDeb).get();
-		cptDeb.setSolde(cptDeb.getSolde()- montant);
-		compteDAO.save(cptDeb);
-		
-		Compte cptCred = compteDAO.findById(numCptCred).get();
-		cptCred.setSolde(cptCred.getSolde()+ montant);
-		compteDAO.save(cptCred);
+    	try {
+			Compte cptDeb = compteDAO.findById(numCptDeb).get();
+			cptDeb.setSolde(cptDeb.getSolde()- montant);
+			compteDAO.save(cptDeb);
+			
+			Compte cptCred = compteDAO.findById(numCptCred).get();
+			cptCred.setSolde(cptCred.getSolde()+ montant);
+			compteDAO.save(cptCred);
+		} catch (Exception e) {
+			throw new BankException("echec virement" , e);
+		}
 	}
 
 	@Override
