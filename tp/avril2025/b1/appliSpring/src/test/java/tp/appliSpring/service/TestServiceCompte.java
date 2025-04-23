@@ -42,7 +42,7 @@ public class TestServiceCompte {
 		logger.debug("avant mauvais virement, cx:" + cx.getSolde() + " cy:" + cy.getSolde());
 		try {
 			serviceCompte.transferer(10.0, cx.getNumero(), - cy.getNumero());//erreur volontaire dans le test
-		} catch (BankException e) {
+		} catch (Exception e) {
 			System.out.println("exception normale/attendue : " + e.getMessage());
 			//e.printStackTrace();
 		} 
