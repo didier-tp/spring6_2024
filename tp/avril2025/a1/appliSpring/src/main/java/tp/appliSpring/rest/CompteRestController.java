@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,18 @@ public class CompteRestController {
 		return serviceCompte.searchById(numero);
 	}
 	*/
+	
+	
+	//http://localhost:8181/appliSpring/rest/bank-api/v1/comptes/1
+	@DeleteMapping("/{numero}" )
+	public ResponseEntity<?> deleteCompteByNum(@PathVariable("numero") Long numero) {
+			try {
+				serviceCompte.removeById(numero);
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);//204: OK mais sans détails/ sans message
+			} catch (Exception e) {
+				return new ResponseEntity<Compte>(HttpStatus.NOT_FOUND);
+			}
+	}
 	
 	//URL de déclenchement:
 	//http://localhost:8181/appliSpring/rest/bank-api/v1/comptes
