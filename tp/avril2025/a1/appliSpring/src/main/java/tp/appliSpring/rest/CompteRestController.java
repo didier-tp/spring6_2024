@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,7 +68,7 @@ public class CompteRestController {
 
 	// URL de déclenchement (en mode POST)
 	// http://localhost:8181/appliSpring/rest/bank-api/v1/comptes
-	//avec { "numero" : null , "label" : "nouveau_compte" , "solde" : 50.0 }
+	// avec { "numero" : null , "label" : "nouveau_compte" , "solde" : 50.0 }
 	@PostMapping()
 	public ResponseEntity<?> postCompte(/* @Valid */ @RequestBody Compte obj) {
 		Compte savedObj = serviceCompte.insertCompte(obj); // avec id auto_incrémenté
@@ -81,6 +82,17 @@ public class CompteRestController {
 		 * ou bien encore return ResponseEntity.ok()
 		 * .headers(responseHeadersWithLocation).body(savedObj);
 		 */
+	}
+
+	// URL de déclenchement (en mode PUT)
+	// http://localhost:8181/appliSpring/rest/bank-api/v1/comptes/2
+	// avec { "numero" : 2 , "label" : "compteBb" , "solde" : 65.0 }
+	@PutMapping("/{id}")
+	public ResponseEntity<Compte> putCompte(@RequestBody Compte obj, @PathVariable("id") Long idToUpdate) {
+		obj.setNumero(idToUpdate);
+		serviceCompte.updateCompte(obj);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		// 204 : OK sans aucun message dans partie body
 	}
 
 }
