@@ -15,7 +15,7 @@ import tp.appliSpring.bank.persistence.repository.OperationRepository;
 import tp.appliSpring.generic.converter.GenericMapper;
 
 @Service
-@Transactional
+//@Transactional
 public class ServiceOperationDirectImpl implements ServiceOperation {
 
     @Autowired
@@ -25,6 +25,7 @@ public class ServiceOperationDirectImpl implements ServiceOperation {
     private OperationRepository daoOperation;
 
     @Override
+    @Transactional
     public Operation create(Operation op, Long numCpt) {
         OperationEntity opEntity = GenericMapper.MAPPER.map(op,OperationEntity.class);
         CompteEntity compteEntity = daoCompte.findById(numCpt).get();

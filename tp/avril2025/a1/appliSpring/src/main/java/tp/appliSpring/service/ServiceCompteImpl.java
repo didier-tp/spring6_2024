@@ -10,6 +10,7 @@ import tp.appliSpring.entity.Compte;
 import tp.appliSpring.exception.BankException;
 
 @Service //composant spring de type service métier
+//@Transactional
 public class ServiceCompteImpl implements ServiceCompte{
 	
 	//@Autowired //injection de dépendance (par correspondance de type)
