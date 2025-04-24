@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import tp.appliSpring.dto.CompteDto;
 import tp.appliSpring.entity.Compte;
 import tp.appliSpring.service.ServiceCompte;
 
@@ -30,12 +31,12 @@ public class CompteRestController {
 	// URL de déclenchement:
 	// http://localhost:8181/appliSpring/rest/bank-api/v1/comptes/1
 	@GetMapping("/{numero}")
-	public ResponseEntity<Compte> getCompteByNum(@PathVariable("numero") Long numero) {
+	public ResponseEntity<CompteDto> getCompteByNum(@PathVariable("numero") Long numero) {
 		try {
-			Compte c = serviceCompte.searchById(numero);
-			return new ResponseEntity<Compte>(c, HttpStatus.OK);
+			CompteDto c = serviceCompte.searchDtoById(numero);
+			return new ResponseEntity<CompteDto>(c, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<Compte>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<CompteDto>(HttpStatus.NOT_FOUND);
 		}
 	}
 	/*

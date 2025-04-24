@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tp.appliSpring.dao.CompteDao;
+import tp.appliSpring.dto.CompteDto;
 import tp.appliSpring.entity.Compte;
 import tp.appliSpring.exception.BankException;
 
@@ -68,6 +69,14 @@ public class ServiceCompteImpl implements ServiceCompte{
 			//e.printStackTrace();
 			throw new BankException("echec virement", e);
 		}
+	}
+
+	@Override
+	public CompteDto searchDtoById(long numeroCompte) {
+		Compte compteEntity = compteDao.findById(numeroCompte).get();
+		return new CompteDto(compteEntity.getNumero(),
+				              compteEntity.getLabel(),
+				              compteEntity.getSolde());
 	}
 	
 }
