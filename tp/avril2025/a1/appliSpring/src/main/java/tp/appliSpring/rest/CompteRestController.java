@@ -3,6 +3,8 @@ package tp.appliSpring.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +25,20 @@ public class CompteRestController {
 	//URL de déclenchement:
 	//http://localhost:8181/appliSpring/rest/bank-api/v1/comptes/1
 	@GetMapping("/{numero}" )
+	public ResponseEntity<Compte> getCompteByNum(@PathVariable("numero") Long numero) {
+		try {
+			Compte c = serviceCompte.searchById(numero);
+			return new ResponseEntity<Compte>(c,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<Compte>(HttpStatus.NOT_FOUND);
+		}
+	}
+	/*
+	@GetMapping("/{numero}" )
 	public Compte getCompteByNum(@PathVariable("numero") Long numero) {
 		return serviceCompte.searchById(numero);
 	}
+	*/
 	
 	//URL de déclenchement:
 	//http://localhost:8181/appliSpring/rest/bank-api/v1/comptes
