@@ -2,11 +2,13 @@ package tp.appliSpring.service;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tp.appliSpring.dao.CompteDAO;
+import tp.appliSpring.dto.CompteDto;
 import tp.appliSpring.entity.Compte;
 import tp.appliSpring.exception.BankException;
 
@@ -71,6 +73,20 @@ public class ServiceCompteImpl implements ServiceCompte{
 	@Override
 	public void deleteCompteByNum(long num) {
 		compteDAO.deleteById(num);
+	}
+
+	@Override
+	public CompteDto searchDtoByNumero(long num) {
+		Compte compteEntity = compteDAO.findById(num).get();
+		CompteDto cDto = new CompteDto();
+		/*
+		cDto.setNumero(compteEntity.getNumero());
+		cDto.setLabel(compteEntity.getLabel());
+		cDto.setSolde(compteEntity.getSolde());
+		*/
+		BeanUtils.copyProperties(compteEntity, cDto); //pratique mais moyennement performant
+		//NB: il existe une techno "MapStruct" qui ça de manière performante
+		return cDto;
 	}
 
 
