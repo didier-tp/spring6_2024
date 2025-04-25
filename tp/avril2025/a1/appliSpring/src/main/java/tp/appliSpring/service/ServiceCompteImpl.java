@@ -2,14 +2,17 @@ package tp.appliSpring.service;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tp.appliSpring.dao.CompteDao;
+import tp.appliSpring.dto.CompteDto;
 import tp.appliSpring.entity.Compte;
 import tp.appliSpring.exception.BankException;
 
 @Service //composant spring de type service métier
+//@Transactional
 public class ServiceCompteImpl implements ServiceCompte{
 	
 	//@Autowired //injection de dépendance (par correspondance de type)
@@ -67,6 +70,25 @@ public class ServiceCompteImpl implements ServiceCompte{
 			//e.printStackTrace();
 			throw new BankException("echec virement", e);
 		}
+	}
+
+	@Override
+	public CompteDto searchDtoById(long numeroCompte) {
+		Compte compteEntity = compteDao.findById(numeroCompte).get();
+		/*
+		return new CompteDto(compteEntity.getNumero(),
+				              compteEntity.getLabel(),
+				              compteEntity.getSolde());
+		*/
+		CompteDto cptDto =new CompteDto();
+		/*
+		cptDto.setNumero(compteEntity.getNumero());
+		cptDto.setLabel(compteEntity.getLabel());
+		cptDto.setSolde(compteEntity.getSolde());
+		*/
+		BeanUtils.copyProperties(compteEntity, cptDto);//moyennement performant
+		//CONVERSION IDEALE: à programmer avec une extension "MapStruct" pour obtenir de bonnes performances
+		return cptDto;
 	}
 	
 }

@@ -10,7 +10,7 @@ public class AppliSpringApplication {
 		//activation d'un profile (variante de configuration)
 		//au démarrage de l'application
 		
-		System.setProperty("spring.profiles.active", "mysql");
+		System.setProperty("spring.profiles.active", "mysql,reinit");
 		//System.setProperty("spring.profiles.active", "postgres,profileComplementaire2");
 		//fichiers pris en compte : application.properties ET application-mysql.properties
 		
