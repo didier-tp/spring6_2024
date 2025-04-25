@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +50,14 @@ public class CompteRestController {
 			return serviceCompte.searchSelonSoldeMini(soldeMini);
 		/*else*/
 		return serviceCompte.searchAll();
+	}
+	
+	//URL de déclenchement:
+	//http://localhost:8181/appliSpring/rest/bank-api/v1/comptes/1
+	@DeleteMapping("/{numero}") 
+	public ResponseEntity<Compte> deleteCompteByNum(@PathVariable("numero")long numero) {
+		serviceCompte.deleteCompteByNum(numero);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);//204 , OK mais sans details/content
 	}
 
 }
